@@ -20,6 +20,9 @@ Ce projet vise à fournir un site statique simple et responsive, organisé en **
 - 🖍️ Feuilles de style CSS personnalisées
 - 📄 Fiches mémo claires, par thème
 - 🔎 Champ de recherche par mots-clés
+- 🔁 Navigation entre les fiches
+- ⏮️ Bouton de retour à l'accueil
+- 🏠 Page d'accueil interactive
 - 🚀 Prêt à être hébergé via GitHub Pages
 
 ## 📂 Arborescence du projet
@@ -27,6 +30,7 @@ Ce projet vise à fournir un site statique simple et responsive, organisé en **
 ```bash
 bloc-notes-numerique/
 ├── index.html
+├── accueil.html
 ├── css/
 │   └── style.css
 ├── favicon.ico
@@ -36,10 +40,13 @@ bloc-notes-numerique/
 │   └── banner.png
 ├── fiches/
 │   ├── fiche-git.html
-│   └── fiche-chocolatey.html
-└── README.md
+│   ├── fiche-chocolatey.html
+│   └── fiche-modele.html
+├── README.md
+└── LICENSE
 ```
 
 ## 📜 Licence
 
 Ce projet est sous licence MIT – voir le fichier [LICENSE](LICENSE) pour plus d’informations.
+
