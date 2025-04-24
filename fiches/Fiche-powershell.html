@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Fiche mémo - PowerShell</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header class="banner">
+    <div class="banner-container">
+      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>⚡ Fiche PowerShell</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-linux.html">🐧 Linux</a></li>
+        <li><a href="fiche-powershell.html" class="active">⚡ PowerShell</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-python.html">🐍 Python</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="memo fiche fiche-powershell">
+      <h2>📌 Introduction à PowerShell</h2>
+      <p><strong>PowerShell</strong> est un interpréteur de commandes et un langage de script développé par Microsoft. Il est très utilisé dans l'administration système, la gestion de tâches automatisées, et le scripting sur Windows.</p>
+
+      <h3>🔧 Commandes essentielles</h3>
+      <pre class="command">Get-Command</pre>
+      <p>👉 Liste toutes les commandes disponibles.</p>
+
+      <pre class="command">Get-Help Get-Command</pre>
+      <p>👉 Fournit l’aide intégrée pour une commande donnée.</p>
+
+      <pre class="command">Get-Process</pre>
+      <p>👉 Affiche les processus en cours.</p>
+
+      <pre class="command">Stop-Process -Name notepad</pre>
+      <p>👉 Arrête le processus Notepad.</p>
+
+      <pre class="command">Get-Service</pre>
+      <p>👉 Liste tous les services Windows.</p>
+
+      <pre class="command">Start-Service nom</pre>
+      <p>👉 Démarre un service.</p>
+
+      <pre class="command">Set-ExecutionPolicy RemoteSigned</pre>
+      <p>👉 Modifie la stratégie d’exécution pour autoriser les scripts locaux.</p>
+
+      <h3>📜 Script de base</h3>
+      <pre class="command"><code># Script PowerShell simple
+Write-Output "Bonjour, Guillaume !"
+$date = Get-Date
+Write-Output "Nous sommes le $date"</code></pre>
+      <p>👉 Ce script affiche un message et la date actuelle.</p>
+
+      <h3>📚 Ressources utiles</h3>
+      <ul>
+        <li><a href="https://learn.microsoft.com/fr-fr/powershell/" target="_blank">Documentation Microsoft PowerShell</a></li>
+        <li><a href="https://ss64.com/ps/" target="_blank">SS64 - Référence rapide PowerShell</a></li>
+        <li><a href="https://www.powershellgallery.com/" target="_blank">PowerShell Gallery (modules)</a></li>
+      </ul>
+    </section>
+
+    <nav class="navigation">
+      <a href="fiche-linux.html">⬅️ Fiche Linux</a>
+      <a href="fiche-python.html">➡️ Fiche Python</a>
+    </nav>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+  </footer>
+</body>
+</html>

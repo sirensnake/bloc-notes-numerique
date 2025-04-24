@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Bloc-notes numérique - Accueil</title>
-<link href="css/style.css" rel="stylesheet"/>
-<link href="favicon.ico" rel="icon" type="image/x-icon"/>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Bloc-notes numérique - Accueil</title>
+  <link href="css/style.css" rel="stylesheet"/>
+  <link href="favicon.ico" rel="icon" type="image/x-icon"/>
 </head>
 <body>
 <header class="banner">
-<div class="banner-container">
-<img alt="Bannière du site" class="banner-img" onerror="this.style.display='none'" src="img/banner.png"/>
-</div>
-<h1>📘 Bloc-notes numérique de Guillaume</h1>
-<nav>
-<ul>
-<li><a href="index.html">🏠 Accueil</a></li>
-<li><a href="fiches/fiche-git.html">🔧 Git</a></li>
-<li><a href="fiches/fiche-chocolatey.html">🍫 Chocolatey</a></li>
-<li><a href="fiches/fiche-modele.html">📋 Modèle</a></li>
-<li><a href="fiches/fiche-linux.html">🐧 Linux</a></li></ul>
-</nav>
+  <div class="banner-container">
+    <img alt="Bannière du site" class="banner-img" onerror="this.style.display='none'" src="img/banner.png"/>
+  </div>
+  <h1>📘 Bloc-notes numérique de Guillaume</h1>
+  <nav>
+    <ul>
+      <li><a href="index.html">🏠 Accueil</a></li>
+      <li><a href="fiches/fiche-git.html">🔧 Git</a></li>
+      <li><a href="fiches/fiche-chocolatey.html">🍫 Chocolatey</a></li>
+      <li><a href="fiches/fiche-modele.html">📋 Modèle</a></li>
+      <li><a href="fiches/fiche-python.html">🐍 Python</a></li>
+      <li><a href="fiches/fiche-linux.html">🐧 Linux</a></li>
+      <li><a href="fiches/fiche-powershell.html">⚡ PowerShell</a></li>
+      <li><a href="fiches/fiche-docker.html">🐳 Docker</a></li>
+    </ul>
+  </nav>
 </header>
 <main>
 <section>
@@ -41,6 +44,9 @@
 <li><a href="fiches/fiche-chocolatey.html">Chocolatey</a></li>
 <li><a href="fiches/fiche-git.html">Git</a></li>
 <li><a href="fiches/fiche-linux.html">Linux</a></li>
+<li><a href="fiches/fiche-python.html">Python</a></li>
+<li><a href="fiches/fiche-powershell.html">PowerShell</a></li>
+<li><a href="fiches/fiche-docker.html">Docker</a></li>
 </ul>
 </section>
 <section>
@@ -48,7 +54,10 @@
 <ul>
 <li><strong>🆕 Linux :</strong> Commandes de base à connaître</li>
 <li><strong>🆕 Chocolatey :</strong> Script de post-installation</li>
+<li><strong>🆕 Python :</strong> Commandes pip, script, venv...</li>
 <li><strong>🆕 Git :</strong> Gestion des branches et conflits</li>
+<li><strong>🆕 PowerShell :</strong> Administration, processus, services</li>
+<li><strong>🆕 Docker :</strong> Conteneurisation et orchestration de base</li>
 </ul>
 </section>
 </main>
@@ -66,6 +75,6 @@
         list[i].style.display = txtValue.toLowerCase().includes(filter) ? '' : 'none';
       }
     });
-  </script>
+</script>
 </body>
 </html>
