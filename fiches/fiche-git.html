@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<title>Fiche mémo - Git</title>
+<link href="../css/style.css" rel="stylesheet"/>
+<link href="../favicon.ico" rel="icon" type="image/x-icon"/>
+<style>
+    .command {
+      background-color: #f4f4f4;
+      border-left: 5px solid #6a1b9a;
+      padding: 10px;
+      margin: 10px 0;
+      font-family: 'Courier New', monospace;
+      font-size: 1em;
+      white-space: pre-wrap;
+    }
+    code {
+      background-color: #eee;
+      padding: 2px 4px;
+      border-radius: 4px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.95em;
+    }
+  </style>
+</head>
+<body>
+<header class="banner">
+<div class="banner-container">
+<img alt="Bannière du site" class="banner-img" src="../img/banner.png"/>
+</div>
+<h1>🔧 Fiche Git</h1>
+<nav>
+<ul>
+<li><a href="../index.html">🏠 Accueil</a></li>
+<li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+<li><a href="fiche-modele.html">📋 Modèle</a></li>
+<li><a href="fiche-linux.html">🐧 Linux</a></li></ul>
+</nav>
+</header>
+<main>
+<section class="memo fiche-git">
+<h2>📌 Présentation de Git</h2>
+<p><strong>Git</strong> est un système de gestion de versions distribué, utilisé principalement pour le développement logiciel. Il permet de suivre les modifications d’un projet dans le temps, de collaborer efficacement à plusieurs et de gérer des branches de travail.</p>
+<h3>🌟 Objectifs de cette fiche</h3>
+<ul>
+<li>Initier un projet avec Git</li>
+<li>Utiliser les commandes fondamentales</li>
+<li>Créer et fusionner des branches</li>
+<li>Travailler avec un dépôt distant (GitHub, GitLab, etc.)</li>
+</ul>
+<h3>📦 Commandes de base et explications</h3>
+<div class="command">git init</div>
+<p>👉 Initialise un nouveau dépôt Git dans le dossier courant.</p>
+<div class="command">git clone &lt;url&gt;</div>
+<p>👉 Crée une copie locale d’un dépôt distant.</p>
+<div class="command">git status</div>
+<p>👉 Affiche l’état actuel du dépôt (fichiers modifiés, en attente, etc.).</p>
+<div class="command">git add .</div>
+<p>👉 Ajoute tous les fichiers modifiés à l’index (prêts pour le commit).</p>
+<div class="command">git commit -m "Message"</div>
+<p>👉 Enregistre les changements dans l’historique du projet avec un message explicatif.</p>
+<div class="command">git push origin main</div>
+<p>👉 Envoie les commits vers le dépôt distant (ici sur la branche <code>main</code>).</p>
+<div class="command">git pull origin main</div>
+<p>👉 Récupère et fusionne les dernières modifications depuis le dépôt distant.</p>
+<h3>🧪 Gestion des branches</h3>
+<div class="command">git branch</div>
+<p>👉 Affiche la liste des branches locales.</p>
+<div class="command">git branch ma-branche</div>
+<p>👉 Crée une nouvelle branche nommée <code>ma-branche</code>.</p>
+<div class="command">git checkout ma-branche</div>
+<p>👉 Bascule sur la branche <code>ma-branche</code>.</p>
+<div class="command">git merge ma-branche</div>
+<p>👉 Fusionne <code>ma-branche</code> dans la branche actuelle.</p>
+<h3>💡 Astuces utiles</h3>
+<ul>
+<li><code>git log --oneline</code> : Affiche un historique condensé des commits</li>
+<li><code>git diff</code> : Compare les modifications non validées</li>
+<li><code>git stash</code> : Met de côté les changements en cours pour les reprendre plus tard</li>
+<li><code>git reset --hard</code> : Annule toutes les modifications et revient au dernier commit</li>
+</ul>
+<h3>📄 Exemple de flux de travail basique</h3>
+<ol>
+<li>Créer un dossier de projet</li>
+<li><code>git init</code></li>
+<li>Travailler et sauvegarder avec <code>git add</code> et <code>git commit</code></li>
+<li>Synchroniser avec GitHub : <code>git remote add origin &lt;url&gt;</code> puis <code>git push -u origin main</code></li>
+</ol>
+<h3>🎥 Tutoriel vidéo</h3>
+<p><a href="https://www.youtube.com/watch?v=SWYqp7iY_Tc" target="_blank">Git pour les débutants (YouTube)</a></p>
+</section>
+<nav class="navigation">
+<a href="fiche-chocolatey.html">➡️ Fiche Chocolatey</a>
+</nav>
+</main>
+<footer>
+<p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+</footer>
+</body>
+</html>

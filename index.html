@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bloc-notes numérique - Accueil</title>
+<link href="css/style.css" rel="stylesheet"/>
+<link href="favicon.ico" rel="icon" type="image/x-icon"/>
+</head>
+<body>
+<header class="banner">
+<div class="banner-container">
+<img alt="Bannière du site" class="banner-img" onerror="this.style.display='none'" src="img/banner.png"/>
+</div>
+<h1>📘 Bloc-notes numérique de Guillaume</h1>
+<nav>
+<ul>
+<li><a href="index.html">🏠 Accueil</a></li>
+<li><a href="fiches/fiche-git.html">🔧 Git</a></li>
+<li><a href="fiches/fiche-chocolatey.html">🍫 Chocolatey</a></li>
+<li><a href="fiches/fiche-modele.html">📋 Modèle</a></li>
+<li><a href="fiches/fiche-linux.html">🐧 Linux</a></li></ul>
+</nav>
+</header>
+<main>
+<section>
+<h2>Bienvenue 👋</h2>
+<p>Bienvenue sur mon espace personnel de fiches pratiques ! Ici tu trouveras des mémos visuels sur les outils techniques indispensables à mon quotidien d'apprenant.</p>
+<ul>
+<li>📜 Commandes essentielles à connaître</li>
+<li>🧩 Scripts prêts à l'emploi</li>
+<li>🎯 Astuces pour gagner du temps</li>
+<li>🗂️ Fiches par thème : Git, Chocolatey, Linux...</li>
+</ul>
+</section>
+<section>
+<h2>🔍 Recherche dans les titres de fiches</h2>
+<input id="searchInput" placeholder="Tape un mot-clé..." type="text"/>
+<ul id="searchList">
+<li><a href="fiches/fiche-chocolatey.html">Chocolatey</a></li>
+<li><a href="fiches/fiche-git.html">Git</a></li>
+<li><a href="fiches/fiche-linux.html">Linux</a></li>
+</ul>
+</section>
+<section>
+<h2>✨ Dernières fiches ajoutées</h2>
+<ul>
+<li><strong>🆕 Linux :</strong> Commandes de base à connaître</li>
+<li><strong>🆕 Chocolatey :</strong> Script de post-installation</li>
+<li><strong>🆕 Git :</strong> Gestion des branches et conflits</li>
+</ul>
+</section>
+</main>
+<footer>
+<p>Guillaume | Site personnel en construction 🚧 | hébergé sur GitHub Pages</p>
+</footer>
+<script>
+    const input = document.getElementById('searchInput');
+    const list = document.getElementById('searchList').getElementsByTagName('li');
+
+    input.addEventListener('keyup', function() {
+      const filter = input.value.toLowerCase();
+      for (let i = 0; i < list.length; i++) {
+        const txtValue = list[i].textContent || list[i].innerText;
+        list[i].style.display = txtValue.toLowerCase().includes(filter) ? '' : 'none';
+      }
+    });
+  </script>
+</body>
+</html>

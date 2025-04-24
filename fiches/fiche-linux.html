@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Fiche mémo - Linux</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <header class="banner">
+    <div class="banner-container">
+      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐧 Fiche Linux</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-linux.html" class="active">🐧 Linux</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="memo fiche fiche-linux">
+      <h2>📌 Introduction à Linux</h2>
+      <p>Linux est un système d'exploitation libre et open source très répandu, en particulier dans le monde des serveurs, du développement et de la cybersécurité. Cette fiche regroupe les commandes de base les plus utiles pour prendre en main un système Linux.</p>
+
+      <h3>🌟 Objectifs de cette fiche</h3>
+      <ul>
+        <li>Savoir naviguer dans l’arborescence des fichiers</li>
+        <li>Gérer les fichiers et les permissions</li>
+        <li>Superviser les processus et l’utilisation du système</li>
+        <li>Automatiser avec des scripts de base</li>
+      </ul>
+
+      <h3>📁 Navigation et manipulation de fichiers</h3>
+      <pre class="command">pwd</pre>
+      <p>👉 Affiche le chemin du répertoire courant.</p>
+
+      <pre class="command">ls -l</pre>
+      <p>👉 Liste les fichiers et dossiers avec leurs permissions et détails.</p>
+
+      <pre class="command">cd /chemin/du/dossier</pre>
+      <p>👉 Change de répertoire.</p>
+
+      <pre class="command">cp fichier1 fichier2</pre>
+      <p>👉 Copie un fichier.</p>
+
+      <pre class="command">mv fichier1 nouveau_nom</pre>
+      <p>👉 Déplace ou renomme un fichier.</p>
+
+      <pre class="command">rm fichier</pre>
+      <p>👉 Supprime un fichier (⚠️ irréversible sans corbeille).</p>
+
+      <h3>🔐 Permissions et utilisateurs</h3>
+      <pre class="command">chmod 755 mon_script.sh</pre>
+      <p>👉 Change les permissions d’un fichier (exécutable ici).</p>
+
+      <pre class="command">chown utilisateur: groupe fichier</pre>
+      <p>👉 Change le propriétaire d’un fichier ou dossier.</p>
+
+      <pre class="command">sudo commande</pre>
+      <p>👉 Exécute une commande avec les droits administrateur.</p>
+
+      <h3>📊 Supervision système</h3>
+      <pre class="command">top</pre>
+      <p>👉 Affiche les processus actifs en temps réel.</p>
+
+      <pre class="command">df -h</pre>
+      <p>👉 Affiche l’utilisation du disque dur de manière lisible.</p>
+
+      <pre class="command">free -h</pre>
+      <p>👉 Affiche la mémoire disponible (RAM et swap).</p>
+
+      <h3>📜 Scripts simples</h3>
+      <pre class="command">#!/bin/bash
+mkdir sauvegarde
+cp *.txt sauvegarde/</pre>
+      <p>👉 Script qui crée un dossier <code>sauvegarde</code> et y copie tous les fichiers .txt</p>
+
+      <h3>🎥 Tutoriel vidéo</h3>
+      <p><a href="https://www.youtube.com/watch?v=IZDNqHB6sZs" target="_blank">Linux pour débutants (YouTube)</a></p>
+    </section>
+
+    <nav class="navigation">
+      <a href="fiche-chocolatey.html">⬅️ Fiche Chocolatey</a>
+    </nav>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+  </footer>
+</body>
+</html>
+
