@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>🔐 Linux – Sécurité et permissions</title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/variables.css" rel="stylesheet">
+  <link href="../favicon.ico" rel="icon" type="image/x-icon">
+</head>
+<body>
+  <header class="banner">
+    <div class="banner-container">
+      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🔐 Linux – Sécurité et permissions</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-linux.html" class="active">🐧 Retour Sommaire Linux</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="memo fiche fiche-linux-securite">
+      <h2>🔒 Permissions de fichiers</h2>
+      <pre><code>ls -l                     # Affiche les permissions
+chmod u+x fichier.sh     # Ajoute exécution au propriétaire
+chmod 755 fichier.sh     # rwxr-xr-x
+chown user:group fichier # Change le propriétaire</code></pre>
+
+      <h2>🛡️ Superutilisateur et sudo</h2>
+      <pre><code>sudo commande             # Exécute une commande en admin
+sudo -i                  # Ouvre un shell root
+visudo                   # Édite la configuration sudo</code></pre>
+
+      <h2>🔥 Pare-feu (ufw)</h2>
+      <pre><code>sudo ufw status           # État du pare-feu
+sudo ufw enable           # Active ufw
+sudo ufw allow 22         # Autorise SSH
+sudo ufw deny 80          # Bloque HTTP</code></pre>
+
+      <h2>📎 Retour au sommaire</h2>
+      <p><a href="fiche-linux.html">⬅️ Retour à la fiche principale Linux</a></p>
+    </section>
+    <nav class="subnav-grid">
+        <h3>📂 Accès rapide aux sous-fiches Linux</h3>
+        <div class="subnav-links">
+          <a href="linux-fichiers.html">📁 Fichiers</a>
+          <a href="linux-utilisateurs.html">👥 Utilisateurs</a>
+          <a href="linux-reseau.html">🌐 Réseau</a>
+          <a href="linux-paquets.html">📦 Paquets</a>
+          <a href="linux-systeme.html">🧠 Système</a>
+          <a href="linux-shell.html">💻 Shell</a>
+          <a href="linux-securite.html">🔐 Sécurité</a>
+          <a href="linux-trucs.html">🛠️ Astuces</a>
+        </div>
+      </nav>
+      
+      
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+  </footer>
+</body>
+</html>

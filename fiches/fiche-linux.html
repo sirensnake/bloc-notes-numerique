@@ -1,175 +1,70 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
- <head>
-  <meta charset="utf-8"/>
-  <title>
-   Fiche mémo - Linux
-  </title>
-  <link href="../css/style.css" rel="stylesheet"/>
-  <link href="../favicon.ico" rel="icon" type="image/x-icon"/>
- </head>
- <body>
+<head>
+  <meta charset="UTF-8">
+  <title>🐧 Fiche Linux – Sommaire</title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/variables.css" rel="stylesheet">
+  <link href="../favicon.ico" rel="icon" type="image/x-icon">
+</head>
+<body>
   <header class="banner">
-   <div class="banner-container">
-    <img alt="Bannière du site" class="banner-img" src="../img/banner.png"/>
-   </div>
-   <h1>
-    🐧 Fiche Linux
-   </h1>
-   <nav>
-    <ul>
-     <li>
-      <a href="../index.html">
-       🏠 Accueil
-      </a>
-     </li>
-     <li>
-      <a href="fiche-git.html">
-       🔧 Git
-      </a>
-     </li>
-     <li>
-      <a href="fiche-chocolatey.html">
-       🍫 Chocolatey
-      </a>
-     </li>
-     <li>
-      <a href="fiche-linux.html">
-       🐧 Linux
-      </a>
-     </li>
-     <li>
-      <a href="fiche-powershell.html">
-       ⚡ PowerShell
-      </a>
-     </li>
-     <li>
-      <a href="fiche-python.html">
-       🐍 Python
-      </a>
-     </li>
-     <li>
-      <a href="fiche-docker.html">
-       🐳 Docker
-      </a>
-     </li>
-    </ul>
-   </nav>
+    <div class="banner-container">
+      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐧 Fiche Linux – Sommaire</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-modele.html">📋 Modèle</a></li>
+        <li><a href="fiche-linux.html" class="active">🐧 Linux</a></li>
+        <li><a href="fiche-python.html">🐍 Python</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-vboxmanage.html">🖥️ VBoxManage</a></li>
+        <li><a href="fiche-vboxmanage-interactive.html">🖥️ VBoxInteractif</a></li>
+      </ul>
+    </nav>
   </header>
+
   <main>
-   <section class="memo fiche fiche-linux">
-    <h2>
-     📌 Introduction à Linux
-    </h2>
-    <p>
-     Linux est un système d'exploitation libre et open source très répandu, en particulier dans le monde des serveurs, du développement et de la cybersécurité. Cette fiche regroupe les commandes de base les plus utiles pour prendre en main un système Linux.
-    </p>
-    <h3>
-     🌟 Objectifs de cette fiche
-    </h3>
-    <ul>
-     <li>
-      Savoir naviguer dans l’arborescence des fichiers
-     </li>
-     <li>
-      Gérer les fichiers et les permissions
-     </li>
-     <li>
-      Superviser les processus et l’utilisation du système
-     </li>
-     <li>
-      Automatiser avec des scripts de base
-     </li>
-    </ul>
-    <h3>
-     📁 Navigation et manipulation de fichiers
-    </h3>
-    <pre class="command">pwd</pre>
-    <p>
-     👉 Affiche le chemin du répertoire courant.
-    </p>
-    <pre class="command">ls -l</pre>
-    <p>
-     👉 Liste les fichiers et dossiers avec leurs permissions et détails.
-    </p>
-    <pre class="command">cd /chemin/du/dossier</pre>
-    <p>
-     👉 Change de répertoire.
-    </p>
-    <pre class="command">cp fichier1 fichier2</pre>
-    <p>
-     👉 Copie un fichier.
-    </p>
-    <pre class="command">mv fichier1 nouveau_nom</pre>
-    <p>
-     👉 Déplace ou renomme un fichier.
-    </p>
-    <pre class="command">rm fichier</pre>
-    <p>
-     👉 Supprime un fichier (⚠️ irréversible sans corbeille).
-    </p>
-    <h3>
-     🔐 Permissions et utilisateurs
-    </h3>
-    <pre class="command">chmod 755 mon_script.sh</pre>
-    <p>
-     👉 Change les permissions d’un fichier (exécutable ici).
-    </p>
-    <pre class="command">chown utilisateur: groupe fichier</pre>
-    <p>
-     👉 Change le propriétaire d’un fichier ou dossier.
-    </p>
-    <pre class="command">sudo commande</pre>
-    <p>
-     👉 Exécute une commande avec les droits administrateur.
-    </p>
-    <h3>
-     📊 Supervision système
-    </h3>
-    <pre class="command">top</pre>
-    <p>
-     👉 Affiche les processus actifs en temps réel.
-    </p>
-    <pre class="command">df -h</pre>
-    <p>
-     👉 Affiche l’utilisation du disque dur de manière lisible.
-    </p>
-    <pre class="command">free -h</pre>
-    <p>
-     👉 Affiche la mémoire disponible (RAM et swap).
-    </p>
-    <h3>
-     📜 Scripts simples
-    </h3>
-    <pre class="command">#!/bin/bash
-mkdir sauvegarde
-cp *.txt sauvegarde/</pre>
-    <p>
-     👉 Script qui crée un dossier
-     <code>
-      sauvegarde
-     </code>
-     et y copie tous les fichiers .txt
-    </p>
-    <h3>
-     🎥 Tutoriel vidéo
-    </h3>
-    <p>
-     <a href="https://www.youtube.com/watch?v=IZDNqHB6sZs" target="_blank">
-      Linux pour débutants (YouTube)
-     </a>
-    </p>
-   </section>
-   <nav class="navigation">
-    <a href="fiche-chocolatey.html">
-     ⬅️ Fiche Chocolatey
-    </a>
-   </nav>
+    <section class="memo fiche fiche-linux">
+      <h2>📌 Présentation</h2>
+      <p>Linux est un système d'exploitation libre, stable et puissant, utilisé massivement dans les serveurs, les infrastructures cloud, les systèmes embarqués et par les passionnés d'informatique.</p>
+
+      <h2>📚 Sommaire des sous-fiches</h2>
+      <nav class="subnav-grid">
+        <h3>📂 Accès rapide aux sous-fiches Linux</h3>
+        <div class="subnav-links">
+          <a href="linux-fichiers.html">📁 Fichiers</a>
+          <a href="linux-utilisateurs.html">👥 Utilisateurs</a>
+          <a href="linux-reseau.html">🌐 Réseau</a>
+          <a href="linux-paquets.html">📦 Paquets</a>
+          <a href="linux-systeme.html">🧠 Système</a>
+          <a href="linux-shell.html">💻 Shell</a>
+          <a href="linux-securite.html">🔐 Sécurité</a>
+          <a href="linux-trucs.html">🛠️ Astuces</a>
+        </div>
+      </nav>
+
+      <h2>📎 Ressources complémentaires</h2>
+      <ul>
+        <li><a href="https://doc.ubuntu-fr.org/" target="_blank">Documentation Ubuntu FR</a></li>
+        <li><a href="https://linux.die.net/man/" target="_blank">Manpages en ligne</a></li>
+        <li><a href="https://www.youtube.com/watch?v=Oj7FgGPRf64" target="_blank">Cours vidéo Linux</a></li>
+      </ul>
+    </section>
+
+    <nav class="navigation">
+      <a href="fiche-chocolatey.html">⬅️ Fiche Chocolatey</a>
+      <a href="fiche-python.html">Fiche Python ➡️</a>
+    </nav>
   </main>
+
   <footer>
-   <p>
-    © 2025 Guillaume | Site personnel en construction 🚧
-   </p>
+    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
   </footer>
- </body>
+</body>
 </html>

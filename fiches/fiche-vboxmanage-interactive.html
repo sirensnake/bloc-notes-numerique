@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>🖥️ Fiche Interactive VBoxManage</title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/variables.css" rel="stylesheet">
+  <link href="../favicon.ico" rel="icon" type="image/x-icon">
+</head>
+<body>
+  <header class="banner">
+    <div class="banner-container">
+      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🖥️ Fiche Interactive VBoxManage</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-modele.html">📋 Modèle</a></li>
+        <li><a href="fiche-linux.html">🐧 Linux</a></li>
+        <li><a href="fiche-python.html">🐍 Python</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-vboxmanage.html">🖥️ VBoxManage</a></li>
+        <li><a href="fiche-vboxmanage-interactive.html" class="active">🖥️ VBoxInteractif</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <details open>
+        <summary>📦 Création de la machine</summary>
+        <pre>VBoxManage createvm --name "MaVM" --ostype "Debian_64" --register</pre>
+        <p>Crée une machine Debian 64 bits et l’enregistre automatiquement.</p>
+      </details>
+
+      <details>
+        <summary>🧠 CPU et mémoire</summary>
+        <pre>VBoxManage modifyvm "MaVM" --memory 4096 --cpus 2</pre>
+        <p>Alloue 4 Go de RAM et 2 cœurs CPU.</p>
+      </details>
+
+      <details>
+        <summary>💾 Stockage</summary>
+        <pre>VBoxManage storagectl "MaVM" --name "SATA_Controller" --add sata --controller IntelAhci
+VBoxManage createmedium disk --filename "MaVM.vdi" --size 20000
+VBoxManage storageattach "MaVM" --storagectl "SATA_Controller" --port 0 --device 0 --type hdd --medium "MaVM.vdi"</pre>
+        <p>Ajoute un disque dur virtuel de 20 Go.</p>
+      </details>
+
+      <details>
+        <summary>🌐 Réseau</summary>
+        <pre>VBoxManage modifyvm "MaVM" --nic1 nat --nic2 bridged --bridgeadapter2 eth0</pre>
+        <p>Configure NAT + Bridge.</p>
+      </details>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+  </footer>
+</body>
+</html>

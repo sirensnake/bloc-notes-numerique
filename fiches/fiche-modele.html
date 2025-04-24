@@ -1,31 +1,51 @@
-<!DOCTYPE html>
-
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8"/>
-<title>Fiche mémo - Modèle</title>
-<link href="../css/style.css" rel="stylesheet"/>
+  <meta charset="UTF-8">
+  <title>📋 Fiche Modèle</title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/variables.css" rel="stylesheet">
+  <link href="../favicon.ico" rel="icon" type="image/x-icon">
 </head>
 <body>
-<header>
-<a class="btn-retour" href="../index.html">⏮️ Accueil</a>
-<h1>📝 Fiche Modèle</h1>
-</header>
-<main>
-<section class="memo fiche-modele">
-<h2>📌 Titre de la fiche</h2>
-<p>Résumé ou introduction à la notion ou outil concerné.</p>
-<pre><code>// Exemple de commande ou code
+  <header class="banner">
+    <div class="banner-container">
+      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>📋 Fiche Modèle</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-modele.html" class="active">📋 Modèle</a></li>
+        <li><a href="fiche-linux.html">🐧 Linux</a></li>
+        <li><a href="fiche-python.html">🐍 Python</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-vboxmanage.html">🖥️ VBoxManage</a></li>
+        <li><a href="fiche-vboxmanage-interactive.html">🖥️ VBoxInteractif</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="memo fiche-modele">
+      <h2>📌 Titre de la fiche</h2>
+      <p>Résumé ou introduction à la notion ou outil concerné.</p>
+      <pre><code>// Exemple de commande ou code
 commande --option valeur
 </code></pre>
-</section>
-<nav class="navigation">
-<a href="fiche-git.html">⬅️ Fiche Git</a>
-<a href="fiche-chocolatey.html">Fiche Chocolatey ➡️</a>
-</nav>
-</main>
-<footer>
-<p>© 2025 Guillaume</p>
-</footer>
+    </section>
+
+    <nav class="navigation">
+      <a href="fiche-git.html">⬅️ Fiche Git</a>
+      <a href="fiche-chocolatey.html">Fiche Chocolatey ➡️</a>
+    </nav>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+  </footer>
 </body>
 </html>

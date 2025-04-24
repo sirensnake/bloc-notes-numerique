@@ -1,0 +1,69 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>🖥️ Fiche VBoxManage</title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/variables.css" rel="stylesheet">
+  <link href="../favicon.ico" rel="icon" type="image/x-icon">
+</head>
+<body>
+  <header class="banner">
+    <div class="banner-container">
+      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🖥️ Fiche VBoxManage</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-modele.html">📋 Modèle</a></li>
+        <li><a href="fiche-linux.html">🐧 Linux</a></li>
+        <li><a href="fiche-python.html">🐍 Python</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-vboxmanage.html" class="active">🖥️ VBoxManage</a></li>
+        <li><a href="fiche-vboxmanage-interactive.html">🖥️ VBoxInteractif</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>📌 Création et enregistrement de la VM</h2>
+      <pre><code>VBoxManage createvm --name "MaVM" --ostype "Debian_64" --register</code></pre>
+      <p>Crée une machine Debian 64 bits et l’enregistre automatiquement.</p>
+    </section>
+
+    <section>
+      <h2>⚙️ CPU et mémoire</h2>
+      <pre><code>VBoxManage modifyvm "MaVM" --memory 4096 --cpus 2</code></pre>
+      <p>Alloue 4 Go de RAM et 2 cœurs CPU à la VM.</p>
+    </section>
+
+    <section>
+      <h2>💽 Configuration du stockage</h2>
+      <pre><code>VBoxManage storagectl "MaVM" --name "SATA_Controller" --add sata --controller IntelAhci
+VBoxManage createmedium disk --filename "~/VirtualBox VMs/MaVM/MaVM.vdi" --size 20000
+VBoxManage storageattach "MaVM" --storagectl "SATA_Controller" --port 0 --device 0 --type hdd --medium "~/VirtualBox VMs/MaVM/MaVM.vdi"</code></pre>
+      <p>Crée un disque dur virtuel de 20 Go et l’attache à la VM.</p>
+    </section>
+
+    <section>
+      <h2>🌐 Réseau avancé</h2>
+      <pre><code>VBoxManage modifyvm "MaVM" --nic1 nat --nic2 bridged --bridgeadapter2 eth0 --nic3 hostonly --hostonlyadapter3 vboxnet0</code></pre>
+      <p>Configure NAT, Bridge et Host-only en une seule commande.</p>
+    </section>
+
+    <nav class="navigation">
+      <a href="fiche-powershell.html">⬅️ Fiche PowerShell</a>
+      <a href="fiche-vboxmanage-interactive.html">Fiche Interactive ➡️</a>
+    </nav>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+  </footer>
+</body>
+</html>

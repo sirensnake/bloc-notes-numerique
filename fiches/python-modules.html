@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>📦 Python – Modules et pip</title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/variables.css" rel="stylesheet">
+  <link href="../favicon.ico" rel="icon" type="image/x-icon">
+</head>
+<body>
+  <header class="banner">
+    <div class="banner-container">
+      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>📦 Python – Modules, import et pip</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-python.html" class="active">🐍 Retour Sommaire Python</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="memo fiche fiche-python-modules">
+      <h2>📂 Importer un module standard</h2>
+      <pre><code>import math
+print(math.sqrt(16))</code></pre>
+
+      <h2>🎯 Importer partiellement</h2>
+      <pre><code>from math import pi, sqrt
+print(pi)
+print(sqrt(25))</code></pre>
+
+      <h2>💼 Installer un module externe avec pip</h2>
+      <pre><code>pip install requests</code></pre>
+      <p>Puis l'utiliser :</p>
+      <pre><code>import requests
+reponse = requests.get("https://api.github.com")
+print(reponse.status_code)</code></pre>
+
+      <h2>🧱 Créer son propre module</h2>
+      <pre><code># fichier monmodule.py
+def saluer():
+    print("Salut depuis mon module")
+
+# dans un autre fichier
+import monmodule
+monmodule.saluer()</code></pre>
+
+      <h2>📂 Accès rapide aux sous-fiches Python</h2>
+      <div class="subnav-links">
+        <a href="python-bases.html">🔤 Bases</a>
+        <a href="python-controle.html">🔁 Contrôle</a>
+        <a href="python-fonctions.html">🔧 Fonctions</a>
+        <a href="python-collections.html">📚 Collections</a>
+        <a href="python-fichiers.html">📁 Fichiers</a>
+        <a href="python-modules.html" class="active">📦 Modules</a>
+        <a href="python-erreurs.html">❗ Erreurs</a>
+        <a href="python-poo.html">🏗️ POO</a>
+        <a href="python-trucs.html">🛠️ Astuces</a>
+      </div>
+
+      <h2>📎 Retour au sommaire</h2>
+      <p><a href="fiche-python.html">⬅️ Retour à la fiche principale Python</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+  </footer>
+</body>
+</html>

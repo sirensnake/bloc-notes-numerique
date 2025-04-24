@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>👥 Linux – Utilisateurs et permissions</title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/variables.css" rel="stylesheet">
+  <link href="../favicon.ico" rel="icon" type="image/x-icon">
+</head>
+<body>
+  <header class="banner">
+    <div class="banner-container">
+      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>👥 Linux – Utilisateurs et permissions</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-linux.html" class="active">🐧 Retour Sommaire Linux</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="memo fiche fiche-linux-utilisateurs">
+      <h2>👤 Gestion des utilisateurs</h2>
+      <pre><code>adduser nom_utilisateur          # Ajouter un utilisateur
+passwd nom_utilisateur          # Modifier son mot de passe
+usermod -aG sudo utilisateur    # Ajouter au groupe sudo
+id nom_utilisateur              # Voir les groupes d’un utilisateur</code></pre>
+
+      <h2>👥 Groupes et appartenance</h2>
+      <pre><code>groupadd nom_du_groupe          # Créer un groupe
+gpasswd -a utilisateur groupe  # Ajouter un utilisateur à un groupe
+deluser utilisateur groupe     # Retirer d’un groupe</code></pre>
+
+      <h2>🔐 Droits et permissions</h2>
+      <pre><code>chmod +x script.sh              # Ajouter droit d'exécution
+chmod 755 fichier              # Définir permissions numériques
+chown user:group fichier       # Changer propriétaire et groupe</code></pre>
+
+      <h2>📎 Retour au sommaire</h2>
+      <p><a href="fiche-linux.html">⬅️ Retour à la fiche principale Linux</a></p>
+    </section>
+    <nav class="subnav-grid">
+        <h3>📂 Accès rapide aux sous-fiches Linux</h3>
+        <div class="subnav-links">
+          <a href="linux-fichiers.html">📁 Fichiers</a>
+          <a href="linux-utilisateurs.html">👥 Utilisateurs</a>
+          <a href="linux-reseau.html">🌐 Réseau</a>
+          <a href="linux-paquets.html">📦 Paquets</a>
+          <a href="linux-systeme.html">🧠 Système</a>
+          <a href="linux-shell.html">💻 Shell</a>
+          <a href="linux-securite.html">🔐 Sécurité</a>
+          <a href="linux-trucs.html">🛠️ Astuces</a>
+        </div>
+      </nav>
+      
+      
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+  </footer>
+</body>
+</html>

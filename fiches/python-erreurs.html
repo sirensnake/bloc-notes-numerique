@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>❗ Python – Gestion des erreurs</title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/variables.css" rel="stylesheet">
+  <link href="../favicon.ico" rel="icon" type="image/x-icon">
+</head>
+<body>
+  <header class="banner">
+    <div class="banner-container">
+      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>❗ Python – Gestion des erreurs</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-python.html" class="active">🐍 Retour Sommaire Python</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="memo fiche fiche-python-erreurs">
+      <h2>🧨 Exécution d'une erreur</h2>
+      <pre><code>print(10 / 0)  # Provoque une ZeroDivisionError</code></pre>
+
+      <h2>🛡️ Bloc try / except</h2>
+      <pre><code>try:
+    print(10 / 0)
+except ZeroDivisionError:
+    print("Division par zéro interdite")</code></pre>
+
+      <h2>📋 Gérer plusieurs erreurs</h2>
+      <pre><code>try:
+    x = int("texte")
+except ValueError:
+    print("Ce n'est pas un entier")</code></pre>
+
+      <h2>📦 finally et else</h2>
+      <pre><code>try:
+    x = 5 / 1
+except:
+    print("Erreur")
+else:
+    print("Tout s'est bien passé")
+finally:
+    print("Fin de l'opération")</code></pre>
+
+      <h2>📂 Accès rapide aux sous-fiches Python</h2>
+      <div class="subnav-links">
+        <a href="python-bases.html">🔤 Bases</a>
+        <a href="python-controle.html">🔁 Contrôle</a>
+        <a href="python-fonctions.html">🔧 Fonctions</a>
+        <a href="python-collections.html">📚 Collections</a>
+        <a href="python-fichiers.html">📁 Fichiers</a>
+        <a href="python-modules.html">📦 Modules</a>
+        <a href="python-erreurs.html" class="active">❗ Erreurs</a>
+        <a href="python-poo.html">🏗️ POO</a>
+        <a href="python-trucs.html">🛠️ Astuces</a>
+      </div>
+
+      <h2>📎 Retour au sommaire</h2>
+      <p><a href="fiche-python.html">⬅️ Retour à la fiche principale Python</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+  </footer>
+</body>
+</html>

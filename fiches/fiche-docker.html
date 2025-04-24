@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Fiche mémo - Docker</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <title>🐳 Fiche Docker</title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/variables.css" rel="stylesheet">
+  <link href="../favicon.ico" rel="icon" type="image/x-icon">
 </head>
 <body>
   <header class="banner">
@@ -16,80 +18,76 @@
         <li><a href="../index.html">🏠 Accueil</a></li>
         <li><a href="fiche-git.html">🔧 Git</a></li>
         <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-modele.html">📋 Modèle</a></li>
         <li><a href="fiche-linux.html">🐧 Linux</a></li>
-        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
         <li><a href="fiche-python.html">🐍 Python</a></li>
         <li><a href="fiche-docker.html" class="active">🐳 Docker</a></li>
+        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-vboxmanage.html">🖥️ VBoxManage</a></li>
+        <li><a href="fiche-vboxmanage-interactive.html">🖥️ VBoxInteractif</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <section class="memo fiche fiche-docker">
-      <h2>📌 Introduction à Docker</h2>
-      <p>Docker est un outil de conteneurisation permettant d'encapsuler une application avec ses dépendances dans un conteneur isolé, portable et réutilisable. Idéal pour les développeurs, DevOps et admins système.</p>
+      <h2>📌 Présentation</h2>
+      <p><strong>Docker</strong> permet de créer, déployer et exécuter des applications dans des conteneurs. Les conteneurs sont des environnements légers, portables, isolés et reproductibles.</p>
 
-      <h3>🚀 Commandes de base</h3>
-      <pre class="command">docker --version</pre>
-      <p>Affiche la version de Docker.</p>
-      <pre class="command">docker ps -a</pre>
-      <p>Liste tous les conteneurs, actifs ou stoppés.</p>
-      <pre class="command">docker images</pre>
-      <p>Affiche les images présentes sur l'hôte.</p>
-      <pre class="command">docker run -it ubuntu bash</pre>
-      <p>Démarre un conteneur Ubuntu avec terminal interactif.</p>
-      <pre class="command">docker stop &lt;id&gt;</pre>
-      <p>Arrête un conteneur.</p>
-      <pre class="command">docker rm &lt;id&gt;</pre>
-      <p>Supprime un conteneur.</p>
+      <h2>1. 🧰 Installation</h2>
+      <table>
+        <tr><th>Plateforme</th><th>Commande</th></tr>
+        <tr><td>Windows (Chocolatey)</td><td><code>choco install docker-desktop -y</code></td></tr>
+        <tr><td>Ubuntu</td><td><code>sudo apt update &amp;&amp; sudo apt install docker.io</code></td></tr>
+        <tr><td>Mac (Homebrew)</td><td><code>brew install --cask docker</code></td></tr>
+      </table>
 
-      <h3>📦 Dockerfile de base</h3>
-      <pre class="command">
-FROM python:3.10
+      <h2>2. 📦 Gestion des images</h2>
+      <pre><code>docker images                # Liste les images locales
+docker pull nginx           # Télécharge l'image nginx
+docker rmi image_id         # Supprime une image locale</code></pre>
+
+      <h2>3. 🚀 Gestion des conteneurs</h2>
+      <pre><code>docker run -d --name web nginx     # Lance un conteneur en arrière-plan
+docker ps -a                      # Liste tous les conteneurs
+docker stop web                  # Stoppe le conteneur
+docker rm web                    # Supprime le conteneur
+docker logs -f web               # Affiche les logs du conteneur</code></pre>
+
+      <h2>4. 📁 Volumes et persistance</h2>
+      <pre><code>docker volume create monvolume
+
+docker run -d --name app \\
+  -v monvolume:/app/data \\
+  myapp</code></pre>
+      <p>Les volumes permettent de conserver les données même après suppression du conteneur.</p>
+
+      <h2>5. 🛠️ Réseaux personnalisés</h2>
+      <pre><code>docker network create monreseau
+
+docker run -d --name web1 --network monreseau nginx
+docker run -d --name web2 --network monreseau nginx</code></pre>
+
+      <h2>6. 📜 Dockerfile de base</h2>
+      <pre><code># Exemple minimal de Dockerfile
+FROM python:3.10-slim
 WORKDIR /app
 COPY . .
 RUN pip install -r requirements.txt
-CMD ["python", "app.py"]
-      </pre>
-      <p>Utilise <code>docker build -t mon-app .</code> pour créer l'image.</p>
+CMD ["python", "app.py"]</code></pre>
 
-      <h3>🛠️ Docker Compose</h3>
-      <pre class="command">
-version: '3'
-services:
-  web:
-    build: .
-    ports:
-      - "5000:5000"
-  redis:
-    image: redis
-      </pre>
-      <p>Utilise <code>docker compose up</code> pour lancer l'environnement multi-conteneurs.</p>
+      <h2>7. 🧪 Commandes avancées</h2>
+      <pre><code>docker exec -it web bash             # Accès shell dans un conteneur
+docker build -t monimage .          # Construire une image locale
+docker-compose up -d                # Lancer via fichier docker-compose.yml</code></pre>
 
-      <h3>📁 Volumes</h3>
-      <pre class="command">docker volume create mon_volume</pre>
-      <p>Crée un volume persistant.</p>
-      <pre class="command">docker run -v mon_volume:/data alpine</pre>
-      <p>Monte le volume dans un conteneur.</p>
-
-      <h3>🌐 Réseaux</h3>
-      <pre class="command">docker network create mon_reseau</pre>
-      <p>Crée un réseau personnalisé.</p>
-      <pre class="command">docker run --network mon_reseau ...</pre>
-      <p>Permet aux conteneurs de communiquer.</p>
-
-      <h3>📘️ Ressources utiles</h3>
-      <ul>
-        <li><a href="https://docs.docker.com/" target="_blank">Documentation officielle</a></li>
-        <li><a href="https://hub.docker.com/" target="_blank">Docker Hub</a></li>
-        <li><a href="https://labs.play-with-docker.com/" target="_blank">Play with Docker</a></li>
-        <li><a href="https://github.com/docker/labs" target="_blank">Docker Labs</a></li>
-      </ul>
+      <h2>🎥 Tutoriel vidéo</h2>
+      <p><a href="https://www.youtube.com/watch?v=3c-iBn73dDE" target="_blank">Découverte de Docker (Grafikart)</a></p>
     </section>
 
     <nav class="navigation">
-      <a href="fiche-powershell.html">⬅️ Fiche PowerShell</a>
-      <a href="fiche-python.html">➡️ Fiche Python</a>
+      <a href="fiche-python.html">⬅️ Fiche Python</a>
+      <a href="fiche-powershell.html">Fiche PowerShell ➡️</a>
     </nav>
   </main>
 

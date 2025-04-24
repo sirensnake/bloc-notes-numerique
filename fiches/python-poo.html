@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>🏗️ Python – Programmation orientée objet</title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/variables.css" rel="stylesheet">
+  <link href="../favicon.ico" rel="icon" type="image/x-icon">
+</head>
+<body>
+  <header class="banner">
+    <div class="banner-container">
+      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🏗️ Python – Programmation orientée objet</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-python.html" class="active">🐍 Retour Sommaire Python</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="memo fiche fiche-python-poo">
+      <h2>🏗️ Définir une classe</h2>
+      <pre><code>class Personne:
+    def __init__(self, nom):
+        self.nom = nom
+
+    def saluer(self):
+        print(f"Bonjour, je m'appelle {self.nom}.")
+
+guillaume = Personne("Guillaume")
+guillaume.saluer()</code></pre>
+
+      <h2>🔁 Héritage</h2>
+      <pre><code>class Employe(Personne):
+    def travailler(self):
+        print(f"{self.nom} travaille")
+
+bob = Employe("Bob")
+bob.travailler()</code></pre>
+
+      <h2>🔒 Encapsulation (convention)</h2>
+      <pre><code>class Secret:
+    def __init__(self):
+        self._cache = "mot de passe"  # Convention: _ signifie privé</code></pre>
+
+      <h2>📂 Accès rapide aux sous-fiches Python</h2>
+      <div class="subnav-links">
+        <a href="python-bases.html">🔤 Bases</a>
+        <a href="python-controle.html">🔁 Contrôle</a>
+        <a href="python-fonctions.html">🔧 Fonctions</a>
+        <a href="python-collections.html">📚 Collections</a>
+        <a href="python-fichiers.html">📁 Fichiers</a>
+        <a href="python-modules.html">📦 Modules</a>
+        <a href="python-erreurs.html">❗ Erreurs</a>
+        <a href="python-poo.html" class="active">🏗️ POO</a>
+        <a href="python-trucs.html">🛠️ Astuces</a>
+      </div>
+
+      <h2>📎 Retour au sommaire</h2>
+      <p><a href="fiche-python.html">⬅️ Retour à la fiche principale Python</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+  </footer>
+</body>
+</html>

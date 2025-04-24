@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>💻 Linux – Shell et scripts</title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/variables.css" rel="stylesheet">
+  <link href="../favicon.ico" rel="icon" type="image/x-icon">
+</head>
+<body>
+  <header class="banner">
+    <div class="banner-container">
+      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>💻 Linux – Shell et scripts</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-linux.html" class="active">🐧 Retour Sommaire Linux</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="memo fiche fiche-linux-shell">
+      <h2>💬 Commandes de base</h2>
+      <pre><code>echo "Bonjour"         # Affiche du texte
+read nom              # Lit une entrée utilisateur
+echo $nom             # Affiche la valeur de la variable</code></pre>
+
+      <h2>📝 Création de scripts</h2>
+      <pre><code>#!/bin/bash
+
+nom="Guillaume"
+echo "Bonjour $nom"</code></pre>
+      <p>Sauvegarde dans un fichier avec <code>.sh</code> puis exécution :</p>
+      <pre><code>chmod +x monscript.sh
+./monscript.sh</code></pre>
+
+      <h2>🔁 Structures de contrôle</h2>
+      <pre><code># Boucle for
+for i in 1 2 3; do
+  echo $i
+done
+
+# Condition if
+if [ $a -eq 5 ]; then
+  echo "Cinq"
+else
+  echo "Pas cinq"
+fi</code></pre>
+
+      <h2>📎 Retour au sommaire</h2>
+      <p><a href="fiche-linux.html">⬅️ Retour à la fiche principale Linux</a></p>
+    </section>
+    <nav class="subnav-grid">
+        <h3>📂 Accès rapide aux sous-fiches Linux</h3>
+        <div class="subnav-links">
+          <a href="linux-fichiers.html">📁 Fichiers</a>
+          <a href="linux-utilisateurs.html">👥 Utilisateurs</a>
+          <a href="linux-reseau.html">🌐 Réseau</a>
+          <a href="linux-paquets.html">📦 Paquets</a>
+          <a href="linux-systeme.html">🧠 Système</a>
+          <a href="linux-shell.html">💻 Shell</a>
+          <a href="linux-securite.html">🔐 Sécurité</a>
+          <a href="linux-trucs.html">🛠️ Astuces</a>
+        </div>
+      </nav>
+      
+      
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+  </footer>
+</body>
+</html>

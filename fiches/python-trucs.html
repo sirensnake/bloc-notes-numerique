@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>🛠️ Python – Astuces et bonnes pratiques</title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/variables.css" rel="stylesheet">
+  <link href="../favicon.ico" rel="icon" type="image/x-icon">
+</head>
+<body>
+  <header class="banner">
+    <div class="banner-container">
+      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🛠️ Python – Astuces et bonnes pratiques</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-python.html" class="active">🐍 Retour Sommaire Python</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="memo fiche fiche-python-trucs">
+      <h2>📌 Conventions de nommage</h2>
+      <ul>
+        <li>variables : <code>nom_variable</code> (snake_case)</li>
+        <li>classes : <code>NomClasse</code> (PascalCase)</li>
+        <li>constantes : <code>NOM_CONSTANTE</code></li>
+      </ul>
+
+      <h2>🧹 Astuces utiles</h2>
+      <pre><code>valeurs = [1, 2, 3, 4]
+somme = sum(valeurs)
+moyenne = sum(valeurs) / len(valeurs)</code></pre>
+
+      <h2>🔍 Débogage rapide</h2>
+      <pre><code>print("Valeur:", variable)
+
+# ou mieux
+import pprint
+pprint.pprint(mon_dict)</code></pre>
+
+      <h2>📦 Bonnes pratiques</h2>
+      <ul>
+        <li>Utiliser des noms explicites</li>
+        <li>Commenter les parties complexes</li>
+        <li>Respecter l’indentation</li>
+        <li>Modulariser le code (fonctions, fichiers)</li>
+      </ul>
+
+      <h2>📂 Accès rapide aux sous-fiches Python</h2>
+      <div class="subnav-links">
+        <a href="python-bases.html">🔤 Bases</a>
+        <a href="python-controle.html">🔁 Contrôle</a>
+        <a href="python-fonctions.html">🔧 Fonctions</a>
+        <a href="python-collections.html">📚 Collections</a>
+        <a href="python-fichiers.html">📁 Fichiers</a>
+        <a href="python-modules.html">📦 Modules</a>
+        <a href="python-erreurs.html">❗ Erreurs</a>
+        <a href="python-poo.html">🏗️ POO</a>
+        <a href="python-trucs.html" class="active">🛠️ Astuces</a>
+      </div>
+
+      <h2>📎 Retour au sommaire</h2>
+      <p><a href="fiche-python.html">⬅️ Retour à la fiche principale Python</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+  </footer>
+</body>
+</html>

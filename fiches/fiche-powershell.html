@@ -1,9 +1,11 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Fiche mémo - PowerShell</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <title>⚡ Fiche PowerShell</title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/variables.css" rel="stylesheet">
+  <link href="../favicon.ico" rel="icon" type="image/x-icon">
 </head>
 <body>
   <header class="banner">
@@ -16,59 +18,86 @@
         <li><a href="../index.html">🏠 Accueil</a></li>
         <li><a href="fiche-git.html">🔧 Git</a></li>
         <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-modele.html">📋 Modèle</a></li>
         <li><a href="fiche-linux.html">🐧 Linux</a></li>
-        <li><a href="fiche-powershell.html" class="active">⚡ PowerShell</a></li>
-        <li><a href="fiche-docker.html">🐳 Docker</a></li>
         <li><a href="fiche-python.html">🐍 Python</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-powershell.html" class="active">⚡ PowerShell</a></li>
+        <li><a href="fiche-vboxmanage.html">🖥️ VBoxManage</a></li>
+        <li><a href="fiche-vboxmanage-interactive.html">🖥️ VBoxInteractif</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <section class="memo fiche fiche-powershell">
-      <h2>📌 Introduction à PowerShell</h2>
-      <p><strong>PowerShell</strong> est un interpréteur de commandes et un langage de script développé par Microsoft. Il est très utilisé dans l'administration système, la gestion de tâches automatisées, et le scripting sur Windows.</p>
+      <h2>⚙️ Présentation</h2>
+      <p>PowerShell est un langage de script et un shell développé par Microsoft, principalement utilisé pour l'automatisation des tâches système sous Windows (et désormais multiplateforme via PowerShell Core).</p>
 
-      <h3>🔧 Commandes essentielles</h3>
-      <pre class="command">Get-Command</pre>
-      <p>👉 Liste toutes les commandes disponibles.</p>
+      <h2>1. ▶️ Exécution de scripts</h2>
+      <pre><code># Autoriser les scripts (à faire une fois)
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
 
-      <pre class="command">Get-Help Get-Command</pre>
-      <p>👉 Fournit l’aide intégrée pour une commande donnée.</p>
+# Exécuter un script
+./mon_script.ps1</code></pre>
 
-      <pre class="command">Get-Process</pre>
-      <p>👉 Affiche les processus en cours.</p>
+      <h2>2. 🗂️ Commandes de base</h2>
+      <pre><code>Get-Help nom_commande     # Affiche l'aide
+Get-Command               # Liste des commandes disponibles
+Get-Process               # Liste des processus en cours
+Get-Service               # Liste des services</code></pre>
 
-      <pre class="command">Stop-Process -Name notepad</pre>
-      <p>👉 Arrête le processus Notepad.</p>
+      <h2>3. 📁 Gestion des fichiers</h2>
+      <pre><code>Get-ChildItem             # Liste les fichiers (équivalent de ls)
+Set-Location D:\          # Change de répertoire (équivalent de cd)
+Copy-Item source dest     # Copie de fichier
+Remove-Item fichier.txt   # Supprime un fichier</code></pre>
 
-      <pre class="command">Get-Service</pre>
-      <p>👉 Liste tous les services Windows.</p>
+      <h2>4. 🔁 Boucles et conditions</h2>
+      <pre><code># Boucle ForEach
+$liste = @("fichier1.txt", "fichier2.txt")
+foreach ($f in $liste) {
+  Write-Output $f
+}
 
-      <pre class="command">Start-Service nom</pre>
-      <p>👉 Démarre un service.</p>
+# Condition If
+if ($a -eq 10) {
+  Write-Output "Égal à 10"
+} else {
+  Write-Output "Différent"
+}</code></pre>
 
-      <pre class="command">Set-ExecutionPolicy RemoteSigned</pre>
-      <p>👉 Modifie la stratégie d’exécution pour autoriser les scripts locaux.</p>
+      <h2>5. 📄 Variables et tableaux</h2>
+      <pre><code>$nom = "Guillaume"
+$valeurs = @(1, 2, 3, 4)
+$valeurs[0]    # Affiche 1
+$valeurs.Count # Nombre d’éléments</code></pre>
 
-      <h3>📜 Script de base</h3>
-      <pre class="command"><code># Script PowerShell simple
-Write-Output "Bonjour, Guillaume !"
-$date = Get-Date
-Write-Output "Nous sommes le $date"</code></pre>
-      <p>👉 Ce script affiche un message et la date actuelle.</p>
+      <h2>6. 💬 Fonctions</h2>
+      <pre><code>function Bonjour {
+  param([string]$nom)
+  Write-Output "Bonjour $nom"
+}
 
-      <h3>📚 Ressources utiles</h3>
+Bonjour -nom "Guillaume"</code></pre>
+
+      <h2>7. 🔐 Administration système</h2>
+      <pre><code># Liste les utilisateurs locaux
+Get-LocalUser
+
+# Créer un nouvel utilisateur (admin requis)
+New-LocalUser -Name "invite" -NoPassword</code></pre>
+
+      <h2>🎥 Ressources utiles</h2>
       <ul>
-        <li><a href="https://learn.microsoft.com/fr-fr/powershell/" target="_blank">Documentation Microsoft PowerShell</a></li>
-        <li><a href="https://ss64.com/ps/" target="_blank">SS64 - Référence rapide PowerShell</a></li>
-        <li><a href="https://www.powershellgallery.com/" target="_blank">PowerShell Gallery (modules)</a></li>
+        <li><a href="https://docs.microsoft.com/fr-fr/powershell/" target="_blank">Documentation officielle</a></li>
+        <li><a href="https://www.youtube.com/watch?v=hqWqONeFScc" target="_blank">Cours complet sur YouTube</a></li>
       </ul>
     </section>
 
     <nav class="navigation">
-      <a href="fiche-linux.html">⬅️ Fiche Linux</a>
-      <a href="fiche-python.html">➡️ Fiche Python</a>
+      <a href="fiche-docker.html">⬅️ Fiche Docker</a>
+      <a href="fiche-vboxmanage.html">Fiche VBoxManage ➡️</a>
     </nav>
   </main>
 

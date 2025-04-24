@@ -1,232 +1,67 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="fr">
- <head>
-  <meta charset="utf-8"/>
-  <title>
-   Fiche mémo - Chocolatey
-  </title>
-  <link href="../css/style.css" rel="stylesheet"/>
-  <link href="../favicon.ico" rel="icon" type="image/x-icon"/>
-  <style>
-   .command {
-      background-color: #f4f4f4;
-      border-left: 5px solid #6a1b9a;
-      padding: 10px;
-      margin: 10px 0;
-      font-family: 'Courier New', monospace;
-      font-size: 1em;
-      white-space: pre-wrap;
-    }
-    code {
-      background-color: #eee;
-      padding: 2px 4px;
-      border-radius: 4px;
-      font-family: 'Courier New', monospace;
-      font-size: 0.95em;
-    }
-  </style>
- </head>
- <body>
+<head>
+  <meta charset="UTF-8">
+  <title>🍫 Fiche Chocolatey</title>
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/variables.css" rel="stylesheet">
+  <link href="../favicon.ico" rel="icon" type="image/x-icon">
+</head>
+<body>
   <header class="banner">
-   <div class="banner-container">
-    <img alt="Bannière du site" class="banner-img" src="../img/banner.png"/>
-   </div>
-   <h1>
-    🍫 Fiche Chocolatey
-   </h1>
-   <nav>
-    <ul>
-     <li>
-      <a href="../index.html">
-       🏠 Accueil
-      </a>
-     </li>
-     <li>
-      <a href="fiche-git.html">
-       🔧 Git
-      </a>
-     </li>
-     <li>
-      <a href="fiche-chocolatey.html">
-       🍫 Chocolatey
-      </a>
-     </li>
-     <li>
-      <a href="fiche-linux.html">
-       🐧 Linux
-      </a>
-     </li>
-     <li>
-      <a href="fiche-powershell.html">
-       ⚡ PowerShell
-      </a>
-     </li>
-     <li>
-      <a href="fiche-python.html">
-       🐍 Python
-      </a>
-     </li>
-     <li>
-      <a href="fiche-docker.html">
-       🐳 Docker
-      </a>
-     </li>
-    </ul>
-   </nav>
+    <div class="banner-container">
+      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🍫 Fiche Chocolatey</h1>
+    <nav>
+      <ul>
+        <li><a href="../index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html" class="active">🍫 Chocolatey</a></li>
+        <li><a href="fiche-modele.html">📋 Modèle</a></li>
+        <li><a href="fiche-linux.html">🐧 Linux</a></li>
+        <li><a href="fiche-python.html">🐍 Python</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-vboxmanage.html">🖥️ VBoxManage</a></li>
+        <li><a href="fiche-vboxmanage-interactive.html">🖥️ VBoxInteractif</a></li>
+      </ul>
+    </nav>
   </header>
+
   <main>
-   <section class="memo fiche-choco">
-    <h2>
-     📌 Présentation de Chocolatey
-    </h2>
-    <p>
-     <strong>
-      Chocolatey
-     </strong>
-     est un gestionnaire de paquets pour Windows. Il permet d'installer, de mettre à jour et de désinstaller facilement des logiciels depuis le terminal PowerShell ou CMD. C'est un outil puissant pour automatiser l’installation de logiciels sur une nouvelle machine ou maintenir son système à jour.
-    </p>
-    <h3>
-     🌟 Objectifs de cette fiche
-    </h3>
-    <ul>
-     <li>
-      Installer et configurer Chocolatey
-     </li>
-     <li>
-      Utiliser les principales commandes
-     </li>
-     <li>
-      Créer des scripts d'installation groupée
-     </li>
-     <li>
-      Gérer ses logiciels de manière rapide et efficace
-     </li>
-    </ul>
-    <h3>
-     📥 Installation de Chocolatey
-    </h3>
-    <p>
-     Ouvre PowerShell en tant qu’administrateur et exécute cette commande :
-    </p>
-    <div class="command">
-     Set-ExecutionPolicy Bypass -Scope Process -Force; `
-     <br/>
-     [System.Net.ServicePointManager]::SecurityProtocol = `
-     <br/>
-     [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
-     <br/>
-     iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
-    </div>
-    <h3>
-     📦 Commandes essentielles
-    </h3>
-    <p>
-     Voici les commandes de base les plus utiles, accompagnées de leur description :
-    </p>
-    <div class="command">
-     choco install firefox vlc 7zip -y
-    </div>
-    <p>
-     👉 Installe plusieurs logiciels en une seule commande. Le
-     <code>
-      -y
-     </code>
-     évite les confirmations manuelles.
-    </p>
-    <div class="command">
-     choco upgrade all -y
-    </div>
-    <p>
-     👉 Met à jour tous les logiciels installés par Chocolatey vers leur dernière version.
-    </p>
-    <div class="command">
-     choco uninstall notepadplusplus -y
-    </div>
-    <p>
-     👉 Supprime le logiciel indiqué (ici Notepad++), toujours sans confirmation avec
-     <code>
-      -y
-     </code>
-     .
-    </p>
-    <div class="command">
-     choco list --local-only
-    </div>
-    <p>
-     👉 Affiche tous les logiciels installés sur la machine via Chocolatey.
-    </p>
-    <div class="command">
-     choco search libreoffice
-    </div>
-    <p>
-     👉 Recherche un paquet par nom (ici LibreOffice) dans le catalogue de Chocolatey.
-    </p>
-    <div class="command">
-     choco info git
-    </div>
-    <p>
-     👉 Fournit les informations détaillées sur un paquet, comme la version disponible et sa description.
-    </p>
-    <div class="command">
-     choco clean
-    </div>
-    <p>
-     👉 Supprime les fichiers temporaires créés par Chocolatey, utile pour libérer de l’espace.
-    </p>
-    <h3>
-     🛠️ Exemples de scripts d'installation groupée
-    </h3>
-    <div class="command">
-     choco install git vscode nodejs python3 -y
-    </div>
-    <p>
-     👉 Parfait pour une machine de développement avec Git, VSCode, Node.js et Python.
-    </p>
-    <h3>
-     💡 Astuces pratiques
-    </h3>
-    <ul>
-     <li>
-      Crée un fichier
-      <code>
-       install.bat
-      </code>
-      contenant ta liste de logiciels à réinstaller facilement
-     </li>
-     <li>
-      Automatise la maintenance avec
-      <code>
-       choco upgrade all -y
-      </code>
-      programmé en tâche planifiée
-     </li>
-     <li>
-      Utilise
-      <code>
-       choco outdated
-      </code>
-      pour voir les logiciels obsolètes
-     </li>
-    </ul>
-    <h3>
-     🎥 Tutoriel vidéo
-    </h3>
-    <p>
-     <a href="https://www.youtube.com/watch?v=J5Z9I44xPZg" target="_blank">
-      Chocolatey Explained (YouTube)
-     </a>
-    </p>
-   </section>
-   <nav class="navigation">
-    <a href="fiche-git.html">
-     ⬅️ Fiche Git
-    </a>
-   </nav>
+    <section class="memo fiche-chocolatey">
+      <h2>1. Installation de Chocolatey</h2>
+      <pre class="command">Set-ExecutionPolicy Bypass -Scope Process -Force
+[System.Net.ServicePointManager]::SecurityProtocol = 'Tls12'
+iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))</pre>
+      <p>👉 Cette commande installe Chocolatey en une seule étape sous Windows.</p>
+
+      <h2>2. Commandes de base</h2>
+      <dl>
+        <dt><code>choco install &lt;package&gt; -y</code></dt><dd>Installe un paquet sans confirmation.</dd>
+        <dt><code>choco upgrade &lt;package&gt; -y</code></dt><dd>Met à jour un paquet vers sa version la plus récente.</dd>
+        <dt><code>choco uninstall &lt;package&gt; -y</code></dt><dd>Désinstalle un paquet.</dd>
+        <dt><code>choco list --localonly</code></dt><dd>Liste les paquets installés sur la machine.</dd>
+        <dt><code>choco search &lt;mot-clé&gt;</code></dt><dd>Recherche un paquet dans les dépôts officiels.</dd>
+      </dl>
+
+      <h2>3. Fonctions avancées</h2>
+      <ul>
+        <li><code>--version &lt;numéro&gt;</code> : préciser la version souhaitée</li>
+        <li>Création de <strong>packages internes</strong> via <code>choco new &lt;nom&gt;</code></li>
+        <li>Intégration dans des <strong>scripts d’installation</strong> PowerShell ou CI/CD</li>
+      </ul>
+    </section>
+
+    <nav class="navigation">
+      <a href="fiche-git.html">⬅️ Fiche Git</a>
+      <a href="fiche-modele.html">Fiche Modèle ➡️</a>
+    </nav>
   </main>
+
   <footer>
-   <p>
-    © 2025 Guillaume | Site personnel en construction 🚧
-   </p>
+    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
   </footer>
- </body>
+</body>
 </html>
