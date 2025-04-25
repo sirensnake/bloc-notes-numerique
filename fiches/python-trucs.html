@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>🛠️ Python – Astuces et bonnes pratiques</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧠 Python – Trucs & astuces</title>
   <link href="../css/style.css" rel="stylesheet">
-  <link href="../css/variables.css" rel="stylesheet">
   <link href="../favicon.ico" rel="icon" type="image/x-icon">
 </head>
 <body>
@@ -12,64 +12,74 @@
     <div class="banner-container">
       <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
     </div>
-    <h1>🛠️ Python – Astuces et bonnes pratiques</h1>
+    <h1>🧠 Python – Trucs & astuces</h1>
     <nav>
-      <ul>
+      <ul class="menu">
         <li><a href="../index.html">🏠 Accueil</a></li>
-        <li><a href="fiche-python.html" class="active">🐍 Retour Sommaire Python</a></li>
+        <li class="dropdown">
+          <a href="#">🐍 Python</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-fonctions.html">🧩 Fonctions</a></li>
+            <li><a href="python-modules.html">📦 Modules</a></li>
+            <li><a href="python-collections.html">📚 Collections</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-erreurs.html">❗ Erreurs</a></li>
+            <li><a href="python-poo.html">🏗️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs & astuces</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="memo fiche fiche-python-trucs">
-      <h2>📌 Conventions de nommage</h2>
-      <ul>
-        <li>variables : <code>nom_variable</code> (snake_case)</li>
-        <li>classes : <code>NomClasse</code> (PascalCase)</li>
-        <li>constantes : <code>NOM_CONSTANTE</code></li>
-      </ul>
+    <section class="intro">
+      <p>Cette fiche rassemble des astuces pratiques et des techniques avancées pour améliorer votre code Python, optimiser vos scripts, et utiliser le langage de manière plus efficace au quotidien.</p>
+    </section>
 
-      <h2>🧹 Astuces utiles</h2>
-      <pre><code>valeurs = [1, 2, 3, 4]
-somme = sum(valeurs)
-moyenne = sum(valeurs) / len(valeurs)</code></pre>
+    <section>
+      <h2>🪄 Comprendre le "walrus operator" (:=)</h2>
+      <pre class="command"># Affectation dans une expression
+if (n := len([1, 2, 3])) > 0:
+    print(f"Liste de longueur {n}")</pre>
+    </section>
 
-      <h2>🔍 Débogage rapide</h2>
-      <pre><code>print("Valeur:", variable)
+    <section>
+      <h2>🚀 Utiliser les compréhensions avancées</h2>
+      <pre class="command">cubes_pairs = [x**3 for x in range(10) if x % 2 == 0]</pre>
+    </section>
 
-# ou mieux
-import pprint
-pprint.pprint(mon_dict)</code></pre>
+    <section>
+      <h2>⚙️ Déballage multiple</h2>
+      <pre class="command">a, *milieu, b = [1, 2, 3, 4, 5]
+print(milieu)  # [2, 3, 4]</pre>
+    </section>
 
-      <h2>📦 Bonnes pratiques</h2>
-      <ul>
-        <li>Utiliser des noms explicites</li>
-        <li>Commenter les parties complexes</li>
-        <li>Respecter l’indentation</li>
-        <li>Modulariser le code (fonctions, fichiers)</li>
-      </ul>
+    <section>
+      <h2>🪤 Gestion fine des exceptions</h2>
+      <pre class="command">try:
+    1 / 0
+except ZeroDivisionError as e:
+    print(f"Erreur : {e}")</pre>
+    </section>
 
-      <h2>📂 Accès rapide aux sous-fiches Python</h2>
-      <div class="subnav-links">
-        <a href="python-bases.html">🔤 Bases</a>
-        <a href="python-controle.html">🔁 Contrôle</a>
-        <a href="python-fonctions.html">🔧 Fonctions</a>
-        <a href="python-collections.html">📚 Collections</a>
-        <a href="python-fichiers.html">📁 Fichiers</a>
-        <a href="python-modules.html">📦 Modules</a>
-        <a href="python-erreurs.html">❗ Erreurs</a>
-        <a href="python-poo.html">🏗️ POO</a>
-        <a href="python-trucs.html" class="active">🛠️ Astuces</a>
-      </div>
-
-      <h2>📎 Retour au sommaire</h2>
-      <p><a href="fiche-python.html">⬅️ Retour à la fiche principale Python</a></p>
+    <section>
+      <h2>⏱️ Mesurer le temps d’exécution</h2>
+      <pre class="command">import time
+start = time.time()
+# ... votre code ...
+end = time.time()
+print(f"Durée : {end - start:.2f}s")</pre>
     </section>
   </main>
 
   <footer>
     <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+    <button onclick="window.print()">🖨️ Exporter en PDF</button>
   </footer>
+
+  <script src="../js/nav.js" defer></script>
 </body>
 </html>

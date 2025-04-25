@@ -10,7 +10,7 @@
 <body>
 <header class="banner">
   <div class="banner-container">
-    <img alt="Bannière du site" class="banner-img" onerror="this.style.display='none'" src="img/banner.png"/>
+    <img alt="Bannière du site" class="banner-img" src="img/banner.png"/>
   </div>
   <h1>📘 Bloc-notes numérique de Guillaume</h1>
   <nav>
@@ -19,62 +19,52 @@
       <li><a href="fiches/fiche-git.html">🔧 Git</a></li>
       <li><a href="fiches/fiche-chocolatey.html">🍫 Chocolatey</a></li>
       <li><a href="fiches/fiche-modele.html">📋 Modèle</a></li>
-      <li><a href="fiches/fiche-python.html">🐍 Python</a></li>
-      <li><a href="fiches/fiche-linux.html">🐧 Linux</a></li>
+      <li class="dropdown">
+        <a href="fiche-linux.html">🐧 Linux</a>
+        <ul class="submenu">
+          <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+          <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+          <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+          <li><a href="linux-paquets.html">📦 Paquets</a></li>
+          <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+          <li><a href="linux-shell.html">🐚 Shell</a></li>
+          <li><a href="linux-systeme.html">⚙️ Système</a></li>
+          <li><a href="linux-trucs.html">🧠 Trucs & astuces</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="fiche-python.html">🐍 Python</a>
+        <ul class="submenu">
+          <li><a href="python-bases.html">🔤 Bases</a></li>
+          <li><a href="python-controle.html">🔁 Contrôle</a></li>
+          <li><a href="python-collections.html">📚 Collections</a></li>
+          <li><a href="python-fichiers.html">🗂️ Fichiers</a></li>
+          <li><a href="python-fonctions.html">🧮 Fonctions</a></li>
+          <li><a href="python-modules.html">📦 Modules</a></li>
+          <li><a href="python-erreurs.html">🚫 Erreurs</a></li>
+        </ul>
+      </li>
       <li><a href="fiches/fiche-powershell.html">⚡ PowerShell</a></li>
       <li><a href="fiches/fiche-docker.html">🐳 Docker</a></li>
+      <li class="dropdown">
+        <a href="#">📦 VBoxManage</a>
+        <ul class="submenu">
+          <li><a href="fiche-vboxmanage.html">📘 Commandes VBoxManage</a></li>
+          <li><a href="fiche-vboxmanage-interactive.html">🖱️ Interface interactive</a></li>
+        </ul>
+      </li>
     </ul>
   </nav>
 </header>
 <main>
 <section>
 <h2>Bienvenue 👋</h2>
-<p>Bienvenue sur mon espace personnel de fiches pratiques ! Ici tu trouveras des mémos visuels sur les outils techniques indispensables à mon quotidien d'apprenant.</p>
-<ul>
-<li>📜 Commandes essentielles à connaître</li>
-<li>🧩 Scripts prêts à l'emploi</li>
-<li>🎯 Astuces pour gagner du temps</li>
-<li>🗂️ Fiches par thème : Git, Chocolatey, Linux...</li>
-</ul>
-</section>
-<section>
-<h2>🔍 Recherche dans les titres de fiches</h2>
-<input id="searchInput" placeholder="Tape un mot-clé..." type="text"/>
-<ul id="searchList">
-<li><a href="fiches/fiche-chocolatey.html">Chocolatey</a></li>
-<li><a href="fiches/fiche-git.html">Git</a></li>
-<li><a href="fiches/fiche-linux.html">Linux</a></li>
-<li><a href="fiches/fiche-python.html">Python</a></li>
-<li><a href="fiches/fiche-powershell.html">PowerShell</a></li>
-<li><a href="fiches/fiche-docker.html">Docker</a></li>
-</ul>
-</section>
-<section>
-<h2>✨ Dernières fiches ajoutées</h2>
-<ul>
-<li><strong>🆕 Linux :</strong> Commandes de base à connaître</li>
-<li><strong>🆕 Chocolatey :</strong> Script de post-installation</li>
-<li><strong>🆕 Python :</strong> Commandes pip, script, venv...</li>
-<li><strong>🆕 Git :</strong> Gestion des branches et conflits</li>
-<li><strong>🆕 PowerShell :</strong> Administration, processus, services</li>
-<li><strong>🆕 Docker :</strong> Conteneurisation et orchestration de base</li>
-</ul>
+<p>Bienvenue sur mon espace personnel de fiches pratiques !</p>
 </section>
 </main>
 <footer>
-<p>Guillaume | Site personnel en construction 🚧 | hébergé sur GitHub Pages</p>
+<p>Guillaume | Site personnel en construction 🚧</p>
 </footer>
-<script>
-    const input = document.getElementById('searchInput');
-    const list = document.getElementById('searchList').getElementsByTagName('li');
-
-    input.addEventListener('keyup', function() {
-      const filter = input.value.toLowerCase();
-      for (let i = 0; i < list.length; i++) {
-        const txtValue = list[i].textContent || list[i].innerText;
-        list[i].style.display = txtValue.toLowerCase().includes(filter) ? '' : 'none';
-      }
-    });
-</script>
+<script src="js/nav.js"></script>
 </body>
 </html>

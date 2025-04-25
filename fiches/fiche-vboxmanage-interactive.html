@@ -1,62 +1,124 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>🖥️ Fiche Interactive VBoxManage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📘 VBoxManage – Fiche interactive</title>
   <link href="../css/style.css" rel="stylesheet">
-  <link href="../css/variables.css" rel="stylesheet">
   <link href="../favicon.ico" rel="icon" type="image/x-icon">
+  <script src="../js/nav.js" defer></script>
+
 </head>
 <body>
   <header class="banner">
     <div class="banner-container">
       <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
     </div>
-    <h1>🖥️ Fiche Interactive VBoxManage</h1>
+    <h1>📘 VBoxManage – Fiche interactive</h1>
     <nav>
-      <ul>
-        <li><a href="../index.html">🏠 Accueil</a></li>
-        <li><a href="fiche-git.html">🔧 Git</a></li>
-        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
-        <li><a href="fiche-modele.html">📋 Modèle</a></li>
-        <li><a href="fiche-linux.html">🐧 Linux</a></li>
-        <li><a href="fiche-python.html">🐍 Python</a></li>
-        <li><a href="fiche-docker.html">🐳 Docker</a></li>
-        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
-        <li><a href="fiche-vboxmanage.html">🖥️ VBoxManage</a></li>
-        <li><a href="fiche-vboxmanage-interactive.html" class="active">🖥️ VBoxInteractif</a></li>
-      </ul>
-    </nav>
+    <ul>
+      <li><a href="../index.html">🏠 Accueil</a></li>
+      <li><a href="../fiches/fiche-git.html">🔧 Git</a></li>
+      <li><a href="../fiches/fiche-chocolatey.html">🍫 Chocolatey</a></li>
+      <li><a href="../fiches/fiche-modele.html">Modèle</a></li>
+      <li class="dropdown">
+        <a href="fiche-linux.html">🐧 Linux</a>
+        <ul class="submenu">
+          <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+          <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+          <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+          <li><a href="linux-paquets.html">📦 Paquets</a></li>
+          <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+          <li><a href="linux-shell.html">🐚 Shell</a></li>
+          <li><a href="linux-systeme.html">⚙️ Système</a></li>
+          <li><a href="linux-trucs.html">🧠 Trucs & astuces</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="fiche-python.html">🐍 Python</a>
+        <ul class="submenu">
+          <li><a href="python-bases.html">🔤 Bases</a></li>
+          <li><a href="python-controle.html">🔁 Contrôle</a></li>
+          <li><a href="python-collections.html">📚 Collections</a></li>
+          <li><a href="python-fichiers.html">🗂️ Fichiers</a></li>
+          <li><a href="python-fonctions.html">🧮 Fonctions</a></li>
+          <li><a href="python-modules.html">📦 Modules</a></li>
+          <li><a href="python-erreurs.html">🚫 Erreurs</a></li>
+        </ul>
+      </li>
+      <li><a href="../fiches/fiche-powershell.html">⚡ PowerShell</a></li>
+      <li><a href="../fiches/fiche-docker.html">🐳 Docker</a></li>
+    </ul>
+  </nav>
   </header>
 
   <main>
-    <section>
-      <details open>
-        <summary>📦 Création de la machine</summary>
-        <pre>VBoxManage createvm --name "MaVM" --ostype "Debian_64" --register</pre>
-        <p>Crée une machine Debian 64 bits et l’enregistre automatiquement.</p>
-      </details>
+    <details open>
+      <summary>📦 Création de la machine</summary>
+      <pre>VBoxManage createvm --name "MaVM" --ostype "Debian_64" --register</pre>
+      <p>Crée une VM Debian 64 bits et l’enregistre dans VirtualBox.</p>
+    </details>
 
-      <details>
-        <summary>🧠 CPU et mémoire</summary>
-        <pre>VBoxManage modifyvm "MaVM" --memory 4096 --cpus 2</pre>
-        <p>Alloue 4 Go de RAM et 2 cœurs CPU.</p>
-      </details>
+    <details>
+      <summary>🧠 CPU et mémoire</summary>
+      <pre>VBoxManage modifyvm "MaVM" --memory 4096 --cpus 2</pre>
+      <p>Alloue 4 Go de RAM et 2 cœurs CPU.</p>
+    </details>
 
-      <details>
-        <summary>💾 Stockage</summary>
-        <pre>VBoxManage storagectl "MaVM" --name "SATA_Controller" --add sata --controller IntelAhci
+    <details>
+      <summary>💾 Disques et contrôleurs</summary>
+      <pre>VBoxManage storagectl "MaVM" --name "SATA_Controller" --add sata --controller IntelAhci
 VBoxManage createmedium disk --filename "MaVM.vdi" --size 20000
 VBoxManage storageattach "MaVM" --storagectl "SATA_Controller" --port 0 --device 0 --type hdd --medium "MaVM.vdi"</pre>
-        <p>Ajoute un disque dur virtuel de 20 Go.</p>
-      </details>
+      <p>Création et attachement d’un disque virtuel de 20 Go.</p>
+    </details>
 
-      <details>
-        <summary>🌐 Réseau</summary>
-        <pre>VBoxManage modifyvm "MaVM" --nic1 nat --nic2 bridged --bridgeadapter2 eth0</pre>
-        <p>Configure NAT + Bridge.</p>
-      </details>
-    </section>
+    <details>
+      <summary>🌐 Réseau</summary>
+      <pre>VBoxManage modifyvm "MaVM" --nic1 nat --nic2 bridged --bridgeadapter2 eth0</pre>
+      <p>Configuration avec deux interfaces : NAT et pont réseau.</p>
+    </details>
+
+    <details>
+      <summary>👤 GuestControl – exécuter une commande dans la VM</summary>
+      <pre>VBoxManage guestcontrol "MaVM" run --exe "/bin/ls" \
+--username user1 --passwordfile pw.txt --wait-stdout -- -l /usr</pre>
+      <p>Exécute <code>ls -l /usr</code> dans la VM en tant que <code>user1</code>.</p>
+    </details>
+
+    <details>
+      <summary>📂 Transfert de fichiers (host ↔ guest)</summary>
+      <pre>VBoxManage guestcontrol "MaVM" copyto ./localfile.txt /home/user/file.txt \
+--username user1 --password password --verbose</pre>
+      <p>Transfère un fichier du système hôte vers la VM invitée.</p>
+    </details>
+
+    <details>
+      <summary>🛠️ Opérations avancées</summary>
+      <pre>VBoxManage guestcontrol "MaVM" mkdir /home/user/mon_dossier \
+--username user1 --password password --parents --verbose
+
+VBoxManage guestcontrol "MaVM" fsinfo /home/user \
+--username user1 --password password --human-readable</pre>
+      <p>Création d’un répertoire et récupération d’informations sur le système de fichiers.</p>
+    </details>
+
+    <details>
+      <summary>⚙️ Gestion des sessions</summary>
+      <pre>VBoxManage guestcontrol "MaVM" list all --verbose
+VBoxManage guestcontrol "MaVM" closesession --all --verbose</pre>
+      <p>Liste et clôt toutes les sessions actives dans la VM.</p>
+    </details>
+
+    <details>
+      <summary>🔄 Mise à jour des Guest Additions</summary>
+      <pre>VBoxManage guestcontrol "MaVM" updatega \
+--source="VBoxGuestAdditions.iso" --wait-start --verbose</pre>
+      <p>Mise à jour des Additions Invitées via une image ISO.</p>
+    </details>
+
+    <h2>📎 Retour au sommaire</h2>
+    <p><a href="fiche-linux.html">⬅️ Revenir à la fiche Linux</a></p>
   </main>
 
   <footer>

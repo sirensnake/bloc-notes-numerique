@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>🔧 Python – Fonctions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧩 Python – Fonctions</title>
   <link href="../css/style.css" rel="stylesheet">
-  <link href="../css/variables.css" rel="stylesheet">
   <link href="../favicon.ico" rel="icon" type="image/x-icon">
 </head>
 <body>
@@ -12,58 +12,77 @@
     <div class="banner-container">
       <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
     </div>
-    <h1>🔧 Python – Fonctions</h1>
+    <h1>🧩 Python – Fonctions</h1>
     <nav>
-      <ul>
+      <ul class="menu">
         <li><a href="../index.html">🏠 Accueil</a></li>
-        <li><a href="fiche-python.html" class="active">🐍 Retour Sommaire Python</a></li>
+        <li class="dropdown">
+          <a href="#">🐍 Python</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-modules.html">📦 Modules</a></li>
+            <li><a href="python-collections.html">📚 Collections</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-erreurs.html">❗ Erreurs</a></li>
+            <li><a href="python-poo.html">🏗️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs & astuces</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="memo fiche fiche-python-fonctions">
-      <h2>🛠️ Définir une fonction</h2>
-      <pre><code>def saluer(nom):
-    print(f"Bonjour {nom}!")
+    <section>
+      <h2>🔧 Définir une fonction</h2>
+      <pre class="command">def dire_bonjour():
+    print("Bonjour !")</pre>
+    </section>
 
-saluer("Guillaume")</code></pre>
+    <section>
+      <h2>📥 Passer des arguments</h2>
+      <pre class="command">def saluer(nom):
+    print(f"Salut {nom} !")</pre>
+    </section>
 
-      <h2>📦 Retourner une valeur</h2>
-      <pre><code>def carre(x):
-    return x * x
+    <section>
+      <h2>📤 Retourner une valeur</h2>
+      <pre class="command">def addition(a, b):
+    return a + b</pre>
+    </section>
 
-resultat = carre(5)
-print(resultat)</code></pre>
+    <section>
+      <h2>🧰 Paramètres par défaut</h2>
+      <pre class="command">def saluer(nom="ami"):
+    print(f"Bonjour {nom} !")</pre>
+    </section>
 
-      <h2>🧭 Paramètres par défaut</h2>
-      <pre><code>def saluer(nom="ami"):
-    print(f"Salut {nom}!")</code></pre>
+    <section>
+      <h2>📦 Arguments variables</h2>
+      <pre class="command">def addition(*nombres):
+    return sum(nombres)</pre>
+    </section>
 
-      <h2>⚙️ Lambda (fonction anonyme)</h2>
-      <pre><code>addition = lambda x, y: x + y
-print(addition(3, 4))</code></pre>
+    <section>
+      <h2>🧠 Fonctions lambda</h2>
+      <pre class="command">carre = lambda x: x * x</pre>
+    </section>
 
-      <h2>📂 Accès rapide aux sous-fiches Python</h2>
-      <div class="subnav-links">
-        <a href="python-bases.html">🔤 Bases</a>
-        <a href="python-controle.html">🔁 Contrôle</a>
-        <a href="python-fonctions.html" class="active">🔧 Fonctions</a>
-        <a href="python-collections.html">📚 Collections</a>
-        <a href="python-fichiers.html">📁 Fichiers</a>
-        <a href="python-modules.html">📦 Modules</a>
-        <a href="python-erreurs.html">❗ Erreurs</a>
-        <a href="python-poo.html">🏗️ POO</a>
-        <a href="python-trucs.html">🛠️ Astuces</a>
-      </div>
-
-      <h2>📎 Retour au sommaire</h2>
-      <p><a href="fiche-python.html">⬅️ Retour à la fiche principale Python</a></p>
+    <section>
+      <h2>🔄 Fonctions imbriquées</h2>
+      <pre class="command">def exterieur():
+    def interieur():
+        print("Fonction intérieure")
+    interieur()</pre>
     </section>
   </main>
 
   <footer>
     <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+    <button onclick="window.print()">🖨️ Exporter en PDF</button>
   </footer>
+
+  <script src="../js/nav.js" defer></script>
 </body>
 </html>

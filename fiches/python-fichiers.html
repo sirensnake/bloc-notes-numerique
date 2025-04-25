@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>📁 Python – Fichiers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📂 Python – Fichiers</title>
   <link href="../css/style.css" rel="stylesheet">
-  <link href="../css/variables.css" rel="stylesheet">
   <link href="../favicon.ico" rel="icon" type="image/x-icon">
 </head>
 <body>
@@ -12,55 +12,69 @@
     <div class="banner-container">
       <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
     </div>
-    <h1>📁 Python – Lecture et écriture de fichiers</h1>
+    <h1>📂 Python – Fichiers</h1>
     <nav>
-      <ul>
+      <ul class="menu">
         <li><a href="../index.html">🏠 Accueil</a></li>
-        <li><a href="fiche-python.html" class="active">🐍 Retour Sommaire Python</a></li>
+        <li class="dropdown">
+          <a href="#">🐍 Python</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-fonctions.html">🧩 Fonctions</a></li>
+            <li><a href="python-modules.html">📦 Modules</a></li>
+            <li><a href="python-collections.html">📚 Collections</a></li>
+            <li><a href="python-erreurs.html">❗ Erreurs</a></li>
+            <li><a href="python-poo.html">🏗️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs & astuces</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="memo fiche fiche-python-fichiers">
-      <h2>📖 Lecture de fichier</h2>
-      <pre><code>with open("donnees.txt", "r") as fichier:
+    <section>
+      <h2>📄 Lire un fichier</h2>
+      <pre class="command">with open("exemple.txt", "r") as fichier:
     contenu = fichier.read()
-    print(contenu)</code></pre>
+    print(contenu)</pre>
+    </section>
 
-      <h2>📝 Écriture dans un fichier</h2>
-      <pre><code>with open("resultat.txt", "w") as fichier:
-    fichier.write("Bonjour monde\n")</code></pre>
+    <section>
+      <h2>📝 Écrire dans un fichier</h2>
+      <pre class="command">with open("exemple.txt", "w") as fichier:
+    fichier.write("Bonjour monde")</pre>
+    </section>
 
-      <h2>➕ Ajout de contenu (append)</h2>
-      <pre><code>with open("resultat.txt", "a") as fichier:
-    fichier.write("Ligne ajoutée\n")</code></pre>
+    <section>
+      <h2>➕ Ajouter du contenu</h2>
+      <pre class="command">with open("exemple.txt", "a") as fichier:
+    fichier.write("\nLigne ajoutée")</pre>
+    </section>
 
+    <section>
       <h2>🔁 Lire ligne par ligne</h2>
-      <pre><code>with open("donnees.txt", "r") as fichier:
+      <pre class="command">with open("exemple.txt", "r") as fichier:
     for ligne in fichier:
-        print(ligne.strip())</code></pre>
+        print(ligne.strip())</pre>
+    </section>
 
-      <h2>📂 Accès rapide aux sous-fiches Python</h2>
-      <div class="subnav-links">
-        <a href="python-bases.html">🔤 Bases</a>
-        <a href="python-controle.html">🔁 Contrôle</a>
-        <a href="python-fonctions.html">🔧 Fonctions</a>
-        <a href="python-collections.html">📚 Collections</a>
-        <a href="python-fichiers.html" class="active">📁 Fichiers</a>
-        <a href="python-modules.html">📦 Modules</a>
-        <a href="python-erreurs.html">❗ Erreurs</a>
-        <a href="python-poo.html">🏗️ POO</a>
-        <a href="python-trucs.html">🛠️ Astuces</a>
-      </div>
-
-      <h2>📎 Retour au sommaire</h2>
-      <p><a href="fiche-python.html">⬅️ Retour à la fiche principale Python</a></p>
+    <section>
+      <h2>❌ Gérer les erreurs de fichier</h2>
+      <pre class="command">try:
+    with open("inexistant.txt") as f:
+        print(f.read())
+except FileNotFoundError:
+    print("Fichier non trouvé")</pre>
     </section>
   </main>
 
   <footer>
     <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+    <button onclick="window.print()">🖨️ Exporter en PDF</button>
   </footer>
+
+  <script src="../js/nav.js" defer></script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>🛠️ Linux – Astuces et raccourcis</title>
+  <title><!-- emoji chocolat supprim --> Linux <!-- tiret demi-cadratin supprim --> Astuces et raccourcis</title>
   <link href="../css/style.css" rel="stylesheet">
   <link href="../css/variables.css" rel="stylesheet">
   <link href="../favicon.ico" rel="icon" type="image/x-icon">
@@ -10,53 +10,71 @@
 <body>
   <header class="banner">
     <div class="banner-container">
-      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+      <img src="../img/banner.png" alt="Bannire du site" class="banner-img">
     </div>
-    <h1>🛠️ Linux – Astuces et raccourcis utiles</h1>
+    <h1><!-- emoji chocolat supprim --> Linux <!-- tiret demi-cadratin supprim --> Astuces et raccourcis utiles</h1>
     <nav>
-      <ul>
-        <li><a href="../index.html">🏠 Accueil</a></li>
-        <li><a href="fiche-linux.html" class="active">🐧 Retour Sommaire Linux</a></li>
-      </ul>
-    </nav>
+    <ul>
+      <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li class="dropdown">
+          <a href="fiche-linux.html">🐧 Linux</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs & astuces</a></li>
+          </ul>
+        </li>
+      <li><a href="fiches/fiche-python.html"> Python</a></li>
+      <li><a href="fiches/fiche-powershell.html"> PowerShell</a></li>
+      <li><a href="fiches/fiche-docker.html"> Docker</a></li>
+    </ul>
+  </nav>
   </header>
 
   <main>
     <section class="memo fiche fiche-linux-trucs">
-      <h2>📌 Raccourcis clavier dans le terminal</h2>
+      <h2> Raccourcis clavier dans le terminal</h2>
       <ul>
         <li><code>Ctrl + C</code> : interrompre la commande en cours</li>
-        <li><code>Ctrl + L</code> : nettoyer l'écran</li>
-        <li><code>Ctrl + A</code> : aller au début de la ligne</li>
-        <li><code>Ctrl + E</code> : aller à la fin de la ligne</li>
-        <li><code>Ctrl + R</code> : rechercher une commande précédente</li>
+        <li><code>Ctrl + L</code> : nettoyer l'cran</li>
+        <li><code>Ctrl + A</code> : aller au dbut de la ligne</li>
+        <li><code>Ctrl + E</code> : aller  la fin de la ligne</li>
+        <li><code>Ctrl + R</code> : rechercher une commande prcdente</li>
       </ul>
 
-      <h2>🧠 Astuces générales</h2>
-      <pre><code>!!                    # Réexécute la dernière commande
-!sudo !!              # Réexécute avec sudo
+      <h2> Astuces gnrales</h2>
+      <pre><code>!!                    # Rexcute la dernire commande
+!sudo !!              # Rexcute avec sudo
 history               # Historique des commandes
-alias ll='ls -alF'    # Crée un alias
+alias ll='ls -alF'    # Cre un alias
 unalias ll            # Supprime un alias</code></pre>
 
-      <h2>🧹 Nettoyage</h2>
-      <pre><code>sudo apt autoremove   # Supprime les paquets inutilisés
+      <h2> Nettoyage</h2>
+      <pre><code>sudo apt autoremove   # Supprime les paquets inutiliss
 sudo apt clean        # Vide le cache</code></pre>
 
-      <h2>📎 Retour au sommaire</h2>
-      <p><a href="fiche-linux.html">⬅️ Retour à la fiche principale Linux</a></p>
+      <h2> Retour au sommaire</h2>
+      <p><a href="fiche-linux.html"> Retour  la fiche principale Linux</a></p>
     </section>
     <nav class="subnav-grid">
-        <h3>📂 Accès rapide aux sous-fiches Linux</h3>
+        <h3> Accs rapide aux sous-fiches Linux</h3>
         <div class="subnav-links">
-          <a href="linux-fichiers.html">📁 Fichiers</a>
-          <a href="linux-utilisateurs.html">👥 Utilisateurs</a>
-          <a href="linux-reseau.html">🌐 Réseau</a>
-          <a href="linux-paquets.html">📦 Paquets</a>
-          <a href="linux-systeme.html">🧠 Système</a>
-          <a href="linux-shell.html">💻 Shell</a>
-          <a href="linux-securite.html">🔐 Sécurité</a>
-          <a href="linux-trucs.html">🛠️ Astuces</a>
+          <a href="linux-fichiers.html"> Fichiers</a>
+          <a href="linux-utilisateurs.html"> Utilisateurs</a>
+          <a href="linux-reseau.html"> Rseau</a>
+          <a href="linux-paquets.html"> Paquets</a>
+          <a href="linux-systeme.html"> Systme</a>
+          <a href="linux-shell.html"> Shell</a>
+          <a href="linux-securite.html"> Scurit</a>
+          <a href="linux-trucs.html"><!-- emoji chocolat supprim --> Astuces</a>
         </div>
       </nav>
       
@@ -64,7 +82,7 @@ sudo apt clean        # Vide le cache</code></pre>
   </main>
 
   <footer>
-    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+    <p> 2025 Guillaume | Site personnel en construction </p>
   </footer>
 </body>
 </html>

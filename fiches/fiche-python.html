@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
@@ -6,6 +6,8 @@
   <link href="../css/style.css" rel="stylesheet">
   <link href="../css/variables.css" rel="stylesheet">
   <link href="../favicon.ico" rel="icon" type="image/x-icon">
+  <script src="../js/nav.js" defer></script>
+
 </head>
 <body>
   <header class="banner">
@@ -14,19 +16,26 @@
     </div>
     <h1>🐍 Fiche Python – Sommaire</h1>
     <nav>
-      <ul>
-        <li><a href="../index.html">🏠 Accueil</a></li>
-        <li><a href="fiche-git.html">🔧 Git</a></li>
-        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
-        <li><a href="fiche-modele.html">📋 Modèle</a></li>
-        <li><a href="fiche-linux.html">🐧 Linux</a></li>
-        <li><a href="fiche-python.html" class="active">🐍 Python</a></li>
-        <li><a href="fiche-docker.html">🐳 Docker</a></li>
-        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
-        <li><a href="fiche-vboxmanage.html">🖥️ VBoxManage</a></li>
-        <li><a href="fiche-vboxmanage-interactive.html">🖥️ VBoxInteractif</a></li>
-      </ul>
-    </nav>
+        <ul>
+          <li><a href="../index.html">🏠 Accueil</a></li>
+          <li><a href="../fiches/fiche-git.html">🔧 Git</a></li>
+          <li><a href="../fiches/fiche-chocolatey.html">🍫 Chocolatey</a></li>
+          <li><a href="../fiches/fiche-modele.html">📋 Modèle</a></li>
+          <li class="dropdown">
+            <button class="dropdown-toggle">🐧 Linux ▼</button>
+            <ul class="dropdown-content">
+              <li><a href="../fiches/linux-systeme.html">Système</a></li>
+              <li><a href="../fiches/linux-utilisateurs.html">Utilisateurs</a></li>
+              <li><a href="../fiches/linux-reseau.html">Réseau</a></li>
+              <li><a href="../fiches/linux-paquets.html">Paquets</a></li>
+              <li><a href="../fiches/linux-securite.html">Sécurité</a></li>
+            </ul>
+          </li>
+          <li><a href="../fiches/fiche-python.html">🐍 Python</a></li>
+          <li><a href="../fiches/fiche-powershell.html">⚡ PowerShell</a></li>
+          <li><a href="../fiches/fiche-docker.html">🐳 Docker</a></li>
+        </ul>
+      </nav>
   </header>
 
   <main>
@@ -66,3 +75,4 @@
   </footer>
 </body>
 </html>
+

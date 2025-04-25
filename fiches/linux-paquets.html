@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>📦 Linux – Gestion des paquets</title>
+  <title> Linux <!-- tiret demi-cadratin supprim --> Gestion des paquets</title>
   <link href="../css/style.css" rel="stylesheet">
   <link href="../css/variables.css" rel="stylesheet">
   <link href="../favicon.ico" rel="icon" type="image/x-icon">
@@ -10,37 +10,66 @@
 <body>
   <header class="banner">
     <div class="banner-container">
-      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+      <img src="../img/banner.png" alt="Bannire du site" class="banner-img">
     </div>
-    <h1>📦 Linux – Gestion des paquets</h1>
+    <h1> Linux <!-- tiret demi-cadratin supprim --> Gestion des paquets</h1>
     <nav>
-      <ul>
-        <li><a href="../index.html">🏠 Accueil</a></li>
-        <li><a href="fiche-linux.html" class="active">🐧 Retour Sommaire Linux</a></li>
-      </ul>
-    </nav>
+    <ul>
+      <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li class="dropdown">
+          <a href="fiche-linux.html">🐧 Linux</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs & astuces</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="fiche-python.html">🐍 Python</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">🔤 Bases</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-collections.html">📚 Collections</a></li>
+            <li><a href="python-fichiers.html">🗂️ Fichiers</a></li>
+            <li><a href="python-fonctions.html">🧮 Fonctions</a></li>
+            <li><a href="python-modules.html">📦 Modules</a></li>
+            <li><a href="python-erreurs.html">🚫 Erreurs</a></li>
+          </ul>
+        </li>
+      <li><a href="../fiches/fiche-powershell.html"> PowerShell</a></li>
+      <li><a href="../fiches/fiche-docker.html"> Docker</a></li>
+    </ul>
+  </nav>
   </header>
 
   <main>
     <section class="memo fiche fiche-linux-paquets">
-      <h2>🔄 Mise à jour du système</h2>
-      <pre><code>sudo apt update               # Met à jour la liste des paquets
-sudo apt upgrade             # Met à jour les paquets installés
-sudo apt full-upgrade        # Mise à jour complète</code></pre>
+      <h2> Mise  jour du systme</h2>
+      <pre><code>sudo apt update               # Met  jour la liste des paquets
+sudo apt upgrade             # Met  jour les paquets installs
+sudo apt full-upgrade        # Mise  jour complte</code></pre>
 
-      <h2>📥 Installation de paquets</h2>
+      <h2> Installation de paquets</h2>
       <pre><code>sudo apt install nom         # Installe un paquet
 sudo apt install htop curl  # Installe plusieurs paquets</code></pre>
 
-      <h2>❌ Suppression</h2>
+      <h2> Suppression</h2>
       <pre><code>sudo apt remove nom          # Supprime un paquet (garde les confs)
 sudo apt purge nom           # Supprime tout (inclus fichiers de conf)</code></pre>
 
-      <h2>🔍 Recherche et informations</h2>
+      <h2> Recherche et informations</h2>
       <pre><code>apt search nom               # Recherche un paquet
-apt show nom                # Détails du paquet installé</code></pre>
+apt show nom                # Dtails du paquet install</code></pre>
 
-      <h2>📦 Autres systèmes de paquets</h2>
+      <h2> Autres systmes de paquets</h2>
       <pre><code># Snap (Ubuntu)
 sudo snap install nom
 
@@ -50,20 +79,20 @@ sudo dnf install nom
 # Flatpak (optionnel)
 flatpak install flathub org.gimp.GIMP</code></pre>
 
-      <h2>📎 Retour au sommaire</h2>
-      <p><a href="fiche-linux.html">⬅️ Retour à la fiche principale Linux</a></p>
+      <h2> Retour au sommaire</h2>
+      <p><a href="fiche-linux.html"> Retour  la fiche principale Linux</a></p>
     </section>
     <nav class="subnav-grid">
-        <h3>📂 Accès rapide aux sous-fiches Linux</h3>
+        <h3> Accs rapide aux sous-fiches Linux</h3>
         <div class="subnav-links">
-          <a href="linux-fichiers.html">📁 Fichiers</a>
-          <a href="linux-utilisateurs.html">👥 Utilisateurs</a>
-          <a href="linux-reseau.html">🌐 Réseau</a>
-          <a href="linux-paquets.html">📦 Paquets</a>
-          <a href="linux-systeme.html">🧠 Système</a>
-          <a href="linux-shell.html">💻 Shell</a>
-          <a href="linux-securite.html">🔐 Sécurité</a>
-          <a href="linux-trucs.html">🛠️ Astuces</a>
+          <a href="linux-fichiers.html"> Fichiers</a>
+          <a href="linux-utilisateurs.html"> Utilisateurs</a>
+          <a href="linux-reseau.html"> Rseau</a>
+          <a href="linux-paquets.html"> Paquets</a>
+          <a href="linux-systeme.html"> Systme</a>
+          <a href="linux-shell.html"> Shell</a>
+          <a href="linux-securite.html"> Scurit</a>
+          <a href="linux-trucs.html"><!-- emoji chocolat supprim --> Astuces</a>
         </div>
       </nav>
       
@@ -71,7 +100,8 @@ flatpak install flathub org.gimp.GIMP</code></pre>
   </main>
 
   <footer>
-    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+    <p> 2025 Guillaume | Site personnel en construction </p>
   </footer>
 </body>
 </html>
+

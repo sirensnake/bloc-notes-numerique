@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🏗️ Python – Programmation orientée objet</title>
   <link href="../css/style.css" rel="stylesheet">
-  <link href="../css/variables.css" rel="stylesheet">
   <link href="../favicon.ico" rel="icon" type="image/x-icon">
 </head>
 <body>
@@ -14,59 +14,77 @@
     </div>
     <h1>🏗️ Python – Programmation orientée objet</h1>
     <nav>
-      <ul>
+      <ul class="menu">
         <li><a href="../index.html">🏠 Accueil</a></li>
-        <li><a href="fiche-python.html" class="active">🐍 Retour Sommaire Python</a></li>
+        <li class="dropdown">
+          <a href="#">🐍 Python</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-fonctions.html">🧩 Fonctions</a></li>
+            <li><a href="python-modules.html">📦 Modules</a></li>
+            <li><a href="python-collections.html">📚 Collections</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-erreurs.html">❗ Erreurs</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs & astuces</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="memo fiche fiche-python-poo">
+    <section class="intro">
+      <p>La programmation orientée objet (POO) en Python permet de structurer le code en regroupant données et comportements dans des objets. Cette fiche vous guide à travers les bases de la POO : classes, objets, constructeurs, héritage, encapsulation, etc.</p>
+    </section>
+
+    <section>
       <h2>🏗️ Définir une classe</h2>
-      <pre><code>class Personne:
+      <pre class="command">class Chien:
+    def aboyer(self):
+        print("Ouaf !")</pre>
+    </section>
+
+    <section>
+      <h2>🔨 Instancier un objet</h2>
+      <pre class="command">medor = Chien()
+medor.aboyer()</pre>
+    </section>
+
+    <section>
+      <h2>🧱 Constructeur (__init__)</h2>
+      <pre class="command">class Chien:
     def __init__(self, nom):
-        self.nom = nom
+        self.nom = nom</pre>
+    </section>
 
-    def saluer(self):
-        print(f"Bonjour, je m'appelle {self.nom}.")
+    <section>
+      <h2>📐 Héritage</h2>
+      <pre class="command">class Animal:
+    def parler(self):
+        print("Je suis un animal")
 
-guillaume = Personne("Guillaume")
-guillaume.saluer()</code></pre>
+class Chat(Animal):
+    def parler(self):
+        print("Miaou")</pre>
+    </section>
 
-      <h2>🔁 Héritage</h2>
-      <pre><code>class Employe(Personne):
-    def travailler(self):
-        print(f"{self.nom} travaille")
-
-bob = Employe("Bob")
-bob.travailler()</code></pre>
-
-      <h2>🔒 Encapsulation (convention)</h2>
-      <pre><code>class Secret:
+    <section>
+      <h2>🔒 Encapsulation</h2>
+      <pre class="command">class Compte:
     def __init__(self):
-        self._cache = "mot de passe"  # Convention: _ signifie privé</code></pre>
+        self.__solde = 0
 
-      <h2>📂 Accès rapide aux sous-fiches Python</h2>
-      <div class="subnav-links">
-        <a href="python-bases.html">🔤 Bases</a>
-        <a href="python-controle.html">🔁 Contrôle</a>
-        <a href="python-fonctions.html">🔧 Fonctions</a>
-        <a href="python-collections.html">📚 Collections</a>
-        <a href="python-fichiers.html">📁 Fichiers</a>
-        <a href="python-modules.html">📦 Modules</a>
-        <a href="python-erreurs.html">❗ Erreurs</a>
-        <a href="python-poo.html" class="active">🏗️ POO</a>
-        <a href="python-trucs.html">🛠️ Astuces</a>
-      </div>
-
-      <h2>📎 Retour au sommaire</h2>
-      <p><a href="fiche-python.html">⬅️ Retour à la fiche principale Python</a></p>
+    def deposer(self, montant):
+        self.__solde += montant</pre>
     </section>
   </main>
 
   <footer>
     <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+    <button onclick="window.print()">🖨️ Exporter en PDF</button>
   </footer>
+
+  <script src="../js/nav.js" defer></script>
 </body>
 </html>

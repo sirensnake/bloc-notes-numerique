@@ -1,19 +1,27 @@
-// js/nav.js
-document.addEventListener('DOMContentLoaded', () => {
-    fetch('../partials/nav.html')
-      .then(resp => resp.text())
-      .then(html => {
-        const nav = document.getElementById('main-nav');
-        nav.innerHTML = html;
+document.addEventListener("DOMContentLoaded", function () {
+  // Gestion des menus déroulants
+  const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
   
-        // Marquer le lien actif
-        const current = window.location.pathname.split('/').pop();
-        nav.querySelectorAll('a').forEach(a => {
-          if (a.getAttribute('href') === current) {
-            a.classList.add('active');
-          }
-        });
-      })
-      .catch(err => console.error('Impossible de charger le menu :', err));
+  dropdownToggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+      const parentLi = this.parentElement;
+      parentLi.classList.toggle('show');
+      
+      // Fermer les autres menus déroulants
+      dropdownToggles.forEach(otherToggle => {
+        if (otherToggle !== toggle) {
+          otherToggle.parentElement.classList.remove('show');
+        }
+      });
+    });
   });
   
+  // Fermer les menus déroulants en cliquant ailleurs
+  document.addEventListener('click', function(event) {
+    if (!event.target.closest('.dropdown')) {
+      dropdownToggles.forEach(toggle => {
+        toggle.parentElement.classList.remove('show');
+      });
+    }
+  });
+});

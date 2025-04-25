@@ -1,108 +1,103 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
+
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>⚡ Fiche PowerShell</title>
-  <link href="../css/style.css" rel="stylesheet">
-  <link href="../css/variables.css" rel="stylesheet">
-  <link href="../favicon.ico" rel="icon" type="image/x-icon">
+<meta charset="utf-8"/>
+<title>⚡ Fiche PowerShell</title>
+<link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/variables.css" rel="stylesheet">
+<link href="../favicon.ico" rel="icon" type="image/x-icon"/>
+<script src="../js/nav.js" defer></script>
+
 </head>
 <body>
-  <header class="banner">
-    <div class="banner-container">
-      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
-    </div>
-    <h1>⚡ Fiche PowerShell</h1>
-    <nav>
-      <ul>
-        <li><a href="../index.html">🏠 Accueil</a></li>
-        <li><a href="fiche-git.html">🔧 Git</a></li>
-        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
-        <li><a href="fiche-modele.html">📋 Modèle</a></li>
-        <li><a href="fiche-linux.html">🐧 Linux</a></li>
-        <li><a href="fiche-python.html">🐍 Python</a></li>
-        <li><a href="fiche-docker.html">🐳 Docker</a></li>
-        <li><a href="fiche-powershell.html" class="active">⚡ PowerShell</a></li>
-        <li><a href="fiche-vboxmanage.html">🖥️ VBoxManage</a></li>
-        <li><a href="fiche-vboxmanage-interactive.html">🖥️ VBoxInteractif</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section class="memo fiche fiche-powershell">
-      <h2>⚙️ Présentation</h2>
-      <p>PowerShell est un langage de script et un shell développé par Microsoft, principalement utilisé pour l'automatisation des tâches système sous Windows (et désormais multiplateforme via PowerShell Core).</p>
-
-      <h2>1. ▶️ Exécution de scripts</h2>
-      <pre><code># Autoriser les scripts (à faire une fois)
-Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
-
-# Exécuter un script
-./mon_script.ps1</code></pre>
-
-      <h2>2. 🗂️ Commandes de base</h2>
-      <pre><code>Get-Help nom_commande     # Affiche l'aide
-Get-Command               # Liste des commandes disponibles
-Get-Process               # Liste des processus en cours
-Get-Service               # Liste des services</code></pre>
-
-      <h2>3. 📁 Gestion des fichiers</h2>
-      <pre><code>Get-ChildItem             # Liste les fichiers (équivalent de ls)
-Set-Location D:\          # Change de répertoire (équivalent de cd)
-Copy-Item source dest     # Copie de fichier
-Remove-Item fichier.txt   # Supprime un fichier</code></pre>
-
-      <h2>4. 🔁 Boucles et conditions</h2>
-      <pre><code># Boucle ForEach
-$liste = @("fichier1.txt", "fichier2.txt")
-foreach ($f in $liste) {
-  Write-Output $f
-}
-
-# Condition If
-if ($a -eq 10) {
-  Write-Output "Égal à 10"
-} else {
-  Write-Output "Différent"
-}</code></pre>
-
-      <h2>5. 📄 Variables et tableaux</h2>
-      <pre><code>$nom = "Guillaume"
-$valeurs = @(1, 2, 3, 4)
-$valeurs[0]    # Affiche 1
-$valeurs.Count # Nombre d’éléments</code></pre>
-
-      <h2>6. 💬 Fonctions</h2>
-      <pre><code>function Bonjour {
-  param([string]$nom)
-  Write-Output "Bonjour $nom"
-}
-
-Bonjour -nom "Guillaume"</code></pre>
-
-      <h2>7. 🔐 Administration système</h2>
-      <pre><code># Liste les utilisateurs locaux
-Get-LocalUser
-
-# Créer un nouvel utilisateur (admin requis)
-New-LocalUser -Name "invite" -NoPassword</code></pre>
-
-      <h2>🎥 Ressources utiles</h2>
-      <ul>
-        <li><a href="https://docs.microsoft.com/fr-fr/powershell/" target="_blank">Documentation officielle</a></li>
-        <li><a href="https://www.youtube.com/watch?v=hqWqONeFScc" target="_blank">Cours complet sur YouTube</a></li>
-      </ul>
-    </section>
-
-    <nav class="navigation">
-      <a href="fiche-docker.html">⬅️ Fiche Docker</a>
-      <a href="fiche-vboxmanage.html">Fiche VBoxManage ➡️</a>
-    </nav>
-  </main>
-
-  <footer>
-    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
-  </footer>
+<header class="banner">
+<div class="banner-container">
+<img alt="Bannière du site" class="banner-img" src="../img/banner.png"/>
+</div>
+<h1>⚡ Fiche PowerShell</h1>
+<nav>
+    <ul>
+      <li><a href="../index.html">🏠 Accueil</a></li>
+      <li><a href="../fiches/fiche-git.html">🔧 Git</a></li>
+      <li><a href="../fiches/fiche-chocolatey.html">🍫 Chocolatey</a></li>
+      <li><a href="../fiches/fiche-modele.html">📋 Modèle</a></li>
+      <li class="dropdown">
+        <a href="fiche-linux.html">🐧 Linux</a>
+        <ul class="submenu">
+          <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+          <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+          <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+          <li><a href="linux-paquets.html">📦 Paquets</a></li>
+          <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+          <li><a href="linux-shell.html">🐚 Shell</a></li>
+          <li><a href="linux-systeme.html">⚙️ Système</a></li>
+          <li><a href="linux-trucs.html">🧠 Trucs & astuces</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="fiche-python.html">🐍 Python</a>
+        <ul class="submenu">
+          <li><a href="python-bases.html">🔤 Bases</a></li>
+          <li><a href="python-controle.html">🔁 Contrôle</a></li>
+          <li><a href="python-collections.html">📚 Collections</a></li>
+          <li><a href="python-fichiers.html">🗂️ Fichiers</a></li>
+          <li><a href="python-fonctions.html">🧮 Fonctions</a></li>
+          <li><a href="python-modules.html">📦 Modules</a></li>
+          <li><a href="python-erreurs.html">🚫 Erreurs</a></li>
+        </ul>
+      </li>
+      <li><a href="../fiches/fiche-powershell.html">⚡ PowerShell</a></li>
+      <li><a href="../fiches/fiche-docker.html">🐳 Docker</a></li>
+      <li class="dropdown">
+        <a href="#">📦 VBoxManage</a>
+        <ul class="submenu">
+          <li><a href="fiche-vboxmanage.html">📘 Commandes VBoxManage</a></li>
+          <li><a href="fiche-vboxmanage-interactive.html">🖱️ Interface interactive</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+<main>
+<section class="memo fiche fiche-powershell">
+<h2>1. Syntaxe de base</h2>
+<pre class="command">Get-Process</pre>
+<pre class="command">Get-Service | Where-Object {$_.Status -eq "Running"}</pre>
+<pre class="command">$maVariable = "Bonjour"</pre>
+<pre class="command"># Ceci est un commentaire</pre>
+<h2>2. Gestion des fichiers</h2>
+<pre class="command">Get-ChildItem -Path C:\MonDossier</pre>
+<pre class="command">Copy-Item -Path src -Destination dst</pre>
+<pre class="command">Remove-Item -Path fichier.txt</pre>
+<h2>3. Modules et Snap-ins</h2>
+<pre class="command">Get-Module -ListAvailable</pre>
+<pre class="command">Import-Module ActiveDirectory</pre>
+<h2>4. Exécution à distance (remoting)</h2>
+<pre class="command">Enable-PSRemoting -Force</pre>
+<pre class="command">Enter-PSSession -ComputerName serveur</pre>
+<h2>5. Écriture de scripts</h2>
+<pre class="command">.\monScript.ps1</pre>
+<pre class="command">Set-ExecutionPolicy RemoteSigned</pre>
+<h2>6. Alias utiles</h2>
+<pre class="command">ls        # alias pour Get-ChildItem</pre>
+<pre class="command">cat       # alias pour Get-Content</pre>
+<pre class="command">man       # alias pour help</pre>
+<h2>7. Gestion des services</h2>
+<pre class="command">Get-Service</pre>
+<pre class="command">Start-Service nom_service</pre>
+<pre class="command">Stop-Service nom_service</pre>
+<h2>8. Structures conditionnelles</h2>
+<pre class="command">if ($x -eq 42) { "La réponse" } else { "Pas encore" }</pre>
+</section>
+<nav class="navigation">
+<a href="fiche-docker.html">⬅️ Fiche Docker</a>
+<a href="fiche-vboxmanage.html">Fiche VBoxManage ➡️</a>
+</nav>
+</main>
+<footer>
+<p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+</footer>
 </body>
 </html>
+

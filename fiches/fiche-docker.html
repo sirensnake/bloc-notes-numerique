@@ -1,98 +1,119 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
+
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>🐳 Fiche Docker</title>
-  <link href="../css/style.css" rel="stylesheet">
-  <link href="../css/variables.css" rel="stylesheet">
-  <link href="../favicon.ico" rel="icon" type="image/x-icon">
+<meta charset="utf-8"/>
+<title>🐳 Fiche Docker</title>
+<link href="../css/style.css" rel="stylesheet"/>
+<link href="../css/variables.css" rel="stylesheet"/>
+<link href="../favicon.ico" rel="icon" type="image/x-icon"/>
+<script src="../js/nav.js" defer></script>
+
 </head>
 <body>
-  <header class="banner">
-    <div class="banner-container">
-      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
-    </div>
-    <h1>🐳 Fiche Docker</h1>
-    <nav>
-      <ul>
-        <li><a href="../index.html">🏠 Accueil</a></li>
-        <li><a href="fiche-git.html">🔧 Git</a></li>
-        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
-        <li><a href="fiche-modele.html">📋 Modèle</a></li>
-        <li><a href="fiche-linux.html">🐧 Linux</a></li>
-        <li><a href="fiche-python.html">🐍 Python</a></li>
-        <li><a href="fiche-docker.html" class="active">🐳 Docker</a></li>
-        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
-        <li><a href="fiche-vboxmanage.html">🖥️ VBoxManage</a></li>
-        <li><a href="fiche-vboxmanage-interactive.html">🖥️ VBoxInteractif</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <section class="memo fiche fiche-docker">
-      <h2>📌 Présentation</h2>
-      <p><strong>Docker</strong> permet de créer, déployer et exécuter des applications dans des conteneurs. Les conteneurs sont des environnements légers, portables, isolés et reproductibles.</p>
-
-      <h2>1. 🧰 Installation</h2>
-      <table>
-        <tr><th>Plateforme</th><th>Commande</th></tr>
-        <tr><td>Windows (Chocolatey)</td><td><code>choco install docker-desktop -y</code></td></tr>
-        <tr><td>Ubuntu</td><td><code>sudo apt update &amp;&amp; sudo apt install docker.io</code></td></tr>
-        <tr><td>Mac (Homebrew)</td><td><code>brew install --cask docker</code></td></tr>
-      </table>
-
-      <h2>2. 📦 Gestion des images</h2>
-      <pre><code>docker images                # Liste les images locales
+<header class="banner">
+<div class="banner-container">
+<img alt="Bannière du site" class="banner-img" src="../img/banner.png"/>
+</div>
+<h1>🐳 Fiche Docker</h1>
+<nav>
+    <ul>
+      <li><a href="../index.html">🏠 Accueil</a></li>
+      <li><a href="../fiches/fiche-git.html">🔧 Git</a></li>
+      <li><a href="../fiches/fiche-chocolatey.html">🍫 Chocolatey</a></li>
+      <li><a href="../fiches/fiche-modele.html">Modèle</a></li>
+      <li class="dropdown">
+        <a href="fiche-linux.html">🐧 Linux</a>
+        <ul class="submenu">
+          <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+          <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+          <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+          <li><a href="linux-paquets.html">📦 Paquets</a></li>
+          <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+          <li><a href="linux-shell.html">🐚 Shell</a></li>
+          <li><a href="linux-systeme.html">⚙️ Système</a></li>
+          <li><a href="linux-trucs.html">🧠 Trucs & astuces</a></li>
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a href="fiche-python.html">🐍 Python</a>
+        <ul class="submenu">
+          <li><a href="python-bases.html">🔤 Bases</a></li>
+          <li><a href="python-controle.html">🔁 Contrôle</a></li>
+          <li><a href="python-collections.html">📚 Collections</a></li>
+          <li><a href="python-fichiers.html">🗂️ Fichiers</a></li>
+          <li><a href="python-fonctions.html">🧮 Fonctions</a></li>
+          <li><a href="python-modules.html">📦 Modules</a></li>
+          <li><a href="python-erreurs.html">🚫 Erreurs</a></li>
+        </ul>
+      </li>
+      <li><a href="../fiches/fiche-powershell.html">⚡ PowerShell</a></li>
+      <li><a href="../fiches/fiche-docker.html">🐳 Docker</a></li>
+      <li class="dropdown">
+        <a href="#">📦 VBoxManage</a>
+        <ul class="submenu">
+          <li><a href="fiche-vboxmanage.html">📘 Commandes VBoxManage</a></li>
+          <li><a href="fiche-vboxmanage-interactive.html">🖱️ Interface interactive</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+</header>
+<main>
+<section class="memo fiche fiche-docker">
+<h2>📌 Présentation</h2>
+<p><strong>Docker</strong> permet de créer, déployer et exécuter des applications dans des conteneurs. Les conteneurs sont des environnements légers, portables, isolés et reproductibles.</p>
+<h2>1. 🧰 Installation</h2>
+<table>
+<tr><th>Plateforme</th><th>Commande</th></tr>
+<tr><td>Windows (Chocolatey)</td><td><pre class="command">choco install docker-desktop -y</pre></td></tr>
+<tr><td>Ubuntu</td><td><pre class="command">sudo apt update &amp;&amp; sudo apt install docker.io</pre></td></tr>
+<tr><td>Mac (Homebrew)</td><td><pre class="command">brew install --cask docker</pre></td></tr>
+</table>
+<h2>2. 📦 Gestion des images</h2>
+<pre class="command">docker images                # Liste les images locales
 docker pull nginx           # Télécharge l'image nginx
-docker rmi image_id         # Supprime une image locale</code></pre>
-
-      <h2>3. 🚀 Gestion des conteneurs</h2>
-      <pre><code>docker run -d --name web nginx     # Lance un conteneur en arrière-plan
+docker rmi image_id         # Supprime une image locale</pre>
+<h2>3. 🚀 Gestion des conteneurs</h2>
+<pre class="command">docker run -d --name web nginx     # Lance un conteneur en arrière-plan
 docker ps -a                      # Liste tous les conteneurs
 docker stop web                  # Stoppe le conteneur
 docker rm web                    # Supprime le conteneur
-docker logs -f web               # Affiche les logs du conteneur</code></pre>
-
-      <h2>4. 📁 Volumes et persistance</h2>
-      <pre><code>docker volume create monvolume
+docker logs -f web               # Affiche les logs du conteneur</pre>
+<h2>4. 📁 Volumes et persistance</h2>
+<pre class="command">docker volume create monvolume
 
 docker run -d --name app \\
   -v monvolume:/app/data \\
-  myapp</code></pre>
-      <p>Les volumes permettent de conserver les données même après suppression du conteneur.</p>
-
-      <h2>5. 🛠️ Réseaux personnalisés</h2>
-      <pre><code>docker network create monreseau
+  myapp</pre>
+<p>Les volumes permettent de conserver les données même après suppression du conteneur.</p>
+<h2>5. 🛠️ Réseaux personnalisés</h2>
+<pre class="command">docker network create monreseau
 
 docker run -d --name web1 --network monreseau nginx
-docker run -d --name web2 --network monreseau nginx</code></pre>
-
-      <h2>6. 📜 Dockerfile de base</h2>
-      <pre><code># Exemple minimal de Dockerfile
+docker run -d --name web2 --network monreseau nginx</pre>
+<h2>6. 📜 Dockerfile de base</h2>
+<pre class="command"># Exemple minimal de Dockerfile
 FROM python:3.10-slim
 WORKDIR /app
 COPY . .
 RUN pip install -r requirements.txt
-CMD ["python", "app.py"]</code></pre>
-
-      <h2>7. 🧪 Commandes avancées</h2>
-      <pre><code>docker exec -it web bash             # Accès shell dans un conteneur
+CMD ["python", "app.py"]</pre>
+<h2>7. 🧪 Commandes avancées</h2>
+<pre class="command">docker exec -it web bash             # Accès shell dans un conteneur
 docker build -t monimage .          # Construire une image locale
-docker-compose up -d                # Lancer via fichier docker-compose.yml</code></pre>
-
-      <h2>🎥 Tutoriel vidéo</h2>
-      <p><a href="https://www.youtube.com/watch?v=3c-iBn73dDE" target="_blank">Découverte de Docker (Grafikart)</a></p>
-    </section>
-
-    <nav class="navigation">
-      <a href="fiche-python.html">⬅️ Fiche Python</a>
-      <a href="fiche-powershell.html">Fiche PowerShell ➡️</a>
-    </nav>
-  </main>
-
-  <footer>
-    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
-  </footer>
+docker-compose up -d                # Lancer via fichier docker-compose.yml</pre>
+<h2>🎥 Tutoriel vidéo</h2>
+<p><a href="https://www.youtube.com/watch?v=3c-iBn73dDE" target="_blank">Découverte de Docker (Grafikart)</a></p>
+</section>
+<nav class="navigation">
+<a href="fiche-python.html">⬅️ Fiche Python</a>
+<a href="fiche-powershell.html">Fiche PowerShell ➡️</a>
+</nav>
+</main>
+<footer>
+<p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+</footer>
 </body>
 </html>
+

@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>📁 Linux – Fichiers et répertoires</title>
+  <title> Linux <!-- tiret demi-cadratin supprim --> Fichiers et rpertoires</title>
   <link href="../css/style.css" rel="stylesheet">
   <link href="../css/variables.css" rel="stylesheet">
   <link href="../favicon.ico" rel="icon" type="image/x-icon">
@@ -10,60 +10,94 @@
 <body>
   <header class="banner">
     <div class="banner-container">
-      <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
+      <img src="../img/banner.png" alt="Bannire du site" class="banner-img">
     </div>
-    <h1>📁 Linux – Fichiers et répertoires</h1>
+    <h1> Linux <!-- tiret demi-cadratin supprim --> Fichiers et répertoires</h1>
     <nav>
-      <ul>
-        <li><a href="../index.html">🏠 Accueil</a></li>
-        <li><a href="fiche-linux.html" class="active">🐧 Retour Sommaire Linux</a></li>
-      </ul>
-    </nav>
+    <ul>
+      <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li class="dropdown">
+          <a href="fiche-linux.html">🐧 Linux</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs & astuces</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="fiche-python.html">🐍 Python</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">🔤 Bases</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-collections.html">📚 Collections</a></li>
+            <li><a href="python-fichiers.html">🗂️ Fichiers</a></li>
+            <li><a href="python-fonctions.html">🧮 Fonctions</a></li>
+            <li><a href="python-modules.html">📦 Modules</a></li>
+            <li><a href="python-erreurs.html">🚫 Erreurs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">📦 VBoxManage</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage.html">📘 Commandes VBoxManage</a></li>
+            <li><a href="fiche-vboxmanage-interactive.html">🖱️ Interface interactive</a></li>
+          </ul>
+        </li>
+    </ul>
+  </nav>
   </header>
 
   <main>
     <section class="memo fiche fiche-linux-fichiers">
-      <h2>📂 Commandes de base</h2>
+      <h2> Commandes de base</h2>
       <pre><code>pwd                    # Affiche le chemin courant
-ls                     # Liste les fichiers du répertoire
-ls -l /etc             # Liste détaillée d'un dossier spécifique
-cd /chemin             # Se déplacer dans un répertoire
-cd ~                   # Aller dans le répertoire personnel</code></pre>
+ls                     # Liste les fichiers du rpertoire
+ls -l /etc             # Liste dtaille d'un dossier spcifique
+cd /chemin             # Se dplacer dans un rpertoire
+cd ~                   # Aller dans le rpertoire personnel</code></pre>
 
-      <h2>📄 Création et suppression</h2>
-      <pre><code>touch fichier.txt           # Créer un fichier vide
-mkdir mon_dossier           # Créer un nouveau dossier
+      <h2> Cration et suppression</h2>
+      <pre><code>touch fichier.txt           # Crer un fichier vide
+mkdir mon_dossier           # Crer un nouveau dossier
 rm fichier.txt              # Supprimer un fichier
 rm -r mon_dossier           # Supprimer un dossier et son contenu</code></pre>
 
-      <h2>📋 Copie et déplacement</h2>
+      <h2><!-- emoji fichier supprim --> Copie et dplacement</h2>
       <pre><code>cp fichier.txt sauvegarde.txt        # Copier un fichier
 cp -r dossier1 dossier2              # Copier un dossier
-mv fichier.txt dossier/              # Déplacer un fichier</code></pre>
+mv fichier.txt dossier/              # Dplacer un fichier</code></pre>
 
-      <h2>🧭 Liens symboliques</h2>
-      <pre><code>ln -s /chemin/fichier lien_symbolique    # Créer un lien symbolique</code></pre>
+      <h2> Liens symboliques</h2>
+      <pre><code>ln -s /chemin/fichier lien_symbolique    # Crer un lien symbolique</code></pre>
 
-      <h2>📎 Affichage de contenu</h2>
+      <h2> Affichage de contenu</h2>
       <pre><code>cat fichier.txt         # Affiche le contenu complet
-head -n 10 fichier.txt  # Affiche les 10 premières lignes
-tail -n 10 fichier.txt  # Affiche les 10 dernières lignes
-less fichier.txt        # Affichage paginé</code></pre>
+head -n 10 fichier.txt  # Affiche les 10 premires lignes
+tail -n 10 fichier.txt  # Affiche les 10 dernires lignes
+less fichier.txt        # Affichage pagin</code></pre>
 
-      <h2>📎 Revenir au sommaire</h2>
-      <p><a href="fiche-linux.html">⬅️ Retour à la fiche principale Linux</a></p>
+      <h2> Revenir au sommaire</h2>
+      <p><a href="fiche-linux.html"> Retour  la fiche principale Linux</a></p>
     </section>
     <nav class="subnav-grid">
-        <h3>📂 Accès rapide aux sous-fiches Linux</h3>
+        <h3> Accs rapide aux sous-fiches Linux</h3>
         <div class="subnav-links">
-          <a href="linux-fichiers.html">📁 Fichiers</a>
-          <a href="linux-utilisateurs.html">👥 Utilisateurs</a>
-          <a href="linux-reseau.html">🌐 Réseau</a>
-          <a href="linux-paquets.html">📦 Paquets</a>
-          <a href="linux-systeme.html">🧠 Système</a>
-          <a href="linux-shell.html">💻 Shell</a>
-          <a href="linux-securite.html">🔐 Sécurité</a>
-          <a href="linux-trucs.html">🛠️ Astuces</a>
+          <a href="linux-fichiers.html"> Fichiers</a>
+          <a href="linux-utilisateurs.html"> Utilisateurs</a>
+          <a href="linux-reseau.html"> Rseau</a>
+          <a href="linux-paquets.html"> Paquets</a>
+          <a href="linux-systeme.html"> Systme</a>
+          <a href="linux-shell.html"> Shell</a>
+          <a href="linux-securite.html"> Scurit</a>
+          <a href="linux-trucs.html"><!-- emoji chocolat supprim --> Astuces</a>
         </div>
       </nav>
       
@@ -71,7 +105,8 @@ less fichier.txt        # Affichage paginé</code></pre>
   </main>
 
   <footer>
-    <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+    <p> 2025 Guillaume | Site personnel en construction </p>
   </footer>
 </body>
 </html>
+

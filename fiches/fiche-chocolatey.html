@@ -1,10 +1,10 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>🍫 Fiche Chocolatey</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🍫 Chocolatey – Gestionnaire de paquets Windows</title>
   <link href="../css/style.css" rel="stylesheet">
-  <link href="../css/variables.css" rel="stylesheet">
   <link href="../favicon.ico" rel="icon" type="image/x-icon">
 </head>
 <body>
@@ -12,56 +12,117 @@
     <div class="banner-container">
       <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
     </div>
-    <h1>🍫 Fiche Chocolatey</h1>
+    <h1>🍫 Chocolatey – Gestionnaire de paquets Windows</h1>
     <nav>
-      <ul>
+      <ul class="menu">
         <li><a href="../index.html">🏠 Accueil</a></li>
-        <li><a href="fiche-git.html">🔧 Git</a></li>
-        <li><a href="fiche-chocolatey.html" class="active">🍫 Chocolatey</a></li>
-        <li><a href="fiche-modele.html">📋 Modèle</a></li>
-        <li><a href="fiche-linux.html">🐧 Linux</a></li>
-        <li><a href="fiche-python.html">🐍 Python</a></li>
-        <li><a href="fiche-docker.html">🐳 Docker</a></li>
         <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
-        <li><a href="fiche-vboxmanage.html">🖥️ VBoxManage</a></li>
-        <li><a href="fiche-vboxmanage-interactive.html">🖥️ VBoxInteractif</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+    
+        <li class="dropdown">
+          <a href="fiche-linux.html">🐧 Linux</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs & astuces</a></li>
+          </ul>
+        </li>
+    
+        <li class="dropdown">
+          <a href="fiche-python.html">🐍 Python</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">🔤 Bases</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-collections.html">📚 Collections</a></li>
+            <li><a href="python-fichiers.html">🗂️ Fichiers</a></li>
+            <li><a href="python-fonctions.html">🧮 Fonctions</a></li>
+            <li><a href="python-modules.html">📦 Modules</a></li>
+            <li><a href="python-erreurs.html">🚫 Erreurs</a></li>
+          </ul>
+        </li>
+    
+        <li class="dropdown">
+          <a href="#">📦 VBoxManage</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage.html">📘 Commandes VBoxManage</a></li>
+            <li><a href="fiche-vboxmanage-interactive.html">🖱️ Interface interactive</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
+    
   </header>
 
   <main>
-    <section class="memo fiche-chocolatey">
-      <h2>1. Installation de Chocolatey</h2>
-      <pre class="command">Set-ExecutionPolicy Bypass -Scope Process -Force
-[System.Net.ServicePointManager]::SecurityProtocol = 'Tls12'
-iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))</pre>
-      <p>👉 Cette commande installe Chocolatey en une seule étape sous Windows.</p>
+    <section>
+      <h2>📥 Installation</h2>
+      <pre class="command">Set-ExecutionPolicy Bypass -Scope Process -Force; `
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
+iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex</pre>
+      <p>Cette commande permet d’installer Chocolatey depuis PowerShell en contournant les restrictions d’exécution.</p>
+    </section>
 
-      <h2>2. Commandes de base</h2>
-      <dl>
-        <dt><code>choco install &lt;package&gt; -y</code></dt><dd>Installe un paquet sans confirmation.</dd>
-        <dt><code>choco upgrade &lt;package&gt; -y</code></dt><dd>Met à jour un paquet vers sa version la plus récente.</dd>
-        <dt><code>choco uninstall &lt;package&gt; -y</code></dt><dd>Désinstalle un paquet.</dd>
-        <dt><code>choco list --localonly</code></dt><dd>Liste les paquets installés sur la machine.</dd>
-        <dt><code>choco search &lt;mot-clé&gt;</code></dt><dd>Recherche un paquet dans les dépôts officiels.</dd>
-      </dl>
-
-      <h2>3. Fonctions avancées</h2>
+    <section>
+      <h2>📦 Commandes de base</h2>
       <ul>
-        <li><code>--version &lt;numéro&gt;</code> : préciser la version souhaitée</li>
-        <li>Création de <strong>packages internes</strong> via <code>choco new &lt;nom&gt;</code></li>
-        <li>Intégration dans des <strong>scripts d’installation</strong> PowerShell ou CI/CD</li>
+        <li><strong>Installer un paquet :</strong>
+          <pre class="command">choco install nom_du_paquet</pre>
+        </li>
+        <li><strong>Désinstaller un paquet :</strong>
+          <pre class="command">choco uninstall nom_du_paquet</pre>
+        </li>
+        <li><strong>Mettre à jour un paquet :</strong>
+          <pre class="command">choco upgrade nom_du_paquet</pre>
+        </li>
+        <li><strong>Mettre à jour tous les paquets :</strong>
+          <pre class="command">choco upgrade all</pre>
+        </li>
+        <li><strong>Lister les paquets installés :</strong>
+          <pre class="command">choco list -lo</pre>
+        </li>
       </ul>
     </section>
 
-    <nav class="navigation">
-      <a href="fiche-git.html">⬅️ Fiche Git</a>
-      <a href="fiche-modele.html">Fiche Modèle ➡️</a>
-    </nav>
+    <section>
+      <h2>🔍 Rechercher un paquet</h2>
+      <pre class="command">choco search nom_du_paquet</pre>
+    </section>
+
+    <section>
+      <h2>⚙️ Configuration avancée</h2>
+      <ul>
+        <li><strong>Modifier le cache de téléchargement :</strong>
+          <pre class="command">choco config set cacheLocation D:\choco-cache</pre>
+        </li>
+        <li><strong>Ajouter une nouvelle source :</strong>
+          <pre class="command">choco source add -n=nom -s="https://source-url/"</pre>
+        </li>
+        <li><strong>Voir les configurations :</strong>
+          <pre class="command">choco config list</pre>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>📚 Ressources utiles</h2>
+      <ul>
+        <li><a href="https://chocolatey.org/packages">🔗 Liste des paquets</a></li>
+        <li><a href="https://docs.chocolatey.org">📘 Documentation officielle</a></li>
+      </ul>
+    </section>
   </main>
 
   <footer>
     <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
   </footer>
+
+  <script src="../js/nav.js" defer></script>
 </body>
 </html>

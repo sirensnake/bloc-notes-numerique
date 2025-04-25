@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>❗ Python – Gestion des erreurs</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>❗ Python – Erreurs</title>
   <link href="../css/style.css" rel="stylesheet">
-  <link href="../css/variables.css" rel="stylesheet">
   <link href="../favicon.ico" rel="icon" type="image/x-icon">
 </head>
 <body>
@@ -12,62 +12,69 @@
     <div class="banner-container">
       <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
     </div>
-    <h1>❗ Python – Gestion des erreurs</h1>
+    <h1>❗ Python – Erreurs</h1>
     <nav>
-      <ul>
+      <ul class="menu">
         <li><a href="../index.html">🏠 Accueil</a></li>
-        <li><a href="fiche-python.html" class="active">🐍 Retour Sommaire Python</a></li>
+        <li class="dropdown">
+          <a href="#">🐍 Python</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-fonctions.html">🧩 Fonctions</a></li>
+            <li><a href="python-modules.html">📦 Modules</a></li>
+            <li><a href="python-collections.html">📚 Collections</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-poo.html">🏗️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs & astuces</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="memo fiche fiche-python-erreurs">
-      <h2>🧨 Exécution d'une erreur</h2>
-      <pre><code>print(10 / 0)  # Provoque une ZeroDivisionError</code></pre>
+    <section>
+      <h2>❌ Exceptions courantes</h2>
+      <pre class="command"># Division par zéro
+x = 10 / 0  # ZeroDivisionError
 
-      <h2>🛡️ Bloc try / except</h2>
-      <pre><code>try:
-    print(10 / 0)
+# Accès à une variable non définie
+print(y)  # NameError
+
+# Conversion invalide
+int("texte")  # ValueError</pre>
+    </section>
+
+    <section>
+      <h2>🛠️ Gestion des exceptions : try / except</h2>
+      <pre class="command">try:
+    x = 10 / 0
 except ZeroDivisionError:
-    print("Division par zéro interdite")</code></pre>
+    print("Division par zéro interdite")</pre>
+    </section>
 
-      <h2>📋 Gérer plusieurs erreurs</h2>
-      <pre><code>try:
-    x = int("texte")
-except ValueError:
-    print("Ce n'est pas un entier")</code></pre>
-
-      <h2>📦 finally et else</h2>
-      <pre><code>try:
-    x = 5 / 1
-except:
-    print("Erreur")
-else:
-    print("Tout s'est bien passé")
+    <section>
+      <h2>📌 Bloc finally</h2>
+      <pre class="command">try:
+    f = open("fichier.txt")
+except FileNotFoundError:
+    print("Fichier introuvable")
 finally:
-    print("Fin de l'opération")</code></pre>
+    print("Bloc finally exécuté")</pre>
+    </section>
 
-      <h2>📂 Accès rapide aux sous-fiches Python</h2>
-      <div class="subnav-links">
-        <a href="python-bases.html">🔤 Bases</a>
-        <a href="python-controle.html">🔁 Contrôle</a>
-        <a href="python-fonctions.html">🔧 Fonctions</a>
-        <a href="python-collections.html">📚 Collections</a>
-        <a href="python-fichiers.html">📁 Fichiers</a>
-        <a href="python-modules.html">📦 Modules</a>
-        <a href="python-erreurs.html" class="active">❗ Erreurs</a>
-        <a href="python-poo.html">🏗️ POO</a>
-        <a href="python-trucs.html">🛠️ Astuces</a>
-      </div>
-
-      <h2>📎 Retour au sommaire</h2>
-      <p><a href="fiche-python.html">⬅️ Retour à la fiche principale Python</a></p>
+    <section>
+      <h2>⚠️ Lever une exception manuellement</h2>
+      <pre class="command">raise ValueError("Valeur invalide")</pre>
     </section>
   </main>
 
   <footer>
     <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+    <button onclick="window.print()">🖨️ Exporter en PDF</button>
   </footer>
+
+  <script src="../js/nav.js" defer></script>
 </body>
 </html>

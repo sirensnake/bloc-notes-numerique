@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>🔁 Python – Structures de contrôle</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔁 Python – Contrôle</title>
   <link href="../css/style.css" rel="stylesheet">
-  <link href="../css/variables.css" rel="stylesheet">
   <link href="../favicon.ico" rel="icon" type="image/x-icon">
 </head>
 <body>
@@ -12,64 +12,69 @@
     <div class="banner-container">
       <img src="../img/banner.png" alt="Bannière du site" class="banner-img">
     </div>
-    <h1>🔁 Python – Structures de contrôle</h1>
+    <h1>🔁 Python – Contrôle</h1>
     <nav>
-      <ul>
+      <ul class="menu">
         <li><a href="../index.html">🏠 Accueil</a></li>
-        <li><a href="fiche-python.html" class="active">🐍 Retour Sommaire Python</a></li>
+        <li class="dropdown">
+          <a href="#">🐍 Python</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-fonctions.html">🧩 Fonctions</a></li>
+            <li><a href="python-modules.html">📦 Modules</a></li>
+            <li><a href="python-collections.html">📚 Collections</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-erreurs.html">❗ Erreurs</a></li>
+            <li><a href="python-poo.html">🏗️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs & astuces</a></li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="memo fiche fiche-python-controle">
-      <h2>🔍 Conditions (if / elif / else)</h2>
-      <pre><code>age = 20
-if age < 18:
-    print("Mineur")
-elif age < 65:
-    print("Adulte")
+    <section>
+      <h2>🔁 Instructions conditionnelles</h2>
+      <pre class="command">age = 20
+if age >= 18:
+    print("Majeur")
 else:
-    print("Senior")</code></pre>
+    print("Mineur")</pre>
+    </section>
 
-      <h2>🔁 Boucles for</h2>
-      <pre><code>for i in range(5):
-    print("Itération", i)</code></pre>
+    <section>
+      <h2>🔄 Boucles for</h2>
+      <pre class="command">for i in range(5):
+    print(i)</pre>
+    </section>
 
-      <h2>🔁 Boucles while</h2>
-      <pre><code>compteur = 0
+    <section>
+      <h2>♾️ Boucles while</h2>
+      <pre class="command">compteur = 0
 while compteur < 3:
-    print("Compteur:", compteur)
-    compteur += 1</code></pre>
+    print(compteur)
+    compteur += 1</pre>
+    </section>
 
-      <h2>🛑 Contrôle de flux</h2>
-      <pre><code>for lettre in "Python":
-    if lettre == "h":
-        continue
-    if lettre == "o":
+    <section>
+      <h2>⛔ Instructions break et continue</h2>
+      <pre class="command">for i in range(5):
+    if i == 3:
         break
-    print(lettre)</code></pre>
-
-      <h2>📂 Accès rapide aux sous-fiches Python</h2>
-      <div class="subnav-links">
-        <a href="python-bases.html">🔤 Bases</a>
-        <a href="python-controle.html" class="active">🔁 Contrôle</a>
-        <a href="python-fonctions.html">🔧 Fonctions</a>
-        <a href="python-collections.html">📚 Collections</a>
-        <a href="python-fichiers.html">📁 Fichiers</a>
-        <a href="python-modules.html">📦 Modules</a>
-        <a href="python-erreurs.html">❗ Erreurs</a>
-        <a href="python-poo.html">🏗️ POO</a>
-        <a href="python-trucs.html">🛠️ Astuces</a>
-      </div>
-
-      <h2>📎 Retour au sommaire</h2>
-      <p><a href="fiche-python.html">⬅️ Retour à la fiche principale Python</a></p>
+    print(i)</pre>
+      <pre class="command">for i in range(5):
+    if i == 2:
+        continue
+    print(i)</pre>
     </section>
   </main>
 
   <footer>
     <p>© 2025 Guillaume | Site personnel en construction 🚧</p>
+    <button onclick="window.print()">🖨️ Exporter en PDF</button>
   </footer>
+
+  <script src="../js/nav.js" defer></script>
 </body>
 </html>
