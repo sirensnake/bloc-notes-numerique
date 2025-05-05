@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>📚 Active Directory - Présentation</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>📚 Active Directory - Présentation</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🪟 Windows & Active Directory ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+            <li><a href="windows.html">🪟 Windows</a></li>
+            <li><a href="reseaux-windows.html">🌐 Réseaux</a></li>
+            <li><hr></li>
+            <li><a href="active-directory-presentation.html">📚 Présentation</a></li>
+            <li><a href="active-directory-replication.html">🔁 Réplication</a></li>
+            <li><a href="active-directory-fsmo.html">📌 Rôles FSMO</a></li>
+            <li><a href="active-directory-gpo.html">🔐 GPO</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">💻 Virtualisation ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage-interactive.html">📦 VBoxManage</a></li>
+          </ul>
+        </li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li class="dropdown">
+          <a href="#">🎯 Quiz ▼</a>
+          <ul class="submenu">
+            <li><a href="quiz-sommaire.html">📋 Sommaire des Quiz</a></li>
+            <li><a href="quiz-OSI.html">🔀 Modèle OSI</a></li>
+            <li><a href="quiz-protocoles.html">📡 Protocoles Réseau</a></li>
+            <li><a href="quiz-commandes.html">⌨️ Commandes Réseau</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p><strong>Active Directory (AD)</strong> est le service d'annuaire de Microsoft qui centralise la gestion des ressources réseau dans un environnement Windows. Il fournit une authentification, une autorisation et des services d'annuaire pour les réseaux d'entreprise.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#concepts">Concepts fondamentaux</a></li>
+        <li><a href="#composants">Composants AD</a></li>
+        <li><a href="#schema">Schéma Active Directory</a></li>
+        <li><a href="#domaines">Domaines et forêts</a></li>
+        <li><a href="#objets">Objets AD principaux</a></li>
+        <li><a href="#commandes">Commandes utiles</a></li>
+      </ul>
+    </details>
+
+    <section id="concepts">
+      <h2>🧠 Concepts fondamentaux</h2>
+      <p>Active Directory est construit autour de concepts clés :</p>
+      <ul>
+        <li><strong>Annuaire centralisé</strong> : Base de données distribuée des objets réseau</li>
+        <li><strong>Authentification unique (SSO)</strong> : Un seul login pour tous les services</li>
+        <li><strong>Gestion des ressources</strong> : Utilisateurs, ordinateurs, services</li>
+        <li><strong>Politique centralisée</strong> : GPO, sécurité, autorisations</li>
+        <li><strong>Réplication multi-maître</strong> : Synchronisation entre contrôleurs</li>
+      </ul>
+    </section>
+
+    <section id="composants">
+      <h2>⚙️ Composants Active Directory</h2>
+      <p>Les principaux composants d'AD :</p>
+      <ul>
+        <li><strong>AD DS (Domain Services)</strong> : Service d'annuaire principal</li>
+        <li><strong>AD LDS (Lightweight Directory Services)</strong> : Version allégée pour applications</li>
+        <li><strong>AD FS (Federation Services)</strong> : Authentification fédérée</li>
+        <li><strong>AD CS (Certificate Services)</strong> : Gestion des certificats</li>
+        <li><strong>AD RMS (Rights Management Services)</strong> : Protection des documents</li>
+      </ul>
+      
+      <h3>Architecture physique vs logique :</h3>
+      <p><strong>Structure physique :</strong></p>
+      <ul>
+        <li>Contrôleurs de domaine (DC)</li>
+        <li>Sites</li>
+        <li>Sous-réseaux</li>
+      </ul>
+      <p><strong>Structure logique :</strong></p>
+      <ul>
+        <li>Forêts</li>
+        <li>Domaines</li>
+        <li>Unités organisationnelles (OU)</li>
+        <li>Objets</li>
+      </ul>
+    </section>
+
+    <section id="schema">
+      <h2>📋 Schéma Active Directory</h2>
+      <p>Le schéma définit les classes d'objets et leurs attributs possibles :</p>
+      <pre><code># Voir le schéma
+Get-ADObject -SearchBase (Get-ADRootDSE).schemaNamingContext -Filter {name -like "*user*"}
+
+# Ajouter une extension de schéma (nécessite privilèges)
+regsvr32 schmmgmt.dll
+mmc /a
+# Ajouter le composant Active Directory Schema</code></pre>
+      
+      <p>Classes principales :</p>
+      <ul>
+        <li><code>user</code> : Utilisateurs</li>
+        <li><code>computer</code> : Ordinateurs</li>
+        <li><code>group</code> : Groupes</li>
+        <li><code>organizationalUnit</code> : Unités organisationnelles</li>
+        <li><code>domain</code> : Domaines</li>
+      </ul>
+    </section>
+
+    <section id="domaines">
+      <h2>🌳 Domaines et forêts</h2>
+      <h3>Hiérarchie AD :</h3>
+      <pre><code>Forêt (Forest)
+└── Domaine racine
+    ├── Domaine enfant 1
+    │   ├── OU Marketing
+    │   └── OU Ventes
+    └── Domaine enfant 2
+        ├── OU Dev
+        └── OU IT</code></pre>
+      
+      <p><strong>Niveaux fonctionnels :</strong></p>
+      <table>
+        <tr><th>Niveau</th><th>Serveur requis</th><th>Fonctionnalités</th></tr>
+        <tr><td>2008 R2</td><td>Windows Server 2008 R2</td><td>Corbeille AD, authentification managée</td></tr>
+        <tr><td>2012</td><td>Windows Server 2012</td><td>Claims-based Access Control</td></tr>
+        <tr><td>2016</td><td>Windows Server 2016</td><td>Temps d'arrêt PAM amélioré</td></tr>
+        <tr><td>2019</td><td>Windows Server 2019</td><td>Windows Defender ATP</td></tr>
+      </table>
+    </section>
+
+    <section id="objets">
+      <h2>📦 Objets AD principaux</h2>
+      <h3>Types d'objets :</h3>
+      <table>
+        <tr><th>Objet</th><th>Description</th><th>Exemple</th></tr>
+        <tr><td>User</td><td>Compte utilisateur</td><td>CN=jdupont,OU=Users,DC=company,DC=com</td></tr>
+        <tr><td>Computer</td><td>Compte ordinateur</td><td>CN=PC123,OU=Computers,DC=company,DC=com</td></tr>
+        <tr><td>Group</td><td>Groupe de sécurité</td><td>CN=IT_Staff,OU=Groups,DC=company,DC=com</td></tr>
+        <tr><td>OU</td><td>Unité organisationnelle</td><td>OU=Paris,OU=France,DC=company,DC=com</td></tr>
+      </table>
+      
+      <h3>Distinguished Names (DN) :</h3>
+      <pre><code># Format DN
+CN=Jean Dupont,OU=Marketing,OU=France,DC=company,DC=local
+
+# Composants DN
+CN  = Common Name
+OU  = Organizational Unit
+DC  = Domain Component</code></pre>
+    </section>
+
+    <section id="commandes">
+      <h2>⌨️ Commandes utiles</h2>
+      <h3>PowerShell AD :</h3>
+      <pre><code># Import du module
+Import-Module ActiveDirectory
+
+# Informations sur le domaine
+Get-ADDomain
+Get-ADForest
+Get-ADGroupMember "Domain Admins"
+
+# Utilisateurs
+Get-ADUser -Filter * -Properties *
+New-ADUser -Name "Jean Dupont" -SamAccountName jdupont -UserPrincipalName jdupont@company.com
+Set-ADUser jdupont -Description "Employé Marketing"
+Enable-ADAccount -Identity jdupont
+
+# Ordinateurs
+Get-ADComputer -Filter *
+New-ADComputer -Name "PC123" -Path "OU=Computers,DC=company,DC=com"
+
+# Groupes
+Get-ADGroup -Filter * -Properties *
+New-ADGroup -Name "Marketing" -GroupScope Global -GroupCategory Security
+Add-ADGroupMember -Identity "Marketing" -Members jdupont</code></pre>
+      
+      <h3>Commandes classiques :</h3>
+      <pre><code># Active Directory Users and Computers
+dsa.msc
+
+# Sites et services AD
+dssite.msc
+
+# Gestion des approbations
+domains.msc
+
+# Tests connexion AD
+dcdiag
+repadmin /showrepl</code></pre>
+    </section>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

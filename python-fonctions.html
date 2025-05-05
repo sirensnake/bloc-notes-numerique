@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐍 Python - Fonctions</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style-python.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐍 Python : Fonctions</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li class="dropdown">
+          <a href="#">📚 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Les <strong>fonctions</strong> sont des blocs de code réutilisables qui permettent de structurer vos programmes, réduire les répétitions et rendre votre code plus maintenable.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#definition">Définir une fonction</a></li>
+        <li><a href="#arguments">Passer des arguments</a></li>
+        <li><a href="#retour">Retourner des valeurs</a></li>
+        <li><a href="#defaut">Paramètres par défaut</a></li>
+        <li><a href="#variables">Arguments variables</a></li>
+        <li><a href="#lambda">Fonctions lambda</a></li>
+        <li><a href="#imbrication">Fonctions imbriquées</a></li>
+        <li><a href="#bonus">Bonus</a></li>
+      </ul>
+    </details>
+
+    <section id="definition">
+      <h2>🔧 Définir une fonction</h2>
+      <p>Une fonction se définit avec le mot-clé <code>def</code> suivi du nom de la fonction et de parenthèses :</p>
+      <pre><code>def dire_bonjour():
+    print("Bonjour !")
+    
+# Appel de la fonction
+dire_bonjour()</code></pre>
+    </section>
+
+    <section id="arguments">
+      <h2>📥 Passer des arguments</h2>
+      <p>Les fonctions peuvent accepter des paramètres qui sont utilisés à l'intérieur du corps de la fonction :</p>
+      <pre><code>def saluer(nom):
+    print(f"Salut {nom} !")
+    
+# Appel avec un argument
+saluer("Guillaume")  # Affiche : Salut Guillaume !</code></pre>
+    </section>
+
+    <section id="retour">
+      <h2>📤 Retourner une valeur</h2>
+      <p>Les fonctions peuvent renvoyer des valeurs avec l'instruction <code>return</code> :</p>
+      <pre><code>def addition(a, b):
+    return a + b
+    
+# Utilisation de la valeur retournée
+resultat = addition(5, 3)  # resultat vaut 8
+print(resultat)</code></pre>
+      <p>Une fonction peut retourner plusieurs valeurs :</p>
+      <pre><code>def operation(a, b):
+    somme = a + b
+    produit = a * b
+    return somme, produit
+    
+s, p = operation(3, 4)  # s vaut 7, p vaut 12</code></pre>
+    </section>
+
+    <section id="defaut">
+      <h2>🧰 Paramètres par défaut</h2>
+      <p>Vous pouvez spécifier des valeurs par défaut pour les paramètres :</p>
+      <pre><code>def saluer(nom="ami"):
+    print(f"Bonjour {nom} !")
+    
+saluer()  # Affiche : Bonjour ami !
+saluer("Guillaume")  # Affiche : Bonjour Guillaume !</code></pre>
+    </section>
+
+    <section id="variables">
+      <h2>📦 Arguments variables</h2>
+      <p>Pour un nombre variable d'arguments, utilisez <code>*args</code> (tuple) et <code>**kwargs</code> (dictionnaire) :</p>
+      <pre><code># *args pour des arguments positionnels variables
+def addition(*nombres):
+    return sum(nombres)
+    
+print(addition(1, 2, 3, 4))  # Affiche : 10
+
+# **kwargs pour des arguments nommés variables
+def profil(**donnees):
+    for cle, valeur in donnees.items():
+        print(f"{cle} : {valeur}")
+        
+profil(nom="Dupont", age=30, ville="Lyon")</code></pre>
+    </section>
+
+    <section id="lambda">
+      <h2>🧠 Fonctions lambda</h2>
+      <p>Les fonctions lambda sont des fonctions anonymes concises pour des opérations simples :</p>
+      <pre><code>carre = lambda x: x * x
+print(carre(5))  # Affiche : 25
+
+# Utilisation avec les fonctions de tri
+personnes = [("Alice", 25), ("Bob", 30), ("Charlie", 22)]
+personnes_triees = sorted(personnes, key=lambda p: p[1])  # Tri par âge</code></pre>
+    </section>
+
+    <section id="imbrication">
+      <h2>🔄 Fonctions imbriquées</h2>
+      <p>Vous pouvez définir des fonctions à l'intérieur d'autres fonctions :</p>
+      <pre><code>def exterieure():
+    print("Fonction extérieure")
+    
+    def interieure():
+        print("Fonction intérieure")
+    
+    interieure()  # Appel de la fonction intérieure
+    
+exterieure()  # Affiche les deux messages</code></pre>
+    </section>
+
+    <details id="bonus" class="bonus">
+      <summary>🎁 Bonus : Fonctions avancées</summary>
+      <h3>Décorateurs</h3>
+      <p>Les décorateurs permettent de modifier le comportement des fonctions :</p>
+      <pre><code>def mon_decorateur(fonction):
+    def wrapper():
+        print("Avant l'exécution")
+        fonction()
+        print("Après l'exécution")
+    return wrapper
+
+@mon_decorateur
+def dire_bonjour():
+    print("Bonjour !")
+    
+dire_bonjour()</code></pre>
+      
+      <h3>Fonctions récursives</h3>
+      <pre><code>def factoriel(n):
+    if n <= 1:
+        return 1
+    else:
+        return n * factoriel(n-1)
+        
+print(factoriel(5))  # Affiche : 120</code></pre>
+      
+      <h3>Type hints (Python 3.5+)</h3>
+      <pre><code>def calcul_moyenne(notes: list[float]) -> float:
+    """Calcule la moyenne des notes."""
+    return sum(notes) / len(notes)
+    
+moyenne = calcul_moyenne([15.5, 17.0, 12.5])
+print(moyenne)</code></pre>
+    </details>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

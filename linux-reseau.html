@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐧 Linux - Réseau</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐧 Linux : Commandes réseau</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">📦 VBoxManage ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage.html">📘 Commandes VBoxManage</a></li>
+            <li><a href="fiche-vboxmanage-interactive.html">🖱️ Interface interactive</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Cette fiche présente les <strong>commandes réseau</strong> essentielles sous Linux. Ces outils vous permettent de configurer, surveiller et diagnostiquer les connexions réseau sur votre système.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#interfaces">Interfaces et adresses IP</a></li>
+        <li><a href="#connectivite">Tests de connectivité</a></li>
+        <li><a href="#ports">Analyse des ports</a></li>
+        <li><a href="#config-reseau">Configuration réseau</a></li>
+        <li><a href="#wifi">Gestion du Wi-Fi</a></li>
+        <li><a href="#dns">Configuration DNS</a></li>
+        <li><a href="#outils-avances">Outils avancés</a></li>
+      </ul>
+    </details>
+
+    <section id="interfaces">
+      <h2>🖧 Interfaces et adresses IP</h2>
+      <p>Commandes pour afficher et gérer les interfaces réseau :</p>
+      <pre><code>ip a                        # Affiche les interfaces réseau et adresses IP
+ip addr show                # Même fonction, forme longue
+ip link show                # Affiche les interfaces réseau (état physique)
+ip route                    # Affiche la table de routage (passerelles)
+ip route show default       # Affiche uniquement la passerelle par défaut
+ifconfig                    # Ancienne commande (souvent remplacée par ip)
+hostname -I                 # Affiche uniquement les adresses IP de l'hôte</code></pre>
+      
+      <p>Activer/désactiver une interface réseau :</p>
+      <pre><code>sudo ip link set eth0 up     # Active l'interface eth0
+sudo ip link set eth0 down   # Désactive l'interface eth0</code></pre>
+      
+      <p>Configurer une adresse IP :</p>
+      <pre><code>sudo ip addr add 192.168.1.100/24 dev eth0   # Ajoute une adresse IP
+sudo ip addr del 192.168.1.100/24 dev eth0   # Supprime une adresse IP</code></pre>
+    </section>
+
+    <section id="connectivite">
+      <h2>📡 Tests de connectivité</h2>
+      <p>Outils pour tester la connectivité réseau :</p>
+      <pre><code>ping 8.8.8.8                # Test de connexion vers l'IP de Google DNS
+ping -c 4 google.fr         # Envoie 4 paquets seulement
+ping6 ipv6.google.com       # Test en IPv6
+traceroute google.fr        # Affiche le chemin vers un hôte
+tracepath example.com       # Alternative sans privilèges root
+mtr google.com              # Combinaison de ping et traceroute (interactif)</code></pre>
+      
+      <p>Test de résolution DNS :</p>
+      <pre><code>nslookup google.com         # Interroge les serveurs DNS pour un nom
+dig google.com              # Outil DNS avancé avec plus de détails
+host google.com             # Alternative simple à dig
+dig -x 8.8.8.8              # Recherche inverse (IP vers nom)
+whois example.com           # Informations sur le propriétaire du domaine</code></pre>
+    </section>
+
+    <section id="ports">
+      <h2>🔌 Analyse des ports</h2>
+      <p>Vérifier les ports et connexions réseau actives :</p>
+      <pre><code>ss -tuln                    # Ports en écoute (TCP, UDP, numérique)
+ss -tap                     # Connexions TCP actives avec processus
+netstat -tuln               # Ancienne commande pour les ports en écoute
+netstat -tap                # Connexions actives avec processus
+lsof -i                     # Liste les fichiers réseau ouverts
+lsof -i :22                 # Vérifier quel processus utilise le port 22
+fuser 80/tcp                # Identifie les processus utilisant le port 80</code></pre>
+      
+      <p>Analyse réseau plus détaillée :</p>
+      <pre><code>ss -s                       # Statistiques des sockets
+netstat -s                  # Statistiques réseau détaillées
+iptraf-ng                   # Moniteur de trafic interactif (à installer)</code></pre>
+    </section>
+
+    <section id="config-reseau">
+      <h2>⚙️ Configuration réseau</h2>
+      <p>Configuration des interfaces réseau :</p>
+      <pre><code># Fichiers de configuration (varient selon la distribution)
+/etc/network/interfaces     # Debian/Ubuntu (configuration traditionnelle)
+/etc/netplan/*.yaml         # Ubuntu récent (netplan)
+/etc/sysconfig/network-scripts/ifcfg-*  # CentOS/RHEL
+
+# Redémarrer le réseau
+sudo systemctl restart networking     # Debian/Ubuntu
+sudo netplan apply                   # Ubuntu avec netplan
+sudo systemctl restart NetworkManager # Distributions avec NetworkManager</code></pre>
+      
+      <p>Configurer une route :</p>
+      <pre><code>sudo ip route add 192.168.2.0/24 via 192.168.1.1   # Ajoute une route
+sudo ip route del 192.168.2.0/24                   # Supprime une route</code></pre>
+    </section>
+
+    <section id="wifi">
+      <h2>📶 Gestion du Wi-Fi</h2>
+      <p>Commandes pour gérer les connexions Wi-Fi :</p>
+      <pre><code>nmcli device wifi list       # Liste les réseaux Wi-Fi disponibles
+nmcli device wifi connect "SSID" password "mot_de_passe"  # Connexion à un réseau
+
+# Outils plus traditionnels (si installés)
+iwconfig                    # Affiche/configure les interfaces Wi-Fi
+iwlist wlan0 scan           # Recherche les réseaux Wi-Fi disponibles
+
+# Gestion du Wi-Fi avec wpa_supplicant
+wpa_cli                     # Interface interactive pour wpa_supplicant</code></pre>
+    </section>
+
+    <section id="dns">
+      <h2>🔍 Configuration DNS</h2>
+      <p>Gérer la résolution de noms DNS :</p>
+      <pre><code># Fichiers de configuration DNS
+/etc/hosts                  # Table statique de noms d'hôtes
+/etc/resolv.conf            # Configuration des serveurs DNS
+/etc/nsswitch.conf          # Ordre de recherche pour la résolution de noms
+
+# Configurer les serveurs DNS avec resolvconf
+sudo nano /etc/resolvconf/resolv.conf.d/head
+# Ajouter : nameserver 8.8.8.8
+sudo resolvconf -u          # Mettre à jour</code></pre>
+      
+      <p>Avec NetworkManager :</p>
+      <pre><code>nmcli connection modify "Connexion 1" ipv4.dns "8.8.8.8 8.8.4.4"
+nmcli connection up "Connexion 1"</code></pre>
+    </section>
+
+    <section id="outils-avances">
+      <h2>🧰 Outils avancés</h2>
+      <p>Outils d'analyse et de diagnostic réseau avancés :</p>
+      <pre><code>tcpdump -i eth0              # Capture le trafic sur une interface
+tcpdump host 192.168.1.10   # Capture le trafic vers/depuis une IP
+tcpdump port 80             # Capture le trafic HTTP
+
+nmap 192.168.1.1            # Scanner les ports d'une adresse IP
+nmap -sP 192.168.1.0/24     # Scanner tous les hôtes d'un réseau
+
+iftop                       # Moniteur de bande passante par connexion
+nethogs                     # Moniteur de bande passante par processus
+iperf3 -s                   # Serveur de test de performance réseau
+iperf3 -c serveur           # Client de test de performance réseau</code></pre>
+    </section>
+
+    <details id="bonus" class="bonus">
+      <summary>🎁 Bonus : Configuration réseau avancée</summary>
+      
+      <h3>Bonding (agrégation de liens)</h3>
+      <p>Combiner plusieurs interfaces réseau pour augmenter la bande passante ou la redondance :</p>
+      <pre><code># Installation des outils
+sudo apt install ifenslave
+
+# Configuration dans /etc/network/interfaces
+auto bond0
+iface bond0 inet static
+    address 192.168.1.10
+    netmask 255.255.255.0
+    gateway 192.168.1.1
+    bond-slaves eth0 eth1
+    bond-mode 0
+    bond-miimon 100</code></pre>
+      
+      <h3>Utilisation de la Quality of Service (QoS)</h3>
+      <pre><code># Installation de tc (Traffic Control)
+sudo apt install iproute2
+
+# Exemple simple de limitation de bande passante
+sudo tc qdisc add dev eth0 root tbf rate 1mbit burst 32kbit latency 400ms</code></pre>
+      
+      <h3>Tunnels VPN</h3>
+      <pre><code># OpenVPN
+sudo apt install openvpn
+sudo openvpn --config client.ovpn
+
+# WireGuard
+sudo apt install wireguard
+sudo wg-quick up wg0</code></pre>
+    </details>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

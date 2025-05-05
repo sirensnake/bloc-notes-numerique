@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐧 Linux - Gestion des paquets</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐧 Linux : Gestion des paquets</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">📦 VBoxManage ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage.html">📘 Commandes VBoxManage</a></li>
+            <li><a href="fiche-vboxmanage-interactive.html">🖱️ Interface interactive</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Cette fiche décrit les <strong>commandes de gestion des paquets</strong> sous Linux. Les gestionnaires de paquets permettent d'installer, mettre à jour et supprimer des logiciels de manière efficace et sécurisée sur votre système.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#apt">APT (Debian/Ubuntu)</a></li>
+        <li><a href="#maj">Mise à jour du système</a></li>
+        <li><a href="#installation">Installation de paquets</a></li>
+        <li><a href="#suppression">Suppression de paquets</a></li>
+        <li><a href="#recherche">Recherche et informations</a></li>
+        <li><a href="#autres">Autres systèmes de paquets</a></li>
+        <li><a href="#dpkg">Gestion avancée avec dpkg</a></li>
+      </ul>
+    </details>
+
+    <section id="apt">
+      <h2>📦 APT (Debian/Ubuntu)</h2>
+      <p>APT (Advanced Package Tool) est le gestionnaire de paquets principal des distributions basées sur Debian comme Ubuntu, Linux Mint, etc.</p>
+      <p>Les commandes APT doivent généralement être exécutées avec les privilèges administrateur via <code>sudo</code>.</p>
+    </section>
+
+    <section id="maj">
+      <h2>🔄 Mise à jour du système</h2>
+      <pre><code>sudo apt update               # Met à jour la liste des paquets disponibles
+sudo apt upgrade              # Met à jour les paquets installés
+sudo apt full-upgrade         # Mise à jour complète (peut supprimer des paquets obsolètes)
+sudo apt dist-upgrade         # Similaire à full-upgrade, peut ajouter/supprimer des paquets</code></pre>
+      <p>Il est recommandé d'exécuter <code>apt update</code> régulièrement pour garder la liste des paquets à jour, et <code>apt upgrade</code> pour installer les mises à jour de sécurité.</p>
+    </section>
+
+    <section id="installation">
+      <h2>📥 Installation de paquets</h2>
+      <pre><code>sudo apt install nom_paquet    # Installe un paquet
+sudo apt install htop curl    # Installe plusieurs paquets à la fois
+sudo apt install paquet=1.2.3  # Installe une version spécifique
+sudo apt install --no-upgrade paquet  # Installe sans mettre à jour
+sudo apt install --reinstall paquet   # Réinstalle un paquet</code></pre>
+      <p>Lors de l'installation, APT résout automatiquement les dépendances et installe tous les paquets nécessaires.</p>
+    </section>
+
+    <section id="suppression">
+      <h2>🗑️ Suppression</h2>
+      <pre><code>sudo apt remove nom_paquet     # Supprime un paquet (garde les fichiers de configuration)
+sudo apt purge nom_paquet      # Supprime tout (inclus fichiers de configuration)
+sudo apt autoremove            # Supprime les dépendances inutilisées
+sudo apt clean                 # Nettoie le cache local des paquets téléchargés
+sudo apt autoclean             # Nettoie seulement les versions obsolètes</code></pre>
+      <p>Pour une suppression complète d'un paquet, utilisez la combinaison :</p>
+      <pre><code>sudo apt purge nom_paquet && sudo apt autoremove</code></pre>
+    </section>
+
+    <section id="recherche">
+      <h2>🔍 Recherche et informations</h2>
+      <pre><code>apt search mot_clé            # Recherche un paquet par mot-clé
+apt list --installed          # Liste tous les paquets installés
+apt show nom_paquet           # Affiche les détails d'un paquet
+apt depends nom_paquet        # Affiche les dépendances d'un paquet
+apt-cache policy nom_paquet   # Montre les versions disponibles et installées
+dpkg -l | grep nom_paquet     # Vérifie si un paquet est installé</code></pre>
+    </section>
+
+    <section id="autres">
+      <h2>🔄 Autres systèmes de paquets</h2>
+      <p>Selon votre distribution Linux, vous pourriez utiliser différents gestionnaires de paquets :</p>
+      <pre><code># DNF (Fedora, RHEL, CentOS)
+sudo dnf update                # Met à jour la liste des paquets
+sudo dnf install nom_paquet    # Installe un paquet
+sudo dnf remove nom_paquet     # Supprime un paquet
+sudo dnf search mot_clé        # Recherche un paquet
+
+# Pacman (Arch Linux)
+sudo pacman -Syu               # Met à jour le système
+sudo pacman -S nom_paquet      # Installe un paquet
+sudo pacman -R nom_paquet      # Supprime un paquet
+sudo pacman -Ss mot_clé        # Recherche un paquet
+
+# Zypper (openSUSE)
+sudo zypper update             # Met à jour le système
+sudo zypper install nom_paquet # Installe un paquet
+sudo zypper remove nom_paquet  # Supprime un paquet
+sudo zypper search mot_clé     # Recherche un paquet</code></pre>
+    </section>
+
+    <section id="dpkg">
+      <h2>⚙️ Gestion avancée avec dpkg</h2>
+      <p>DPKG est l'outil de bas niveau sous-jacent à APT :</p>
+      <pre><code>sudo dpkg -i paquet.deb        # Installe un fichier .deb local
+sudo dpkg -r nom_paquet       # Supprime un paquet
+dpkg -l                       # Liste tous les paquets installés
+dpkg -L nom_paquet            # Liste les fichiers installés par un paquet
+dpkg -S /chemin/vers/fichier  # Trouve le paquet qui a installé un fichier</code></pre>
+    </section>
+
+    <section id="snap-flatpak">
+      <h2>📦 Snap et Flatpak</h2>
+      <p>Ce sont des systèmes de distribution d'applications universels :</p>
+      <pre><code># Snap (préinstallé sur Ubuntu)
+sudo snap install nom_paquet   # Installe une application Snap
+snap list                      # Liste les Snaps installés
+sudo snap refresh              # Met à jour tous les Snaps
+sudo snap remove nom_paquet    # Supprime un Snap
+
+# Flatpak
+flatpak install flathub org.application.Name  # Installe une application Flatpak
+flatpak list                                 # Liste les Flatpaks installés
+flatpak update                               # Met à jour tous les Flatpaks
+flatpak uninstall org.application.Name       # Supprime un Flatpak</code></pre>
+    </section>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

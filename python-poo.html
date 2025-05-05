@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐍 Python - Programmation Orientée Objet</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style-python.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐍 Python : Programmation Orientée Objet</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li class="dropdown">
+          <a href="#">📚 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>La <strong>programmation orientée objet</strong> (POO) en Python permet de structurer le code en regroupant données et comportements dans des objets. Cette fiche vous guide à travers les bases de la POO : classes, objets, constructeurs, héritage, encapsulation, et bien plus.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#classe">Définir une classe</a></li>
+        <li><a href="#objet">Instancier un objet</a></li>
+        <li><a href="#constructeur">Constructeur (__init__)</a></li>
+        <li><a href="#heritage">Héritage</a></li>
+        <li><a href="#encapsulation">Encapsulation</a></li>
+        <li><a href="#methodes">Méthodes spéciales</a></li>
+        <li><a href="#bonus">Bonus</a></li>
+      </ul>
+    </details>
+
+    <section id="classe">
+      <h2>🏗️ Définir une classe</h2>
+      <p>Une classe est un modèle (ou "plan") qui définit des attributs et des méthodes :</p>
+      <pre><code>class Chien:
+    # Attribut de classe (partagé par toutes les instances)
+    espece = "Canis familiaris"
+    
+    # Méthode d'instance
+    def aboyer(self):
+        print("Ouaf !")
+        
+    def se_presenter(self):
+        print(f"Je suis un {self.espece}")</code></pre>
+    </section>
+
+    <section id="objet">
+      <h2>🔨 Instancier un objet</h2>
+      <p>Un objet est une instance d'une classe, créée en appelant la classe comme une fonction :</p>
+      <pre><code># Création d'une instance
+medor = Chien()
+
+# Appel de méthodes
+medor.aboyer()        # Affiche : Ouaf !
+medor.se_presenter()  # Affiche : Je suis un Canis familiaris
+
+# Ajout d'attributs d'instance
+medor.nom = "Médor"
+medor.age = 3
+print(f"{medor.nom} a {medor.age} ans")</code></pre>
+    </section>
+
+    <section id="constructeur">
+      <h2>🧱 Constructeur (__init__)</h2>
+      <p>La méthode <code>__init__</code> est appelée lors de la création d'une instance et permet d'initialiser ses attributs :</p>
+      <pre><code>class Chien:
+    def __init__(self, nom, age=1):
+        self.nom = nom
+        self.age = age
+        print(f"Un nouveau chien nommé {nom} a été créé !")
+    
+    def info(self):
+        return f"{self.nom} a {self.age} ans"
+
+# Utilisation du constructeur avec arguments
+medor = Chien("Médor", 3)
+rex = Chien("Rex")  # Utilise la valeur par défaut pour age
+
+print(medor.info())  # Affiche : Médor a 3 ans
+print(rex.info())    # Affiche : Rex a 1 an</code></pre>
+    </section>
+
+    <section id="heritage">
+      <h2>📐 Héritage</h2>
+      <p>L'héritage permet à une classe de recevoir les attributs et méthodes d'une autre classe :</p>
+      <pre><code>class Animal:
+    def __init__(self, nom):
+        self.nom = nom
+    
+    def parler(self):
+        print("Je suis un animal")
+
+class Chat(Animal):  # Chat hérite d'Animal
+    def parler(self):  # Redéfinition de la méthode
+        print("Miaou !")
+    
+    def ronronner(self):  # Nouvelle méthode
+        print("Ronron...")
+
+# Utilisation
+felix = Chat("Félix")
+felix.parler()     # Affiche : Miaou !
+felix.ronronner()  # Affiche : Ronron...
+print(felix.nom)   # Affiche : Félix (hérité d'Animal)</code></pre>
+      <p>Appel à la méthode parente avec <code>super()</code> :</p>
+      <pre><code>class Chien(Animal):
+    def __init__(self, nom, race):
+        super().__init__(nom)  # Appelle le constructeur d'Animal
+        self.race = race
+    
+    def parler(self):
+        super().parler()  # Appelle la méthode parler d'Animal
+        print("Ouaf !")
+
+rex = Chien("Rex", "Berger allemand")
+rex.parler()  # Affiche : Je suis un animal
+              #          Ouaf !</code></pre>
+    </section>
+
+    <section id="encapsulation">
+      <h2>🔒 Encapsulation</h2>
+      <p>L'encapsulation permet de restreindre l'accès aux attributs et méthodes d'une classe :</p>
+      <pre><code>class Compte:
+    def __init__(self, proprietaire, solde_initial=0):
+        self.proprietaire = proprietaire  # Public
+        self.__solde = solde_initial      # Privé (notation avec double underscore)
+    
+    def consulter_solde(self):
+        return f"Solde actuel : {self.__solde}€"
+    
+    def deposer(self, montant):
+        if montant > 0:
+            self.__solde += montant
+            return True
+        return False
+    
+    def retirer(self, montant):
+        if 0 < montant <= self.__solde:
+            self.__solde -= montant
+            return True
+        return False
+
+# Utilisation
+compte = Compte("Guillaume", 1000)
+print(compte.consulter_solde())  # Affiche : Solde actuel : 1000€
+
+compte.deposer(500)
+print(compte.consulter_solde())  # Affiche : Solde actuel : 1500€
+
+# Tentative d'accès direct à l'attribut privé
+# print(compte.__solde)  # Génère une erreur AttributeError
+
+# Python permet tout de même d'y accéder avec une notation spéciale (à éviter)
+print(compte._Compte__solde)  # Affiche : 1500</code></pre>
+    </section>
+
+    <section id="methodes">
+      <h2>🔄 Méthodes spéciales</h2>
+      <p>Python offre des méthodes spéciales (commençant et finissant par double underscore) pour personnaliser le comportement des objets :</p>
+      <pre><code>class Vecteur:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    
+    # Représentation pour str()
+    def __str__(self):
+        return f"Vecteur({self.x}, {self.y})"
+    
+    # Représentation pour repr()
+    def __repr__(self):
+        return f"Vecteur({self.x}, {self.y})"
+    
+    # Addition de vecteurs
+    def __add__(self, autre):
+        return Vecteur(self.x + autre.x, self.y + autre.y)
+    
+    # Comparaison d'égalité
+    def __eq__(self, autre):
+        return self.x == autre.x and self.y == autre.y
+    
+    # Obtenir la longueur du vecteur avec len()
+    def __len__(self):
+        import math
+        return math.floor(math.sqrt(self.x**2 + self.y**2))
+
+# Utilisation
+v1 = Vecteur(3, 4)
+v2 = Vecteur(1, 1)
+
+print(v1)          # Affiche : Vecteur(3, 4)
+print(v1 + v2)     # Affiche : Vecteur(4, 5)
+print(v1 == v2)    # Affiche : False
+print(len(v1))     # Affiche : 5</code></pre>
+    </section>
+
+    <details id="bonus" class="bonus">
+      <summary>🎁 Bonus : Techniques avancées</summary>
+      <h3>Méthodes de classe et méthodes statiques</h3>
+      <pre><code>class MaClasse:
+    compteur = 0  # Variable de classe
+    
+    def __init__(self):
+        MaClasse.compteur += 1
+    
+    # Méthode de classe (accès aux attributs de classe)
+    @classmethod
+    def get_compteur(cls):
+        return f"Nombre d'instances : {cls.compteur}"
+    
+    # Méthode statique (indépendante de la classe)
+    @staticmethod
+    def info():
+        return "Cette classe est un exemple."
+
+# Utilisation
+obj1 = MaClasse()
+obj2 = MaClasse()
+
+print(MaClasse.get_compteur())  # Affiche : Nombre d'instances : 2
+print(MaClasse.info())          # Affiche : Cette classe est un exemple.</code></pre>
+      
+      <h3>Propriétés (@property)</h3>
+      <pre><code>class Personne:
+    def __init__(self, nom, age):
+        self._nom = nom
+        self._age = age
+    
+    # Getter pour age
+    @property
+    def age(self):
+        return self._age
+    
+    # Setter pour age
+    @age.setter
+    def age(self, valeur):
+        if 0 <= valeur <= 150:
+            self._age = valeur
+        else:
+            raise ValueError("Age invalide")
+    
+    # Getter pour nom
+    @property
+    def nom(self):
+        return self._nom.title()
+
+# Utilisation
+p = Personne("jean", 30)
+print(p.nom)    # Affiche : Jean (avec majuscule)
+print(p.age)    # Affiche : 30
+
+p.age = 31      # Utilise le setter
+print(p.age)    # Affiche : 31
+
+# p.age = 200   # Génère une erreur ValueError</code></pre>
+    </details>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

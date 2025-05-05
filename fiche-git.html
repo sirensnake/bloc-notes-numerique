@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🔧 Git - Guide pratique</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🔧 Git - Guide pratique</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🪟 Windows & Active Directory ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+            <li><a href="#">🪟 Windows</a></li>
+            <li><a href="#">🌐 Réseaux</a></li>
+            <li><hr></li>
+            <li><a href="#">📚 Présentation</a></li>
+            <li><a href="#">🔁 Réplication</a></li>
+            <li><a href="#">📌 Rôles FSMO</a></li>
+            <li><a href="#">🔐 GPO</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">💻 Virtualisation ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage-interactive.html">📦 VBoxManage</a></li>
+          </ul>
+        </li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li class="dropdown">
+          <a href="#">🎯 Quiz ▼</a>
+          <ul class="submenu">
+            <li><a href="quiz-sommaire.html">📋 Sommaire des Quiz</a></li>
+            <li><a href="quiz-OSI.html">🔀 Modèle OSI</a></li>
+            <li><a href="quiz-protocoles.html">📡 Protocoles Réseau</a></li>
+            <li><a href="quiz-commandes.html">⌨️ Commandes Réseau</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p><strong>Git</strong> est un système de gestion de versions distribué, utilisé principalement pour le développement logiciel. Il permet de suivre les modifications d'un projet dans le temps, de collaborer efficacement à plusieurs et de gérer des branches de travail.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#presentation">Présentation</a></li>
+        <li><a href="#commandes-base">Commandes de base</a></li>
+        <li><a href="#branches">Gestion des branches</a></li>
+        <li><a href="#astuces">Astuces utiles</a></li>
+        <li><a href="#workflow">Flux de travail</a></li>
+        <li><a href="#ressources">Ressources</a></li>
+      </ul>
+    </details>
+
+    <section id="presentation">
+      <h2>📌 Présentation de Git</h2>
+      <p><strong>Git</strong> est un système de gestion de versions distribué, utilisé principalement pour le développement logiciel. Il permet de suivre les modifications d'un projet dans le temps, de collaborer efficacement à plusieurs et de gérer des branches de travail.</p>
+      <h3>🌟 Objectifs de cette fiche</h3>
+      <ul>
+        <li>Initier un projet avec Git</li>
+        <li>Utiliser les commandes fondamentales</li>
+        <li>Créer et fusionner des branches</li>
+        <li>Travailler avec un dépôt distant (GitHub, GitLab, etc.)</li>
+      </ul>
+    </section>
+
+    <section id="commandes-base">
+      <h2>📦 Commandes de base</h2>
+      <p>Voici les commandes essentielles pour débuter avec Git :</p>
+      
+      <h3>Initialiser et cloner</h3>
+      <pre><code>git init</code></pre>
+      <p>Initialise un nouveau dépôt Git dans le dossier courant.</p>
+      
+      <pre><code>git clone <url></code></pre>
+      <p>Crée une copie locale d'un dépôt distant.</p>
+      
+      <h3>Suivre les modifications</h3>
+      <pre><code>git status</code></pre>
+      <p>Affiche l'état actuel du dépôt (fichiers modifiés, en attente, etc.).</p>
+      
+      <pre><code>git add .</code></pre>
+      <p>Ajoute tous les fichiers modifiés à l'index (prêts pour le commit).</p>
+      
+      <pre><code>git add fichier.txt</code></pre>
+      <p>Ajoute uniquement le fichier spécifié à l'index.</p>
+      
+      <h3>Enregistrer et synchroniser</h3>
+      <pre><code>git commit -m "Message"</code></pre>
+      <p>Enregistre les changements dans l'historique du projet avec un message explicatif.</p>
+      
+      <pre><code>git push origin main</code></pre>
+      <p>Envoie les commits vers le dépôt distant (ici sur la branche <code>main</code>).</p>
+      
+      <pre><code>git pull origin main</code></pre>
+      <p>Récupère et fusionne les dernières modifications depuis le dépôt distant.</p>
+    </section>
+
+    <section id="branches">
+      <h2>🧪 Gestion des branches</h2>
+      <p>Les branches permettent de travailler sur différentes fonctionnalités en parallèle :</p>
+      
+      <pre><code>git branch</code></pre>
+      <p>Affiche la liste des branches locales.</p>
+      
+      <pre><code>git branch ma-branche</code></pre>
+      <p>Crée une nouvelle branche nommée <code>ma-branche</code>.</p>
+      
+      <pre><code>git checkout ma-branche</code></pre>
+      <p>Bascule sur la branche <code>ma-branche</code>.</p>
+      
+      <pre><code>git checkout -b nouvelle-branche</code></pre>
+      <p>Crée une nouvelle branche et bascule dessus en une seule commande.</p>
+      
+      <pre><code>git merge ma-branche</code></pre>
+      <p>Fusionne <code>ma-branche</code> dans la branche actuelle.</p>
+      
+      <pre><code>git branch -d ma-branche</code></pre>
+      <p>Supprime la branche <code>ma-branche</code> après fusion.</p>
+    </section>
+
+    <section id="astuces">
+      <h2>💡 Astuces utiles</h2>
+      <p>Quelques commandes et techniques pour améliorer votre productivité :</p>
+      
+      <h3>Historique et différences</h3>
+      <pre><code>git log</code></pre>
+      <p>Affiche l'historique complet des commits.</p>
+      
+      <pre><code>git log --oneline</code></pre>
+      <p>Affiche un historique condensé des commits (une ligne par commit).</p>
+      
+      <pre><code>git diff</code></pre>
+      <p>Compare les modifications non validées avec le dernier commit.</p>
+      
+      <pre><code>git diff --staged</code></pre>
+      <p>Compare les modifications en attente (staged) avec le dernier commit.</p>
+      
+      <h3>Mettre de côté et annuler</h3>
+      <pre><code>git stash</code></pre>
+      <p>Met de côté les changements en cours pour les reprendre plus tard.</p>
+      
+      <pre><code>git stash apply</code></pre>
+      <p>Réapplique les derniers changements mis de côté.</p>
+      
+      <pre><code>git reset --hard</code></pre>
+      <p>Annule toutes les modifications et revient au dernier commit (attention : irréversible).</p>
+      
+      <pre><code>git reset --soft HEAD~1</code></pre>
+      <p>Annule le dernier commit mais conserve les modifications dans l'index.</p>
+    </section>
+
+    <section id="workflow">
+      <h2>📄 Exemple de flux de travail basique</h2>
+      <p>Voici un exemple de workflow Git pour un projet simple :</p>
+      <ol>
+        <li>Créer un dossier de projet</li>
+        <li>Initialiser le dépôt Git : <code>git init</code></li>
+        <li>Créer quelques fichiers de base</li>
+        <li>Ajouter les fichiers à l'index : <code>git add .</code></li>
+        <li>Créer le premier commit : <code>git commit -m "Premier commit"</code></li>
+        <li>Créer un dépôt sur GitHub/GitLab</li>
+        <li>Connecter le dépôt local au dépôt distant : <code>git remote add origin &lt;url&gt;</code></li>
+        <li>Pousser les changements : <code>git push -u origin main</code></li>
+      </ol>
+      
+      <h3>Workflow avec branches</h3>
+      <ol>
+        <li>Créer une branche pour une nouvelle fonctionnalité : <code>git checkout -b feature/nouvelle-fonction</code></li>
+        <li>Travailler sur cette branche et faire des commits</li>
+        <li>Pousser la branche : <code>git push origin feature/nouvelle-fonction</code></li>
+        <li>Créer une Pull Request sur GitHub/GitLab</li>
+        <li>Après révision, fusionner dans la branche principale</li>
+      </ol>
+    </section>
+
+    <section id="ressources">
+      <h2>📚 Ressources</h2>
+      <p>Pour approfondir vos connaissances sur Git :</p>
+      <ul>
+        <li><a href="https://git-scm.com/doc" target="_blank">Documentation officielle Git</a></li>
+        <li><a href="https://www.youtube.com/watch?v=SWYqp7iY_Tc" target="_blank">Git pour les débutants (YouTube)</a></li>
+        <li><a href="https://learngitbranching.js.org" target="_blank">Learn Git Branching (interactif)</a></li>
+        <li><a href="https://ohshitgit.com" target="_blank">Oh Shit, Git!?! (résoudre les problèmes courants)</a></li>
+      </ul>
+    </section>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

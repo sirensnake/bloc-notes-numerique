@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🔐 Active Directory - Stratégies de groupe (GPO)</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🔐 Active Directory - Stratégies de groupe (GPO)</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🪟 Windows & Active Directory ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+            <li><a href="windows.html">🪟 Windows</a></li>
+            <li><a href="reseaux-windows.html">🌐 Réseaux</a></li>
+            <li><hr></li>
+            <li><a href="active-directory-presentation.html">📚 Présentation</a></li>
+            <li><a href="active-directory-replication.html">🔁 Réplication</a></li>
+            <li><a href="active-directory-fsmo.html">📌 Rôles FSMO</a></li>
+            <li><a href="active-directory-gpo.html">🔐 GPO</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">💻 Virtualisation ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage-interactive.html">📦 VBoxManage</a></li>
+          </ul>
+        </li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li class="dropdown">
+          <a href="#">🎯 Quiz ▼</a>
+          <ul class="submenu">
+            <li><a href="quiz-sommaire.html">📋 Sommaire des Quiz</a></li>
+            <li><a href="quiz-OSI.html">🔀 Modèle OSI</a></li>
+            <li><a href="quiz-protocoles.html">📡 Protocoles Réseau</a></li>
+            <li><a href="quiz-commandes.html">⌨️ Commandes Réseau</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Les <strong>Stratégies de groupe (GPO)</strong> permettent de gérer de manière centralisée la configuration des utilisateurs et des ordinateurs dans un environnement Active Directory.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#concepts">Concepts de base</a></li>
+        <li><a href="#application">Ordre d'application</a></li>
+        <li><a href="#creation">Créer une GPO</a></li>
+        <li><a href="#parametres">Paramètres communs</a></li>
+        <li><a href="#depannage">Dépannage GPO</a></li>
+        <li><a href="#commandes">Commandes utiles</a></li>
+      </ul>
+    </details>
+
+    <section id="concepts">
+      <h2>📚 Concepts de base</h2>
+      <h3>Qu'est-ce qu'une GPO ?</h3>
+      <p>Une GPO (Group Policy Object) est un ensemble de paramètres qui :</p>
+      <ul>
+        <li>Configure les ordinateurs et utilisateurs AD</li>
+        <li>Applique des paramètres de sécurité</li>
+        <li>Installe des logiciels</li>
+        <li>Gère les scripts de connexion/déconnexion</li>
+      </ul>
+
+      <h3>Structure d'une GPO :</h3>
+      <pre><code>GPO
+├── Configuration ordinateur
+│   ├── Stratégies
+│   └── Préférences
+└── Configuration utilisateur
+    ├── Stratégies
+    └── Préférences</code></pre>
+
+      <h3>Stockage :</h3>
+      <ul>
+        <li><strong>SYSVOL</strong> : \\domaine\SYSVOL\domaine\Policies\{GUID}</li>
+        <li><strong>Active Directory</strong> : CN=Policies,CN=System,DC=domaine,DC=com</li>
+      </ul>
+    </section>
+
+    <section id="application">
+      <h2>🔄 Ordre d'application</h2>
+      <h3>LSDOU - Ordre hiérarchique :</h3>
+      <ol>
+        <li><strong>Local</strong> : Stratégies locales de l'ordinateur</li>
+        <li><strong>Site</strong> : Stratégies liées au site AD</li>
+        <li><strong>Domain</strong> : Stratégies du domaine</li>
+        <li><strong>OU</strong> : Stratégies des unités organisationnelles</li>
+      </ol>
+
+      <h3>Options de liaison :</h3>
+      <table>
+        <tr><th>Option</th><th>Description</th><th>Utilisation</th></tr>
+        <tr><td>Enforced</td><td>La GPO devient prioritaire</td><td>Forcer l'application</td></tr>
+        <tr><td>Block Inheritance</td><td>Bloque l'héritage des GPO</td><td>Isoler une OU</td></tr>
+        <tr><td>Security Filtering</td><td>Applique à des groupes spécifiques</td><td>Cibler l'application</td></tr>
+        <tr><td>Disabled</td><td>Désactive la GPO</td><td>Test ou maintenance</td></tr>
+      </table>
+    </section>
+
+    <section id="creation">
+      <h2>➕ Créer une GPO</h2>
+      <h3>Via GUI :</h3>
+      <ol>
+        <li>Ouvrir GPMC (Group Policy Management Console)</li>
+        <li>Clic droit sur l'OU → "Create a GPO in this domain, and Link it here"</li>
+        <li>Nommer la GPO</li>
+        <li>Modifier les paramètres</li>
+      </ol>
+
+      <h3>Via PowerShell :</h3>
+      <pre><code># Créer une nouvelle GPO
+New-GPO -Name "GPO_Test" -Comment "Test GPO"
+
+# Lier la GPO à une OU
+New-GPLink -Name "GPO_Test" -Target "OU=IT,DC=company,DC=com"
+
+# Définir des paramètres
+Set-GPRegistryValue -Name "GPO_Test" `
+  -Key "HKEY_LOCAL_MACHINE\Software\MyApp" `
+  -ValueName "Setting" `
+  -Type String `
+  -Value "Enabled"</code></pre>
+    </section>
+
+    <section id="parametres">
+      <h2>⚙️ Paramètres communs</h2>
+      <h3>Configuration ordinateur :</h3>
+      <pre><code># Installation de logiciel
+Computer Configuration\Policies\Software Settings\Software Installation
+
+# Scripts de démarrage/arrêt
+Computer Configuration\Policies\Windows Settings\Scripts
+
+# Paramètres de sécurité
+Computer Configuration\Policies\Windows Settings\Security Settings
+
+# Paramètres administratifs
+Computer Configuration\Policies\Administrative Templates</code></pre>
+
+      <h3>Configuration utilisateur :</h3>
+      <pre><code># Redirection de dossiers
+User Configuration\Policies\Windows Settings\Folder Redirection
+
+# Scripts de connexion/déconnexion
+User Configuration\Policies\Windows Settings\Scripts
+
+# Paramètres du Bureau
+User Configuration\Policies\Administrative Templates\Desktop</code></pre>
+
+      <h3>Exemples pratiques :</h3>
+      <pre><code># Désactiver l'accès au Panneau de configuration
+User Configuration\Administrative Templates\Control Panel
+"Prohibit access to Control Panel and PC settings" → Enabled
+
+# Configurer la politique de mot de passe
+Computer Configuration\Windows Settings\Security Settings\Account Policies
+"Password Policy" → Configure settings
+
+# Mapper un lecteur réseau
+User Configuration\Preferences\Windows Settings\Drive Maps
+Create → Map drive Z: to \\server\share</code></pre>
+    </section>
+
+    <section id="depannage">
+      <h2>🔧 Dépannage GPO</h2>
+      <h3>Outils de diagnostic :</h3>
+      <pre><code># GPResult - Afficher les GPO appliquées
+gpresult /r                      # Résumé
+gpresult /h report.html         # Rapport HTML détaillé
+gpresult /user:jdupont /r       # Pour un utilisateur spécifique
+
+# GPUpdate - Forcer l'application
+gpupdate /force                 # Force la mise à jour
+gpupdate /target:computer       # Uniquement ordinateur
+gpupdate /target:user          # Uniquement utilisateur
+
+# DCGPOFix - Réinitialiser les GPO par défaut
+dcgpofix /ignoreschema         # Réinitialise Default Domain Policy</code></pre>
+
+      <h3>Problems courants :</h3>
+      <table>
+        <tr><th>Problème</th><th>Solution</th></tr>
+        <tr><td>GPO non appliquée</td><td>Vérifier les permissions (Authenticated Users: Read)</td></tr>
+        <tr><td>Erreur de réplication</td><td>Vérifier SYSVOL (repadmin, dfsrdiag)</td></tr>
+        <tr><td>Conflit de paramètres</td><td>Utiliser RSOP (gpresult) pour tracer l'ordre</td></tr>
+        <tr><td>Scripts non exécutés</td><td>Vérifier ExecutionPolicy et permissions</td></tr>
+      </table>
+    </section>
+
+    <section id="commandes">
+      <h2>⌨️ Commandes utiles</h2>
+      <h3>PowerShell pour GPO :</h3>
+      <pre><code># Importer le module
+Import-Module GroupPolicy
+
+# Lister toutes les GPO
+Get-GPO -All
+
+# Obtenir les détails d'une GPO
+Get-GPO -Name "Default Domain Policy"
+
+# Sauvegarder une GPO
+Backup-GPO -Name "GPO_Test" -Path "C:\GPOBackup"
+
+# Restaurer une GPO
+Restore-GPO -Name "GPO_Test" -Path "C:\GPOBackup"
+
+# Créer un rapport GPO
+Get-GPOReport -Name "Default Domain Policy" -ReportType HTML -Path "report.html"
+
+# Copier une GPO
+Copy-GPO -SourceName "GPO_Source" -TargetName "GPO_Copy"</code></pre>
+
+      <h3>Commandes système :</h3>
+      <pre><code># Ouvrir GPMC
+gpmc.msc
+
+# Ouvrir l'éditeur GPO local
+gpedit.msc
+
+# RSoP (Resultant Set of Policy)
+rsop.msc
+
+# Tester la connexion GPO
+gpotool /checkacl /verbose</code></pre>
+    </section>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐧 Linux - Astuces et raccourcis</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐧 Linux : Astuces et raccourcis utiles</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">📦 VBoxManage ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage.html">📘 Commandes VBoxManage</a></li>
+            <li><a href="fiche-vboxmanage-interactive.html">🖱️ Interface interactive</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Cette fiche rassemble des <strong>astuces et raccourcis</strong> utiles pour gagner en productivité sous Linux. Des petites techniques qui font gagner du temps au quotidien pour les utilisateurs débutants comme expérimentés.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#raccourcis">Raccourcis clavier dans le terminal</a></li>
+        <li><a href="#astuces">Astuces générales</a></li>
+        <li><a href="#history">Utilisation de l'historique</a></li>
+        <li><a href="#alias">Alias pratiques</a></li>
+        <li><a href="#nettoyage">Nettoyage système</a></li>
+        <li><a href="#productivite">Astuces de productivité</a></li>
+      </ul>
+    </details>
+
+    <section id="raccourcis">
+      <h2>⌨️ Raccourcis clavier dans le terminal</h2>
+      <p>Ces raccourcis clavier sont essentiels pour travailler efficacement dans le terminal :</p>
+      <table>
+        <tr>
+          <th>Raccourci</th>
+          <th>Action</th>
+        </tr>
+        <tr>
+          <td><code>Ctrl + C</code></td>
+          <td>Interrompre la commande en cours</td>
+        </tr>
+        <tr>
+          <td><code>Ctrl + L</code></td>
+          <td>Nettoyer l'écran (équivalent à <code>clear</code>)</td>
+        </tr>
+        <tr>
+          <td><code>Ctrl + A</code></td>
+          <td>Aller au début de la ligne</td>
+        </tr>
+        <tr>
+          <td><code>Ctrl + E</code></td>
+          <td>Aller à la fin de la ligne</td>
+        </tr>
+        <tr>
+          <td><code>Ctrl + R</code></td>
+          <td>Rechercher une commande précédente</td>
+        </tr>
+        <tr>
+          <td><code>Ctrl + U</code></td>
+          <td>Effacer du curseur jusqu'au début de la ligne</td>
+        </tr>
+        <tr>
+          <td><code>Ctrl + K</code></td>
+          <td>Effacer du curseur jusqu'à la fin de la ligne</td>
+        </tr>
+        <tr>
+          <td><code>Ctrl + W</code></td>
+          <td>Effacer le mot précédent</td>
+        </tr>
+        <tr>
+          <td><code>Alt + B</code></td>
+          <td>Reculer d'un mot</td>
+        </tr>
+        <tr>
+          <td><code>Alt + F</code></td>
+          <td>Avancer d'un mot</td>
+        </tr>
+        <tr>
+          <td><code>Tab</code></td>
+          <td>Autocomplétion</td>
+        </tr>
+        <tr>
+          <td><code>Ctrl + D</code></td>
+          <td>Fermer le terminal ou déconnecter (si vide)</td>
+        </tr>
+        <tr>
+          <td><code>Ctrl + Z</code></td>
+          <td>Suspendre un processus (mettre en arrière-plan)</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="astuces">
+      <h2>💡 Astuces générales</h2>
+      <p>Quelques astuces pour faciliter votre travail quotidien :</p>
+      <pre><code>!!                    # Réexécute la dernière commande
+!sudo !!              # Réexécute la dernière commande avec sudo
+cd -                  # Retourne au répertoire précédent
+mkdir -p a/b/c        # Crée des dossiers imbriqués
+find . -name "*.txt"  # Trouve les fichiers .txt
+command | xargs cmd   # Applique cmd à chaque résultat
+command &             # Exécute en arrière-plan
+fg                    # Ramène une tâche en premier plan
+bg                    # Continue une tâche en arrière-plan</code></pre>
+    </section>
+
+    <section id="history">
+      <h2>📜 Utilisation de l'historique</h2>
+      <p>L'historique des commandes est un outil puissant :</p>
+      <pre><code>history                # Affiche l'historique des commandes
+history | grep ssh    # Recherche des commandes ssh précédentes
+!42                   # Exécute la commande n°42 de l'historique
+Ctrl + R              # Recherche interactive dans l'historique
+^erreur^correction    # Remplace erreur par correction dans la dernière commande
+$_                    # Référence le dernier argument de la commande précédente</code></pre>
+      
+      <p>Configuration de l'historique dans <code>~/.bashrc</code> :</p>
+      <pre><code>export HISTSIZE=10000        # Nombre de commandes mémorisées en session
+export HISTFILESIZE=100000   # Nombre de commandes sauvegardées dans le fichier
+export HISTCONTROL=ignoredups:erasedups  # Ignore les doublons
+shopt -s histappend          # Ajoute au fichier plutôt que de l'écraser</code></pre>
+    </section>
+
+    <section id="alias">
+      <h2>🏷️ Alias pratiques</h2>
+      <p>Créez des raccourcis pour vos commandes fréquentes :</p>
+      <pre><code># Définir un alias temporairement
+alias ll='ls -alF'
+alias update='sudo apt update && sudo apt upgrade'
+
+# Supprimer un alias
+unalias ll
+
+# Alias persistants (à ajouter dans ~/.bashrc)
+echo "alias ll='ls -alF'" >> ~/.bashrc
+echo "alias update='sudo apt update && sudo apt upgrade'" >> ~/.bashrc
+source ~/.bashrc  # Recharger .bashrc</code></pre>
+      
+      <p>Exemples d'alias utiles pour votre <code>~/.bashrc</code> :</p>
+      <pre><code>alias cp='cp -iv'           # Copie interactive et verbeuse
+alias mv='mv -iv'           # Déplacement interactif et verbeux
+alias mkdir='mkdir -pv'     # Crée les parents si nécessaire
+alias df='df -h'            # Affichage lisible
+alias free='free -m'        # Taille en mégaoctets
+alias more='less'           # less est plus puissant que more
+alias grep='grep --color=auto'  # Coloration des résultats</code></pre>
+    </section>
+
+    <section id="nettoyage">
+      <h2>🧹 Nettoyage système</h2>
+      <p>Commandes pour nettoyer votre système et libérer de l'espace :</p>
+      <pre><code># Pour les systèmes Debian/Ubuntu
+sudo apt autoremove   # Supprime les paquets inutilisés
+sudo apt clean        # Vide le cache des archives de paquets
+sudo apt autoclean    # Nettoie les anciennes versions
+
+# Nettoyer les journaux système volumineux
+sudo journalctl --vacuum-time=10d  # Garde seulement 10 jours de logs
+
+# Trouver et supprimer les fichiers temporaires
+find /tmp -type f -atime +10 -delete  # Fichiers non accédés depuis 10 jours
+
+# Trouver les gros fichiers
+find / -type f -size +100M -exec ls -lh {} \; | sort -k5,5hr</code></pre>
+    </section>
+
+    <section id="productivite">
+      <h2>🚀 Astuces de productivité</h2>
+      <p>Techniques avancées pour gagner en efficacité :</p>
+      <pre><code># Multitâche avec tmux ou screen
+tmux                  # Démarre une session tmux
+Ctrl+b c              # Crée un nouvel onglet dans tmux
+Ctrl+b 0-9            # Navigue entre les onglets
+
+# Réutiliser les paramètres de commande
+command !$            # Utilise le dernier argument
+command !^            # Utilise le premier argument
+command !*            # Utilise tous les arguments
+
+# Exécuter une commande à intervalle régulier
+watch -n 1 'commande'  # Exécute toutes les secondes
+
+# Exécuter une commande dans plusieurs répertoires
+find . -type d -exec sh -c 'cd {} && commande' \;
+
+# Globbing avancé
+ls *.{jpg,png}        # Liste tous les .jpg et .png
+ls [A-Z]*             # Liste les fichiers commençant par une majuscule</code></pre>
+    </section>
+
+    <details id="bonus" class="bonus">
+      <summary>🎁 Bonus : Configuration avancée du shell</summary>
+      
+      <h3>Personnalisation du prompt PS1</h3>
+      <pre><code># Prompt coloré avec informations utiles
+PS1='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+# Prompt avec l'heure, le nom d'utilisateur et le répertoire
+PS1='[\t] \u:\w\$ '</code></pre>
+      
+      <h3>Configuration bash pour développeurs</h3>
+      <pre><code># Complétion sensible à la casse
+bind "set completion-ignore-case on"
+
+# Complétion sur une simple tabulation
+bind "set show-all-if-ambiguous on"
+
+# Autocomplétion pour les commandes sudo
+complete -cf sudo
+
+# Correction automatique de cd
+shopt -s cdspell</code></pre>
+      
+      <h3>Installer et configurer oh-my-bash pour un shell plus puissant</h3>
+      <pre><code>bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"</code></pre>
+    </details>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

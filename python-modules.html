@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐍 Python - Modules</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style-python.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐍 Python : Modules</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li class="dropdown">
+          <a href="#">📚 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Les <strong>modules</strong> en Python permettent d'organiser votre code, de réutiliser des fonctions existantes et d'étendre les fonctionnalités grâce à des bibliothèques externes. Cette fiche présente les méthodes essentielles pour importer, créer et utiliser des modules Python efficacement.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#importer">Importer un module</a></li>
+        <li><a href="#fonction-specifique">Importer une fonction spécifique</a></li>
+        <li><a href="#renommer">Renommer un module</a></li>
+        <li><a href="#creer">Créer son propre module</a></li>
+        <li><a href="#installer">Installer un module externe</a></li>
+        <li><a href="#bonus">Bonus</a></li>
+      </ul>
+    </details>
+
+    <section id="importer">
+      <h2>📥 Importer un module</h2>
+      <p>Les modules sont importés à l'aide du mot-clé <code>import</code> :</p>
+      <pre><code>import math
+
+# Utiliser les fonctions du module
+resultat = math.sqrt(16)
+print(resultat)  # Affiche : 4.0
+
+# Accéder aux constantes
+print(math.pi)   # Affiche : 3.141592653589793</code></pre>
+    </section>
+
+    <section id="fonction-specifique">
+      <h2>📛 Importer une fonction spécifique</h2>
+      <p>Vous pouvez importer uniquement les fonctions dont vous avez besoin :</p>
+      <pre><code>from math import sqrt, pi
+
+# Utilisation directe sans préfixe
+resultat = sqrt(16)
+print(resultat)      # Affiche : 4.0
+print(pi)            # Affiche : 3.141592653589793</code></pre>
+      <p>Pour importer toutes les fonctions d'un module (à utiliser avec précaution) :</p>
+      <pre><code>from math import *
+
+# Utilisable directement 
+print(sqrt(16))      # Affiche : 4.0
+print(cos(0))        # Affiche : 1.0</code></pre>
+    </section>
+
+    <section id="renommer">
+      <h2>🧾 Renommer un module</h2>
+      <p>Vous pouvez créer un alias pour un module à l'aide de <code>as</code> :</p>
+      <pre><code>import numpy as np
+
+# Utilisation avec l'alias
+tableau = np.array([1, 2, 3])
+print(tableau)       # Affiche : [1 2 3]
+print(type(tableau)) # Affiche : <class 'numpy.ndarray'></code></pre>
+      <p>C'est particulièrement utile pour les modules avec des noms longs ou couramment utilisés avec des conventions d'alias (comme numpy → np, pandas → pd).</p>
+    </section>
+
+    <section id="creer">
+      <h2>🧠 Créer son propre module</h2>
+      <p>Créez un fichier Python qui contiendra vos fonctions et classes :</p>
+      <pre><code># fichier: mon_module.py
+def saluer(nom="visiteur"):
+    """Affiche un message de salutation."""
+    return f"Bonjour, {nom} !"
+
+def addition(a, b):
+    """Additionne deux nombres."""
+    return a + b
+
+# Variables dans le module
+PI = 3.14159
+VERSION = "1.0.0"</code></pre>
+      <p>Puis importez-le dans votre script principal :</p>
+      <pre><code># fichier: principal.py
+import mon_module
+
+message = mon_module.saluer("Guillaume")
+print(message)                           # Affiche : Bonjour, Guillaume !
+print(mon_module.addition(5, 3))         # Affiche : 8
+print(f"Version: {mon_module.VERSION}")  # Affiche : Version: 1.0.0</code></pre>
+    </section>
+
+    <section id="installer">
+      <h2>📦 Installer un module externe</h2>
+      <p>Utilisez <code>pip</code>, le gestionnaire de paquets Python, pour installer des modules tiers :</p>
+      <pre><code># Dans le terminal ou l'invite de commandes
+pip install requests
+
+# Pour une version spécifique
+pip install requests==2.28.1
+
+# Pour mettre à jour un module
+pip install --upgrade requests</code></pre>
+      <p>Puis utilisez le module dans votre code :</p>
+      <pre><code>import requests
+
+response = requests.get('https://api.github.com')
+print(f"Statut: {response.status_code}")
+print(response.json())</code></pre>
+    </section>
+
+    <details id="bonus" class="bonus">
+      <summary>🎁 Bonus : Techniques avancées</summary>
+      <h3>Structure de package</h3>
+      <p>Organisez vos modules dans une structure de package :</p>
+      <pre><code>mon_package/
+├── __init__.py
+├── module1.py
+├── module2.py
+└── sous_package/
+    ├── __init__.py
+    └── module3.py</code></pre>
+      <p>Le fichier <code>__init__.py</code> peut être vide ou contenir du code d'initialisation.</p>
+      
+      <h3>Importation relative</h3>
+      <pre><code># Dans module2.py
+from . import module1  # Import relatif dans le même package
+from .sous_package import module3  # Import relatif d'un sous-package</code></pre>
+      
+      <h3>Contrôler ce qui est importé avec __all__</h3>
+      <pre><code># Dans mon_module.py
+__all__ = ['saluer', 'addition']  # Limite ce qui est importé avec from mon_module import *</code></pre>
+      
+      <h3>Environnements virtuels</h3>
+      <p>Isolez vos dépendances avec des environnements virtuels :</p>
+      <pre><code># Création d'un environnement virtuel
+python -m venv mon_env
+
+# Activation (Windows)
+mon_env\Scripts\activate
+
+# Activation (Linux/Mac)
+source mon_env/bin/activate
+
+# Installation des dépendances
+pip install -r requirements.txt</code></pre>
+    </details>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

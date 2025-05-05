@@ -1,0 +1,6 @@
+
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#f0f5ff"/>
+  <ellipse cx="200" cy="150" rx="80" ry="50" stroke="black" stroke-width="2" fill="white" />
+  <text x="170" y="270" font-size="18" fill="black">Cloud Hybride</text>
+</svg>

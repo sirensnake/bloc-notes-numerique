@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Active Directory - GPO</title>
+  <link rel="stylesheet" href="quiz-styles.css">
+</head>
+<body>
+  <h1>Quiz Interactif : Active Directory - GPO</h1>
+  <form id="quizForm">
+    <!-- Q1 -->
+    <div class="question" data-answer="q1-2" role="group" aria-labelledby="q1-text">
+      <p id="q1-text"><strong>1. Que signifie l'acronyme GPO ?</strong></p>
+      <div class="answers">
+        <label for="q1-1"><input type="radio" name="q1" id="q1-1"> Group Policy Organization</label><br>
+        <label for="q1-2"><input type="radio" name="q1" id="q1-2"> Group Policy Object</label><br>
+        <label for="q1-3"><input type="radio" name="q1" id="q1-3"> Global Policy Option</label><br>
+        <label for="q1-4"><input type="radio" name="q1" id="q1-4"> General Policy Order</label>
+      </div>
+    </div>
+    <!-- Q2 -->
+    <div class="question" data-answer="q2-3" role="group" aria-labelledby="q2-text">
+      <p id="q2-text"><strong>2. À quel niveau peut-on appliquer une GPO ?</strong></p>
+      <div class="answers">
+        <label for="q2-1"><input type="radio" name="q2" id="q2-1"> Uniquement au domaine</label><br>
+        <label for="q2-2"><input type="radio" name="q2" id="q2-2"> Uniquement aux utilisateurs</label><br>
+        <label for="q2-3"><input type="radio" name="q2" id="q2-3"> Site, domaine, unité d'organisation</label><br>
+        <label for="q2-4"><input type="radio" name="q2" id="q2-4"> Uniquement aux ordinateurs locaux</label>
+      </div>
+    </div>
+    <!-- Q3 -->
+    <div class="question" data-answer="q3-1" role="group" aria-labelledby="q3-text">
+      <p id="q3-text"><strong>3. Quel outil utilise-t-on pour gérer les GPO ?</strong></p>
+      <div class="answers">
+        <label for="q3-1"><input type="radio" name="q3" id="q3-1"> Group Policy Management Console (GPMC)</label><br>
+        <label for="q3-2"><input type="radio" name="q3" id="q3-2"> Active Directory Users and Computers</label><br>
+        <label for="q3-3"><input type="radio" name="q3" id="q3-3"> Computer Management</label><br>
+        <label for="q3-4"><input type="radio" name="q3" id="q3-4"> Registry Editor</label>
+      </div>
+    </div>
+    <!-- Q4 -->
+    <div class="question" data-answer="q4-4" role="group" aria-labelledby="q4-text">
+      <p id="q4-text"><strong>4. Quelle est la priorité d'application des GPO ?</strong></p>
+      <div class="answers">
+        <label for="q4-1"><input type="radio" name="q4" id="q4-1"> Site > Domain > OU > Local</label><br>
+        <label for="q4-2"><input type="radio" name="q4" id="q4-2"> Domain > Site > OU > Local</label><br>
+        <label for="q4-3"><input type="radio" name="q4" id="q4-3"> OU > Domain > Site > Local</label><br>
+        <label for="q4-4"><input type="radio" name="q4" id="q4-4"> Local > Site > Domain > OU</label>
+      </div>
+    </div>
+    <!-- Q5 -->
+    <div class="question" data-answer="q5-3" role="group" aria-labelledby="q5-text">
+      <p id="q5-text"><strong>5. Quelle commande permet de forcer l'application immédiate d'une GPO ?</strong></p>
+      <div class="answers">
+        <label for="q5-1"><input type="radio" name="q5" id="q5-1"> gpresult</label><br>
+        <label for="q5-2"><input type="radio" name="q5" id="q5-2"> gprefresh</label><br>
+        <label for="q5-3"><input type="radio" name="q5" id="q5-3"> gpupdate</label><br>
+        <label for="q5-4"><input type="radio" name="q5" id="q5-4"> secedit</label>
+      </div>
+    </div>
+    <!-- Q6 -->
+    <div class="question" data-answer="q6-2" role="group" aria-labelledby="q6-text">
+      <p id="q6-text"><strong>6. Que permet de faire une GPO de "loopback processing" ?</strong></p>
+      <div class="answers">
+        <label for="q6-1"><input type="radio" name="q6" id="q6-1"> Appliquer les GPO ordinateur plutôt qu'utilisateur</label><br>
+        <label for="q6-2"><input type="radio" name="q6" id="q6-2"> Appliquer les paramètres utilisateur basés sur l'ordinateur</label><br>
+        <label for="q6-3"><input type="radio" name="q6" id="q6-3"> Créer une boucle infinie de politiques</label><br>
+        <label for="q6-4"><input type="radio" name="q6" id="q6-4"> Désactiver l'héritage des GPO</label>
+      </div>
+    </div>
+
+    <div id="quiz-form-buttons">
+      <button type="button" onclick="calculateScore()">Valider mes réponses</button>
+    </div>
+    
+    <div id="result"></div>
+    <div id="timer"></div>
+    <div id="progress"><div id="bar"></div></div>
+    
+    <div id="quiz-form-buttons">
+      <button type="button" id="resetBtn" onclick="resetQuiz()">Recommencer le quiz</button>
+      <button type="button" id="reviewBtn" onclick="reviewMissed()" style="display:none">Revoir les erreurs</button>
+      <button type="button" id="exportBtn" onclick="exportResults()">Exporter les résultats</button>
+    </div>
+  </form>
+  
+  <div class="back-container">
+    <a href="quiz-sommaire.html" class="back">Retour à l'accueil</a>
+  </div>
+
+<script>
+let startTime;
+
+const exp={
+ q1:"GPO signifie Group Policy Object, un objet qui contient les paramètres de politique.",
+ q2:"Les GPO peuvent être appliquées aux sites, domaines et unités d'organisation.",
+ q3:"Le GPMC (Group Policy Management Console) est l'outil principal pour gérer les GPO.",
+ q4:"L'ordre de priorité est Local > Site > Domain > OU, les dernières remplacent les premières.",
+ q5:"La commande 'gpupdate' force l'actualisation des stratégies de groupe sur le poste.",
+ q6:"Le loopback processing permet d'appliquer les paramètres utilisateur en fonction de l'ordinateur, utile pour les sessions partagées."};
+
+function startTimer() {
+  startTime = new Date();
+}
+
+function endTimer() {
+  const endTime = new Date();
+  const duration = Math.round((endTime - startTime) / 1000);
+  document.getElementById('timer').textContent = `Temps: ${duration}s`;
+}
+
+function calculateScore() {
+  // Vérifier les questions non répondues
+  const unanswered = [];
+  const questions = document.querySelectorAll('.question');
+  questions.forEach((q, i) => {
+    const checked = q.querySelector('input:checked');
+    if (!checked) {
+      unanswered.push(i + 1);
+    }
+  });
+  
+  if (unanswered.length > 0) {
+    if (!confirm(`Questions ${unanswered.join(', ')} non répondues. Voulez-vous continuer ?`)) {
+      return;
+    }
+  }
+  
+  let s = 0;
+  const mistakes = [];
+  
+  questions.forEach((q, i) => {
+    const ok = q.dataset.answer;
+    const ch = q.querySelector('input:checked');
+    q.querySelectorAll('label').forEach(l => l.classList.remove('correct-answer', 'wrong-answer'));
+    
+    const k = `q${i+1}`;
+    const e = document.createElement('div');
+    e.className = 'explanation';
+    e.textContent = exp[k] || '';
+    
+    if (ch) {
+      if (ch.id === ok) {
+        s++;
+        ch.parentNode.classList.add('correct-answer');
+      } else {
+        ch.parentNode.classList.add('wrong-answer');
+        q.querySelector(`#${ok}`).parentNode.classList.add('correct-answer');
+        mistakes.push(i + 1);
+      }
+    } else {
+      q.querySelector(`#${ok}`).parentNode.classList.add('correct-answer');
+      mistakes.push(i + 1);
+    }
+    
+    if (!q.querySelector('.explanation')) q.appendChild(e);
+  });
+  
+  endTimer();
+  
+  const pct = (s / questions.length) * 100;
+  document.getElementById('result').textContent = `🎯 Votre score : ${s}/${questions.length}`;
+  document.getElementById('bar').style.width = pct + '%';
+  
+  localStorage.setItem('quiz_ad_gpo_score', s);
+  localStorage.setItem('quiz_ad_gpo_total', questions.length);
+  
+  // Afficher le bouton de révision si nécessaire
+  const reviewBtn = document.getElementById('reviewBtn');
+  if (mistakes.length > 0) {
+    reviewBtn.style.display = 'inline-block';
+  }
+}
+
+function resetQuiz() {
+  document.getElementById('quizForm').reset();
+  document.getElementById('result').textContent = '';
+  document.getElementById('timer').textContent = '';
+  document.getElementById('bar').style.width = '0';
+  document.getElementById('reviewBtn').style.display = 'none';
+  
+  document.querySelectorAll('.question').forEach(q => {
+    q.querySelectorAll('label').forEach(l => l.classList.remove('correct-answer', 'wrong-answer'));
+    const ex = q.querySelector('.explanation');
+    if (ex) ex.remove();
+  });
+  
+  startTimer();
+}
+
+function reviewMissed() {
+  const wrongQuestions = [];
+  document.querySelectorAll('.question').forEach((q, i) => {
+    if (q.querySelector('.wrong-answer') || !q.querySelector('.correct-answer')) {
+      wrongQuestions.push(i + 1);
+    }
+  });
+  
+  alert(`Questions à revoir: ${wrongQuestions.join(', ')}`);
+}
+
+function exportResults() {
+  const data = {
+    quiz: "Active Directory - GPO",
+    date: new Date().toISOString(),
+    score: localStorage.getItem('quiz_ad_gpo_score'),
+    total: localStorage.getItem('quiz_ad_gpo_total'),
+    percentage: parseInt(localStorage.getItem('quiz_ad_gpo_score')) / parseInt(localStorage.getItem('quiz_ad_gpo_total')) * 100
+  };
+  
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `quiz-ad-gpo-results-${new Date().toISOString().split('T')[0]}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// Démarrer le chronomètre au chargement
+window.addEventListener('load', startTimer);
+</script>
+</body>
+</html>

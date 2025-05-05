@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐧 Linux - Utilisateurs et permissions</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐧 Linux : Utilisateurs et permissions</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">📦 VBoxManage ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage.html">📘 Commandes VBoxManage</a></li>
+            <li><a href="fiche-vboxmanage-interactive.html">🖱️ Interface interactive</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Cette fiche présente les <strong>commandes essentielles</strong> pour gérer les utilisateurs, les groupes et les permissions sous Linux. Le système de contrôle d'accès basé sur les utilisateurs et les groupes est un aspect fondamental de la sécurité sous Linux.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#gestion-utilisateurs">Gestion des utilisateurs</a></li>
+        <li><a href="#groupes">Groupes et appartenance</a></li>
+        <li><a href="#droits">Droits et permissions</a></li>
+        <li><a href="#mots-passe">Gestion des mots de passe</a></li>
+        <li><a href="#info-utilisateurs">Informations sur les utilisateurs</a></li>
+        <li><a href="#sudo">Configuration de sudo</a></li>
+        <li><a href="#bonus">Bonus</a></li>
+      </ul>
+    </details>
+
+    <section id="gestion-utilisateurs">
+      <h2>👤 Gestion des utilisateurs</h2>
+      <p>Commandes pour créer, modifier et supprimer des utilisateurs :</p>
+      <pre><code>sudo adduser nom_utilisateur          # Ajouter un utilisateur (interactif)
+sudo useradd nom_utilisateur          # Ajouter un utilisateur (non interactif)
+sudo userdel nom_utilisateur          # Supprimer un utilisateur
+sudo userdel -r nom_utilisateur       # Supprimer l'utilisateur et son répertoire personnel
+sudo usermod -L nom_utilisateur       # Verrouiller un compte
+sudo usermod -U nom_utilisateur       # Déverrouiller un compte</code></pre>
+      
+      <p>Modifier les propriétés d'un utilisateur :</p>
+      <pre><code>sudo usermod -aG sudo utilisateur     # Ajouter au groupe sudo (administrateur)
+sudo usermod -d /nouveau/home user    # Changer le répertoire personnel
+sudo usermod -s /bin/bash utilisateur # Changer le shell par défaut
+sudo usermod -c "Commentaire" user    # Ajouter un commentaire/description</code></pre>
+    </section>
+
+    <section id="groupes">
+      <h2>👥 Groupes et appartenance</h2>
+      <p>Gérer les groupes et l'appartenance des utilisateurs :</p>
+      <pre><code>sudo groupadd nom_du_groupe          # Créer un groupe
+sudo groupdel nom_du_groupe          # Supprimer un groupe
+sudo groupmod -n nouveau ancien      # Renommer un groupe
+
+sudo gpasswd -a utilisateur groupe   # Ajouter un utilisateur à un groupe
+sudo gpasswd -d utilisateur groupe   # Retirer un utilisateur d'un groupe
+sudo usermod -aG groupe utilisateur  # Ajouter à un groupe (alternative)
+sudo deluser utilisateur groupe      # Retirer d'un groupe (alternative)</code></pre>
+      
+      <p>Définir le groupe principal d'un utilisateur :</p>
+      <pre><code>sudo usermod -g groupe utilisateur    # Change le groupe primaire</code></pre>
+      
+      <p>Afficher les groupes :</p>
+      <pre><code>groups                              # Affiche vos groupes
+groups utilisateur                   # Affiche les groupes d'un utilisateur
+getent group                         # Liste tous les groupes du système
+getent group nom_du_groupe           # Affiche les membres d'un groupe</code></pre>
+    </section>
+
+    <section id="droits">
+      <h2>🔐 Droits et permissions</h2>
+      <p>Gérer les permissions sur les fichiers et répertoires :</p>
+      <pre><code>chmod +x script.sh                    # Ajouter droit d'exécution
+chmod u+x script.sh                  # Ajouter exécution seulement au propriétaire
+chmod g+w fichier                    # Ajouter écriture au groupe
+chmod o-r fichier                    # Retirer lecture aux autres
+
+chmod 755 fichier                    # rwxr-xr-x (propriétaire tout, autres lecture/exécution)
+chmod 644 fichier                    # rw-r--r-- (propriétaire lecture/écriture, autres lecture)
+chmod 700 dossier                    # rwx------ (accès total au propriétaire uniquement)
+chmod -R 755 dossier/                # Appliquer récursivement à un dossier</code></pre>
+      
+      <p>Changer le propriétaire et le groupe d'un fichier :</p>
+      <pre><code>sudo chown utilisateur fichier        # Changer le propriétaire
+sudo chown utilisateur:groupe fichier # Changer propriétaire et groupe
+sudo chgrp groupe fichier            # Changer uniquement le groupe
+sudo chown -R user:groupe dossier/   # Changer récursivement pour un dossier</code></pre>
+    </section>
+
+    <section id="mots-passe">
+      <h2>🔑 Gestion des mots de passe</h2>
+      <p>Commandes pour gérer les mots de passe :</p>
+      <pre><code>sudo passwd nom_utilisateur          # Modifier le mot de passe d'un utilisateur
+passwd                              # Modifier votre propre mot de passe
+sudo passwd -l utilisateur          # Verrouiller le compte (mot de passe)
+sudo passwd -u utilisateur          # Déverrouiller le compte
+sudo passwd -e utilisateur          # Forcer l'expiration du mot de passe
+sudo passwd -x 90 utilisateur       # Définir durée max. avant changement (90 jours)
+sudo passwd -n 10 utilisateur       # Durée min. entre changements (10 jours)</code></pre>
+      
+      <p>Vérifier les paramètres du mot de passe :</p>
+      <pre><code>sudo chage -l utilisateur            # Afficher les informations d'expiration
+sudo chage -d 0 utilisateur         # Forcer le changement au prochain login</code></pre>
+    </section>
+
+    <section id="info-utilisateurs">
+      <h2>ℹ️ Informations sur les utilisateurs</h2>
+      <p>Commandes pour obtenir des informations sur les utilisateurs :</p>
+      <pre><code>id                                   # Affiche vos ID utilisateur et groupes
+id nom_utilisateur                  # Affiche les IDs et groupes d'un utilisateur
+finger utilisateur                  # Informations détaillées (si installé)
+who                                 # Utilisateurs actuellement connectés
+w                                   # Utilisateurs connectés avec plus de détails
+last                                # Historique des connexions
+lastlog                             # Dernière connexion de chaque utilisateur</code></pre>
+      
+      <p>Fichiers système importants :</p>
+      <pre><code>cat /etc/passwd                      # Base de données des utilisateurs
+cat /etc/group                      # Base de données des groupes
+cat /etc/shadow                     # Mots de passe chiffrés (root uniquement)</code></pre>
+    </section>
+
+    <section id="sudo">
+      <h2>⚡ Configuration de sudo</h2>
+      <p>Configurer les privilèges sudo :</p>
+      <pre><code>sudo visudo                          # Éditer le fichier de configuration sudo
+
+# Exemples de configuration dans sudoers
+username ALL=(ALL:ALL) ALL          # Accès complet à toutes les commandes
+username ALL=(ALL:ALL) NOPASSWD: ALL # Sans mot de passe (dangereux)
+username ALL=(ALL:ALL) NOPASSWD: /bin/systemctl restart apache2  # Commande spécifique</code></pre>
+      
+      <p>Vérifier vos privilèges sudo :</p>
+      <pre><code>sudo -l                              # Liste vos privilèges sudo</code></pre>
+    </section>
+
+    <details id="bonus" class="bonus">
+      <summary>🎁 Bonus : Techniques avancées</summary>
+      
+      <h3>ACL (Access Control Lists)</h3>
+      <p>Les ACL permettent une gestion plus fine des permissions que chmod :</p>
+      <pre><code># Installation des outils ACL
+sudo apt install acl
+
+# Lister les ACL d'un fichier
+getfacl fichier.txt
+
+# Donner des permissions à un utilisateur spécifique
+setfacl -m u:utilisateur:rw- fichier.txt
+
+# Donner des permissions à un groupe spécifique
+setfacl -m g:groupe:r-- fichier.txt
+
+# Supprimer une ACL
+setfacl -x u:utilisateur fichier.txt</code></pre>
+      
+      <h3>Quotas disque</h3>
+      <pre><code># Installation des outils de quota
+sudo apt install quota
+
+# Configuration dans /etc/fstab
+# Ajouter usrquota,grpquota aux options de montage
+
+# Activer les quotas
+sudo quotacheck -ugm /home
+sudo quotaon -v /home
+
+# Définir le quota
+sudo edquota -u utilisateur</code></pre>
+      
+      <h3>Limitations des ressources</h3>
+      <pre><code># Limiter les ressources d'un utilisateur dans /etc/security/limits.conf
+username soft nproc 100   # Limite à 100 processus
+username hard cpu 2       # Limite à 2 CPU</code></pre>
+    </details>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

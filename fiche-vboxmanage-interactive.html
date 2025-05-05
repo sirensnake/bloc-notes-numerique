@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>📦 VBoxManage - Interface interactive</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>📦 VBoxManage - Interface interactive</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">💻 Virtualisation ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage-interactive.html">📦 VBoxManage</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p><strong>VBoxManage</strong> est l'outil en ligne de commande de VirtualBox qui permet de contrôler tous les aspects de vos machines virtuelles. Cette fiche interactive présente les commandes essentielles pour créer et gérer vos VMs.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#creation">Création de la machine</a></li>
+        <li><a href="#cpu-memoire">CPU et mémoire</a></li>
+        <li><a href="#disques">Disques et contrôleurs</a></li>
+        <li><a href="#reseau">Réseau</a></li>
+        <li><a href="#guestcontrol">GuestControl</a></li>
+        <li><a href="#transfert">Transfert de fichiers</a></li>
+        <li><a href="#operations">Opérations avancées</a></li>
+        <li><a href="#sessions">Gestion des sessions</a></li>
+        <li><a href="#guestadditions">Mise à jour des Guest Additions</a></li>
+      </ul>
+    </details>
+
+    <section id="creation">
+      <h2>📦 Création de la machine</h2>
+      <pre><code>VBoxManage createvm --name "MaVM" --ostype "Debian_64" --register</code></pre>
+      <p>Cette commande crée une VM Debian 64 bits et l'enregistre dans VirtualBox.</p>
+      <p>Options importantes :</p>
+      <ul>
+        <li><code>--name</code> : Nom de la machine virtuelle</li>
+        <li><code>--ostype</code> : Type de système d'exploitation (utilisez <code>VBoxManage list ostypes</code> pour voir les options)</li>
+        <li><code>--register</code> : Enregistre la VM dans VirtualBox</li>
+      </ul>
+    </section>
+
+    <section id="cpu-memoire">
+      <h2>🧠 CPU et mémoire</h2>
+      <pre><code>VBoxManage modifyvm "MaVM" --memory 4096 --cpus 2</code></pre>
+      <p>Alloue 4 Go de RAM et 2 cœurs CPU à la machine virtuelle.</p>
+      <p>Paramètres additionnels :</p>
+      <pre><code>VBoxManage modifyvm "MaVM" --vram 128  # Mémoire vidéo (128 Mo)
+VBoxManage modifyvm "MaVM" --pae on   # Extension d'adresse physique
+VBoxManage modifyvm "MaVM" --nestedpaging on  # Pagination imbriquée</code></pre>
+    </section>
+
+    <section id="disques">
+      <h2>💾 Disques et contrôleurs</h2>
+      <pre><code>VBoxManage storagectl "MaVM" --name "SATA_Controller" --add sata --controller IntelAhci
+VBoxManage createmedium disk --filename "MaVM.vdi" --size 20000
+VBoxManage storageattach "MaVM" --storagectl "SATA_Controller" --port 0 --device 0 --type hdd --medium "MaVM.vdi"</code></pre>
+      <p>Ces commandes créent et attachent un disque virtuel de 20 Go à la machine virtuelle.</p>
+      <p>Explication des étapes :</p>
+      <ol>
+        <li>Création d'un contrôleur SATA</li>
+        <li>Création d'un disque virtuel de 20 Go (taille en Mo)</li>
+        <li>Attachement du disque au contrôleur SATA</li>
+      </ol>
+      <p>Pour attacher une image ISO (CD/DVD) :</p>
+      <pre><code>VBoxManage storageattach "MaVM" --storagectl "SATA_Controller" --port 1 --device 0 --type dvddrive --medium /chemin/vers/image.iso</code></pre>
+    </section>
+
+    <section id="reseau">
+      <h2>🌐 Réseau</h2>
+      <pre><code>VBoxManage modifyvm "MaVM" --nic1 nat --nic2 bridged --bridgeadapter2 eth0</code></pre>
+      <p>Configuration avec deux interfaces réseau :</p>
+      <ul>
+        <li>NIC 1 : Mode NAT (accès Internet, port forwarding)</li>
+        <li>NIC 2 : Mode Bridged (connexion directe au réseau physique)</li>
+      </ul>
+      <p>Autres modes réseau disponibles :</p>
+      <pre><code>VBoxManage modifyvm "MaVM" --nic3 intnet --intnet3 "reseau_interne"  # Réseau interne
+VBoxManage modifyvm "MaVM" --nic4 hostonly --hostonlyadapter4 "vboxnet0"  # Réseau hôte uniquement</code></pre>
+      
+      <p>Configuration de redirection de port (port forwarding) :</p>
+      <pre><code>VBoxManage modifyvm "MaVM" --natpf1 "ssh,tcp,,2222,,22"</code></pre>
+      <p>Cela redirige le port 2222 de l'hôte vers le port 22 de la VM.</p>
+    </section>
+
+    <section id="guestcontrol">
+      <h2>👤 GuestControl – exécuter une commande dans la VM</h2>
+      <pre><code>VBoxManage guestcontrol "MaVM" run --exe "/bin/ls" \
+--username user1 --passwordfile pw.txt --wait-stdout -- -l /usr</code></pre>
+      <p>Exécute <code>ls -l /usr</code> dans la VM en tant que <code>user1</code>.</p>
+      <p>Paramètres importants :</p>
+      <ul>
+        <li><code>--exe</code> : Chemin complet vers l'exécutable dans la VM</li>
+        <li><code>--username</code> / <code>--password</code> : Identifiants utilisateur</li>
+        <li><code>--wait-stdout</code> : Attendre et afficher la sortie standard</li>
+        <li>Arguments après <code>--</code> : passés à la commande exécutée</li>
+      </ul>
+    </section>
+
+    <section id="transfert">
+      <h2>📂 Transfert de fichiers (host ↔ guest)</h2>
+      <pre><code>VBoxManage guestcontrol "MaVM" copyto ./localfile.txt /home/user/file.txt \
+--username user1 --password password --verbose</code></pre>
+      <p>Transfère un fichier du système hôte vers la VM invitée.</p>
+      <p>Pour copier depuis la VM vers l'hôte :</p>
+      <pre><code>VBoxManage guestcontrol "MaVM" copyfrom /home/user/file.txt ./localfile.txt \
+--username user1 --password password --verbose</code></pre>
+    </section>
+
+    <section id="operations">
+      <h2>🛠️ Opérations avancées</h2>
+      <pre><code>VBoxManage guestcontrol "MaVM" mkdir /home/user/mon_dossier \
+--username user1 --password password --parents --verbose
+
+VBoxManage guestcontrol "MaVM" fsinfo /home/user \
+--username user1 --password password --human-readable</code></pre>
+      <p>Ces commandes permettent de :</p>
+      <ul>
+        <li>Créer un répertoire dans la VM avec création des répertoires parents si nécessaire</li>
+        <li>Récupérer des informations sur le système de fichiers de la VM</li>
+      </ul>
+      <p>Autres opérations disponibles :</p>
+      <pre><code>VBoxManage guestcontrol "MaVM" rmdir /home/user/mon_dossier  # Supprimer un dossier
+VBoxManage guestcontrol "MaVM" rm /home/user/file.txt       # Supprimer un fichier
+VBoxManage guestcontrol "MaVM" stat /home/user/file.txt     # Informations sur un fichier</code></pre>
+    </section>
+
+    <section id="sessions">
+      <h2>⚙️ Gestion des sessions</h2>
+      <pre><code>VBoxManage guestcontrol "MaVM" list all --verbose
+VBoxManage guestcontrol "MaVM" closesession --all --verbose</code></pre>
+      <p>Ces commandes permettent de :</p>
+      <ul>
+        <li>Lister toutes les sessions actives dans la VM</li>
+        <li>Fermer toutes les sessions actives</li>
+      </ul>
+      <p>Pour fermer une session spécifique, utilisez son ID :</p>
+      <pre><code>VBoxManage guestcontrol "MaVM" closesession --session-id 1</code></pre>
+    </section>
+
+    <section id="guestadditions">
+      <h2>🔄 Mise à jour des Guest Additions</h2>
+      <pre><code>VBoxManage guestcontrol "MaVM" updatega \
+--source="VBoxGuestAdditions.iso" --wait-start --verbose</code></pre>
+      <p>Mise à jour des Additions Invitées via une image ISO.</p>
+      <p>Les Guest Additions offrent des fonctionnalités supplémentaires :</p>
+      <ul>
+        <li>Intégration du pointeur de la souris</li>
+        <li>Dossiers partagés entre l'hôte et l'invité</li>
+        <li>Meilleure intégration avec le bureau</li>
+        <li>Prise en charge de la résolution d'écran dynamique</li>
+      </ul>
+    </section>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

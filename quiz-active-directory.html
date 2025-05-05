@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Active Directory</title>
+  <link rel="stylesheet" href="quiz-styles.css">
+</head>
+<body>
+  <h1>Quiz Interactif : Active Directory</h1>
+  <form id="quizForm">
+    <!-- Q1 -->
+    <div class="question" data-answer="q1-2" role="group" aria-labelledby="q1-text">
+      <p id="q1-text"><strong>1. Quel est le rôle principal d'Active Directory ?</strong></p>
+      <div class="answers">
+        <label for="q1-1"><input type="radio" name="q1" id="q1-1"> Gestion des pare-feu</label><br>
+        <label for="q1-2"><input type="radio" name="q1" id="q1-2"> Gestion des identités et des accès</label><br>
+        <label for="q1-3"><input type="radio" name="q1" id="q1-3"> Gestion des bases de données</label><br>
+        <label for="q1-4"><input type="radio" name="q1" id="q1-4"> Gestion des antivirus</label>
+      </div>
+    </div>
+    <!-- Q2 -->
+    <div class="question" data-answer="q2-3" role="group" aria-labelledby="q2-text">
+      <p id="q2-text"><strong>2. Qu'est-ce qu'un domaine Active Directory ?</strong></p>
+      <div class="answers">
+        <label for="q2-1"><input type="radio" name="q2" id="q2-1"> Un serveur physique</label><br>
+        <label for="q2-2"><input type="radio" name="q2" id="q2-2"> Une adresse IP</label><br>
+        <label for="q2-3"><input type="radio" name="q2" id="q2-3"> Une collection d'objets partageant une base de données commune</label><br>
+        <label for="q2-4"><input type="radio" name="q2" id="q2-4"> Un logiciel de sauvegarde</label>
+      </div>
+    </div>
+    <!-- Q3 -->
+    <div class="question" data-answer="q3-1" role="group" aria-labelledby="q3-text">
+      <p id="q3-text"><strong>3. Comment les utilisateurs s'authentifient-ils au domaine Active Directory ?</strong></p>
+      <div class="answers">
+        <label for="q3-1"><input type="radio" name="q3" id="q3-1"> Via Kerberos</label><br>
+        <label for="q3-2"><input type="radio" name="q3" id="q3-2"> Via LDAP uniquement</label><br>
+        <label for="q3-3"><input type="radio" name="q3" id="q3-3"> Via FTP</label><br>
+        <label for="q3-4"><input type="radio" name="q3" id="q3-4"> Via HTTP</label>
+      </div>
+    </div>
+    <!-- Q4 -->
+    <div class="question" data-answer="q4-3" role="group" aria-labelledby="q4-text">
+      <p id="q4-text"><strong>4. Quelle est la structure hiérarchique principale d'Active Directory ?</strong></p>
+      <div class="answers">
+        <label for="q4-1"><input type="radio" name="q4" id="q4-1"> Répertoires et sous-répertoires</label><br>
+        <label for="q4-2"><input type="radio" name="q4" id="q4-2"> Fichiers et dossiers</label><br>
+        <label for="q4-3"><input type="radio" name="q4" id="q4-3"> Unités d'organisation (OU)</label><br>
+        <label for="q4-4"><input type="radio" name="q4" id="q4-4"> Serveurs et stations</label>
+      </div>
+    </div>
+    <!-- Q5 -->
+    <div class="question" data-answer="q5-4" role="group" aria-labelledby="q5-text">
+      <p id="q5-text"><strong>5. Quels types d'objets peut-on trouver dans Active Directory ?</strong></p>
+      <div class="answers">
+        <label for="q5-1"><input type="radio" name="q5" id="q5-1"> Uniquement des utilisateurs</label><br>
+        <label for="q5-2"><input type="radio" name="q5" id="q5-2"> Uniquement des ordinateurs</label><br>
+        <label for="q5-3"><input type="radio" name="q5" id="q5-3"> Uniquement des groupes</label><br>
+        <label for="q5-4"><input type="radio" name="q5" id="q5-4"> Utilisateurs, ordinateurs, groupes, imprimantes, etc.</label>
+      </div>
+    </div>
+    <!-- Q6 -->
+    <div class="question" data-answer="q6-2" role="group" aria-labelledby="q6-text">
+      <p id="q6-text"><strong>6. Quelle stratégie permet de centraliser la configuration des machines du domaine ?</strong></p>
+      <div class="answers">
+        <label for="q6-1"><input type="radio" name="q6" id="q6-1"> DNS Policy</label><br>
+        <label for="q6-2"><input type="radio" name="q6" id="q6-2"> Group Policy (GPO)</label><br>
+        <label for="q6-3"><input type="radio" name="q6" id="q6-3"> LDAP Policy</label><br>
+        <label for="q6-4"><input type="radio" name="q6" id="q6-4"> DHCP Policy</label>
+      </div>
+    </div>
+
+    <div id="quiz-form-buttons">
+      <button type="button" onclick="calculateScore()">Valider mes réponses</button>
+    </div>
+    
+    <div id="result"></div>
+    <div id="timer"></div>
+    <div id="progress"><div id="bar"></div></div>
+    
+    <div id="quiz-form-buttons">
+      <button type="button" id="resetBtn" onclick="resetQuiz()">Recommencer le quiz</button>
+      <button type="button" id="reviewBtn" onclick="reviewMissed()" style="display:none">Revoir les erreurs</button>
+      <button type="button" id="exportBtn" onclick="exportResults()">Exporter les résultats</button>
+    </div>
+  </form>
+  
+  <div class="back-container">
+    <a href="quiz-sommaire.html" class="back">Retour à l'accueil</a>
+  </div>
+
+<script>
+let startTime;
+
+const exp={
+ q1:"Active Directory gère les identités et les accès des utilisateurs au sein d'un réseau Windows.",
+ q2:"Un domaine AD est une collection logique d'objets (utilisateurs, ordinateurs) partageant une base de données et des politiques communes.",
+ q3:"Kerberos est le protocole d'authentification par défaut pour les domaines Active Directory.",
+ q4:"Les Unités d'Organisation (OU) permettent d'organiser hiérarchiquement les objets dans Active Directory.",
+ q5:"AD stocke de nombreux types d'objets : utilisateurs, ordinateurs, groupes, imprimantes, ressources partagées, etc.",
+ q6:"Les Group Policy Objects (GPO) permettent de configurer de manière centralisée les machines et utilisateurs du domaine."};
+
+function startTimer() {
+  startTime = new Date();
+}
+
+function endTimer() {
+  const endTime = new Date();
+  const duration = Math.round((endTime - startTime) / 1000);
+  document.getElementById('timer').textContent = `Temps: ${duration}s`;
+}
+
+function calculateScore() {
+  // Vérifier les questions non répondues
+  const unanswered = [];
+  const questions = document.querySelectorAll('.question');
+  questions.forEach((q, i) => {
+    const checked = q.querySelector('input:checked');
+    if (!checked) {
+      unanswered.push(i + 1);
+    }
+  });
+  
+  if (unanswered.length > 0) {
+    if (!confirm(`Questions ${unanswered.join(', ')} non répondues. Voulez-vous continuer ?`)) {
+      return;
+    }
+  }
+  
+  let s = 0;
+  const mistakes = [];
+  
+  questions.forEach((q, i) => {
+    const ok = q.dataset.answer;
+    const ch = q.querySelector('input:checked');
+    q.querySelectorAll('label').forEach(l => l.classList.remove('correct-answer', 'wrong-answer'));
+    
+    const k = `q${i+1}`;
+    const e = document.createElement('div');
+    e.className = 'explanation';
+    e.textContent = exp[k] || '';
+    
+    if (ch) {
+      if (ch.id === ok) {
+        s++;
+        ch.parentNode.classList.add('correct-answer');
+      } else {
+        ch.parentNode.classList.add('wrong-answer');
+        q.querySelector(`#${ok}`).parentNode.classList.add('correct-answer');
+        mistakes.push(i + 1);
+      }
+    } else {
+      q.querySelector(`#${ok}`).parentNode.classList.add('correct-answer');
+      mistakes.push(i + 1);
+    }
+    
+    if (!q.querySelector('.explanation')) q.appendChild(e);
+  });
+  
+  endTimer();
+  
+  const pct = (s / questions.length) * 100;
+  document.getElementById('result').textContent = `🎯 Votre score : ${s}/${questions.length}`;
+  document.getElementById('bar').style.width = pct + '%';
+  
+  localStorage.setItem('quiz_active_directory_score', s);
+  localStorage.setItem('quiz_active_directory_total', questions.length);
+  
+  // Afficher le bouton de révision si nécessaire
+  const reviewBtn = document.getElementById('reviewBtn');
+  if (mistakes.length > 0) {
+    reviewBtn.style.display = 'inline-block';
+  }
+}
+
+function resetQuiz() {
+  document.getElementById('quizForm').reset();
+  document.getElementById('result').textContent = '';
+  document.getElementById('timer').textContent = '';
+  document.getElementById('bar').style.width = '0';
+  document.getElementById('reviewBtn').style.display = 'none';
+  
+  document.querySelectorAll('.question').forEach(q => {
+    q.querySelectorAll('label').forEach(l => l.classList.remove('correct-answer', 'wrong-answer'));
+    const ex = q.querySelector('.explanation');
+    if (ex) ex.remove();
+  });
+  
+  startTimer();
+}
+
+function reviewMissed() {
+  const wrongQuestions = [];
+  document.querySelectorAll('.question').forEach((q, i) => {
+    if (q.querySelector('.wrong-answer') || !q.querySelector('.correct-answer')) {
+      wrongQuestions.push(i + 1);
+    }
+  });
+  
+  alert(`Questions à revoir: ${wrongQuestions.join(', ')}`);
+}
+
+function exportResults() {
+  const data = {
+    quiz: "Active Directory",
+    date: new Date().toISOString(),
+    score: localStorage.getItem('quiz_active_directory_score'),
+    total: localStorage.getItem('quiz_active_directory_total'),
+    percentage: parseInt(localStorage.getItem('quiz_active_directory_score')) / parseInt(localStorage.getItem('quiz_active_directory_total')) * 100
+  };
+  
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `quiz-active-directory-results-${new Date().toISOString().split('T')[0]}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// Démarrer le chronomètre au chargement
+window.addEventListener('load', startTimer);
+</script>
+</body>
+</html>

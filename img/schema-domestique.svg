@@ -1,0 +1,6 @@
+
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="400" height="300" fill="#e6f7ff"/>
+  <circle cx="200" cy="150" r="40" stroke="black" stroke-width="2" fill="lightblue" />
+  <text x="150" y="270" font-size="18" fill="black">Routeur Domestique</text>
+</svg>

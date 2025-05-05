@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐧 Linux - Sécurité et permissions</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐧 Linux : Sécurité et permissions</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">📦 VBoxManage ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage.html">📘 Commandes VBoxManage</a></li>
+            <li><a href="fiche-vboxmanage-interactive.html">🖱️ Interface interactive</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>La <strong>sécurité</strong> est un aspect fondamental des systèmes Linux. Cette fiche couvre les commandes essentielles pour gérer les permissions de fichiers, les utilisateurs, les groupes, et configurer les outils de sécurité de base comme le pare-feu.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#permissions">Permissions de fichiers</a></li>
+        <li><a href="#chmod">Utilisation de chmod</a></li>
+        <li><a href="#chown">Changer les propriétaires</a></li>
+        <li><a href="#sudo">Superutilisateur et sudo</a></li>
+        <li><a href="#parefeu">Pare-feu (ufw)</a></li>
+        <li><a href="#ssh">Sécurité SSH</a></li>
+        <li><a href="#bonus">Bonus</a></li>
+      </ul>
+    </details>
+
+    <section id="permissions">
+      <h2>🔐 Permissions de fichiers</h2>
+      <p>Le système de permissions Linux utilise un modèle basé sur l'utilisateur, le groupe et les autres utilisateurs :</p>
+      <pre><code>ls -l                     # Affiche les permissions</code></pre>
+      <p>Exemple de sortie :</p>
+      <pre><code>-rwxr-xr-- 1 user group 4096 avr 27 14:30 script.sh</code></pre>
+      <p>Décryptage des permissions :</p>
+      <ul>
+        <li>Premier caractère : type (- pour fichier, d pour répertoire)</li>
+        <li>Trois caractères suivants (rwx) : permissions pour le propriétaire</li>
+        <li>Trois caractères suivants (r-x) : permissions pour le groupe</li>
+        <li>Trois derniers caractères (r--) : permissions pour les autres</li>
+      </ul>
+      <p>Signification des lettres :</p>
+      <ul>
+        <li><code>r</code> : lecture (read)</li>
+        <li><code>w</code> : écriture (write)</li>
+        <li><code>x</code> : exécution (execute)</li>
+        <li><code>-</code> : permission non accordée</li>
+      </ul>
+    </section>
+
+    <section id="chmod">
+      <h2>🛠️ Utilisation de chmod</h2>
+      <p>La commande <code>chmod</code> (change mode) modifie les permissions des fichiers :</p>
+      <pre><code>chmod u+x fichier.sh     # Ajoute l'exécution au propriétaire
+chmod g+w fichier.txt    # Ajoute l'écriture au groupe
+chmod o-r fichier.conf   # Retire la lecture aux autres
+chmod a+r fichier.log    # Ajoute la lecture pour tous</code></pre>
+      
+      <p>Notation numérique (octal) :</p>
+      <pre><code>chmod 755 fichier.sh     # rwxr-xr-x
+chmod 644 fichier.txt    # rw-r--r--
+chmod 600 clé_privée     # rw-------
+chmod 777 fichier        # rwxrwxrwx (éviter, trop permissif)</code></pre>
+      
+      <p>Explication des valeurs octales :</p>
+      <ul>
+        <li><code>4</code> = lecture (r)</li>
+        <li><code>2</code> = écriture (w)</li>
+        <li><code>1</code> = exécution (x)</li>
+      </ul>
+      <p>On additionne les valeurs pour chaque catégorie d'utilisateur (propriétaire, groupe, autres). Par exemple, 7 = 4+2+1 = rwx</p>
+      
+      <pre><code>chmod -R 755 dossier/   # Change récursivement les permissions d'un dossier</code></pre>
+    </section>
+
+    <section id="chown">
+      <h2>👤 Changer les propriétaires</h2>
+      <p>Modifiez le propriétaire et le groupe d'un fichier :</p>
+      <pre><code>chown user:group fichier.txt # Change le propriétaire et le groupe
+chown utilisateur fichier    # Change seulement le propriétaire
+chgrp groupe fichier         # Change seulement le groupe
+chown -R user:group dossier/ # Change récursivement pour un dossier</code></pre>
+    </section>
+
+    <section id="sudo">
+      <h2>🔑 Superutilisateur et sudo</h2>
+      <p>La commande <code>sudo</code> permet d'exécuter des commandes avec les privilèges administrateur :</p>
+      <pre><code>sudo commande             # Exécute une commande en administrateur
+sudo -i                  # Ouvre un shell root
+sudo -l                  # Liste les privilèges sudo de l'utilisateur
+visudo                   # Édite la configuration sudo (toujours utiliser cette commande)</code></pre>
+      
+      <p>Configurer sudo pour un utilisateur (via visudo) :</p>
+      <pre><code># Permettre à un utilisateur d'exécuter toutes les commandes
+utilisateur ALL=(ALL:ALL) ALL
+
+# Permettre à un utilisateur d'exécuter certaines commandes sans mot de passe
+utilisateur ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot</code></pre>
+    </section>
+
+    <section id="parefeu">
+      <h2>🛡️ Pare-feu (ufw)</h2>
+      <p>UFW (Uncomplicated Firewall) est une interface simplifiée pour gérer le pare-feu iptables :</p>
+      <pre><code>sudo ufw status           # État du pare-feu
+sudo ufw enable          # Active ufw
+sudo ufw disable         # Désactive ufw
+sudo ufw allow 22        # Autorise SSH (port 22)
+sudo ufw allow ssh       # Autorise SSH (par nom de service)
+sudo ufw deny 80         # Bloque HTTP
+sudo ufw allow from 192.168.1.0/24 to any port 22  # Autorise SSH seulement du réseau local
+sudo ufw delete allow 80 # Supprime une règle</code></pre>
+      
+      <p>Configuration de règles plus complexes :</p>
+      <pre><code>sudo ufw allow 5000:5100/tcp   # Autorise une plage de ports TCP
+sudo ufw allow 5000:5100/udp   # Autorise une plage de ports UDP
+sudo ufw status numbered       # Liste les règles avec numéros
+sudo ufw delete 3              # Supprime la règle numéro 3</code></pre>
+    </section>
+
+    <section id="ssh">
+      <h2>🔒 Sécurité SSH</h2>
+      <p>Améliorez la sécurité de votre serveur SSH :</p>
+      <pre><code># Modifier la configuration SSH
+sudo nano /etc/ssh/sshd_config
+
+# Appliquer les changements
+sudo systemctl restart sshd</code></pre>
+      
+      <p>Modifications recommandées :</p>
+      <pre><code># Désactiver la connexion root
+PermitRootLogin no
+
+# Utiliser uniquement le protocole SSH v2
+Protocol 2
+
+# Limiter les utilisateurs autorisés
+AllowUsers utilisateur1 utilisateur2
+
+# Changer le port par défaut (optionnel)
+Port 2222</code></pre>
+      
+      <p>Utilisation des clés SSH :</p>
+      <pre><code># Générer une paire de clés
+ssh-keygen -t rsa -b 4096
+
+# Copier la clé sur un serveur distant
+ssh-copy-id utilisateur@serveur</code></pre>
+    </section>
+
+    <details id="bonus" class="bonus">
+      <summary>🎁 Bonus : Sécurité avancée</summary>
+      
+      <h3>Fail2ban</h3>
+      <p>Fail2ban est un outil qui bloque automatiquement les adresses IP après plusieurs tentatives de connexion échouées :</p>
+      <pre><code>sudo apt install fail2ban
+sudo systemctl enable fail2ban
+sudo systemctl start fail2ban
+
+# Vérifier le statut
+sudo fail2ban-client status
+
+# Vérifier une prison spécifique
+sudo fail2ban-client status sshd</code></pre>
+      
+      <h3>AppArmor</h3>
+      <p>AppArmor est un système de contrôle d'accès qui limite les ressources système qu'un programme peut utiliser :</p>
+      <pre><code>sudo aa-status             # Vérifier le statut d'AppArmor
+sudo aa-enforce /etc/apparmor.d/usr.bin.firefox  # Appliquer un profil
+sudo apparmor_parser -r /etc/apparmor.d/profile  # Recharger un profil</code></pre>
+      
+      <h3>Vérification d'intégrité</h3>
+      <pre><code># Installer AIDE (Advanced Intrusion Detection Environment)
+sudo apt install aide
+
+# Initialiser la base de données
+sudo aideinit
+
+# Vérifier l'intégrité du système
+sudo aide --check</code></pre>
+    </details>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

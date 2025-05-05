@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐍 Python - Bases</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style-python.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐍 Python Bases</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li class="dropdown">
+          <a href="#">📚 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p><strong>Python</strong> est un langage simple et puissant. Cette fiche présente ses bases : types de données, variables, conditions, boucles, et plus encore pour bien débuter.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#types">Types de base</a></li>
+        <li><a href="#variables">Variables</a></li>
+        <li><a href="#conditions">Conditions</a></li>
+        <li><a href="#boucles">Boucles</a></li>
+        <li><a href="#bonus">Bonus</a></li>
+      </ul>
+    </details>
+
+    <section id="types">
+      <h2>🔢 Types de base</h2>
+      <p>Python propose plusieurs types : <code>int</code> (entier), <code>float</code> (décimal), <code>str</code> (texte), <code>bool</code> (vrai/faux).</p>
+      <pre><code>x = 5
+y = 3.14
+nom = "Guillaume"
+est_actif = True</code></pre>
+    </section>
+
+    <section id="variables">
+      <h2>📦 Variables</h2>
+      <p>Déclaration simple sans typage forcé :</p>
+      <pre><code>age = 30
+nom = "Python"</code></pre>
+    </section>
+
+    <section id="conditions">
+      <h2>⚖️ Conditions</h2>
+      <p>Utilisation de <code>if</code>, <code>elif</code> et <code>else</code> :</p>
+      <pre><code>if age > 18:
+    print("Majeur")
+else:
+    print("Mineur")</code></pre>
+    </section>
+
+    <section id="boucles">
+      <h2>🔁 Boucles</h2>
+      <p>Les deux boucles principales sont <code>for</code> et <code>while</code> :</p>
+      <pre><code>for i in range(5):
+    print(i)
+
+while est_actif:
+    print("Actif")
+    est_actif = False</code></pre>
+    </section>
+
+    <details id="bonus" class="bonus">
+      <summary>🎁 Bonus : mini-exemples pratiques</summary>
+      <p>Création d'une fonction simple :</p>
+      <pre><code>def saluer(nom):
+    return f"Bonjour, {nom} !"</code></pre>
+      <p>Et utilisation :</p>
+      <pre><code>print(saluer("Guillaume"))</code></pre>
+    </details>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

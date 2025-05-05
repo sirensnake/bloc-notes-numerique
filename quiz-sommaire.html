@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sommaire des Quiz Réseau et Système</title>
+  <link rel="stylesheet" href="quiz-styles.css">
+</head>
+<body>
+  <h1>Sommaire des Quiz Réseau et Système</h1>
+  
+  <div class="stats-summary" id="globalStats">
+    <h3>Statistiques globales</h3>
+    <p id="totalScore"></p>
+    <p id="globalPercentage"></p>
+  </div>
+  
+  <div class="quiz-list">
+    <div class="quiz" id="quiz-osi">
+      <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <!-- Background -->
+        <rect x="10" y="5" width="44" height="54" rx="4" fill="#004080"/>
+        
+        <!-- OSI Layers -->
+        <rect x="12" y="52" width="40" height="6" rx="1" fill="#e74c3c" stroke="white" stroke-width="0.5"/>
+        <rect x="12" y="45" width="40" height="6" rx="1" fill="#f39c12" stroke="white" stroke-width="0.5"/>
+        <rect x="12" y="38" width="40" height="6" rx="1" fill="#f1c40f" stroke="white" stroke-width="0.5"/>
+        <rect x="12" y="31" width="40" height="6" rx="1" fill="#2ecc71" stroke="white" stroke-width="0.5"/>
+        <rect x="12" y="24" width="40" height="6" rx="1" fill="#3498db" stroke="white" stroke-width="0.5"/>
+        <rect x="12" y="17" width="40" height="6" rx="1" fill="#9b59b6" stroke="white" stroke-width="0.5"/>
+        <rect x="12" y="10" width="40" height="6" rx="1" fill="#1abc9c" stroke="white" stroke-width="0.5"/>
+        
+        <!-- Layer Numbers -->
+        <text x="14" y="55" fill="white" font-family="Arial" font-size="5" font-weight="bold">1</text>
+        <text x="14" y="48" fill="white" font-family="Arial" font-size="5" font-weight="bold">2</text>
+        <text x="14" y="41" fill="white" font-family="Arial" font-size="5" font-weight="bold">3</text>
+        <text x="14" y="34" fill="white" font-family="Arial" font-size="5" font-weight="bold">4</text>
+        <text x="14" y="27" fill="white" font-family="Arial" font-size="5" font-weight="bold">5</text>
+        <text x="14" y="20" fill="white" font-family="Arial" font-size="5" font-weight="bold">6</text>
+        <text x="14" y="13" fill="white" font-family="Arial" font-size="5" font-weight="bold">7</text>
+      </svg>
+      <h2>Modèle OSI</h2>
+      <a href="quiz-OSI.html">Accéder</a>
+    </div>
+    <div class="quiz" id="quiz-protocoles">
+      <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <!-- Network card icon -->
+        <rect x="8" y="16" width="48" height="32" rx="4" fill="#3498db"/>
+        <rect x="8" y="22" width="48" height="3" fill="#2980b9"/>
+        <rect x="8" y="40" width="48" height="3" fill="#2980b9"/>
+        
+        <!-- Ports -->
+        <rect x="10" y="50" width="12" height="8" rx="2" fill="#e74c3c"/>
+        <rect x="26" y="50" width="12" height="8" rx="2" fill="#e74c3c"/>
+        <rect x="42" y="50" width="12" height="8" rx="2" fill="#e74c3c"/>
+        
+        <!-- Connection lines -->
+        <path d="M16 27 C20 27, 20 30, 24 30 C28 30, 28 27, 32 27" stroke="white" stroke-width="2" fill="none"/>
+        <path d="M36 27 C40 27, 40 30, 44 30 C48 30, 48 27, 52 27" stroke="white" stroke-width="2" fill="none"/>
+        
+        <!-- Data indicators -->
+        <circle cx="52" cy="19" r="2" fill="#2ecc71"/>
+        <circle cx="48" cy="19" r="2" fill="#2ecc71"/>
+        <circle cx="44" cy="19" r="2" fill="#e74c3c"/>
+      </svg>
+      <h2>Protocoles Réseau</h2>
+      <a href="quiz-protocoles.html">Accéder</a>
+    </div>
+    <div class="quiz" id="quiz-commandes">
+      <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <!-- Terminal window -->
+        <rect x="8" y="10" width="48" height="44" rx="4" fill="#2c3e50"/>
+        
+        <!-- Terminal bar -->
+        <rect x="8" y="10" width="48" height="8" rx="4" fill="#34495e"/>
+        
+        <!-- Terminal buttons -->
+        <circle cx="12" cy="14" r="2" fill="#e74c3c"/>
+        <circle cx="18" cy="14" r="2" fill="#f39c12"/>
+        <circle cx="24" cy="14" r="2" fill="#2ecc71"/>
+        
+        <!-- Command lines -->
+        <rect x="12" y="22" width="20" height="2" fill="#2ecc71"/>
+        <rect x="36" y="22" width="4" height="2" fill="#2ecc71"/>
+        <rect x="12" y="30" width="16" height="2" fill="#3498db"/>
+        <rect x="32" y="30" width="8" height="2" fill="#3498db"/>
+        <rect x="12" y="38" width="24" height="2" fill="#e74c3c"/>
+        
+        <!-- Cursor -->
+        <rect x="42" y="38" width="6" height="2" fill="#2ecc71" opacity="0.7"/>
+        <rect x="43" y="37" width="1" height="4" fill="#2ecc71"/>
+      </svg>
+      <h2>Commandes Réseau</h2>
+      <a href="quiz-commandes.html">Accéder</a>
+    </div>
+    <div class="quiz" id="quiz-active-directory">
+      <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <!-- Main server/AD container -->
+        <rect x="16" y="10" width="32" height="44" rx="4" fill="#2c3e50"/>
+        <rect x="16" y="10" width="32" height="8" rx="4" fill="#e74c3c"/>
+        
+        <!-- Directory structure -->
+        <rect x="19" y="24" width="26" height="2" fill="#3498db"/>
+        <rect x="22" y="30" width="20" height="2" fill="#2ecc71"/>
+        <rect x="25" y="36" width="14" height="2" fill="#9b59b6"/>
+        <rect x="25" y="42" width="14" height="2" fill="#9b59b6"/>
+        
+        <!-- User icons -->
+        <circle cx="29" cy="30" r="3" fill="#1abc9c"/>
+        <circle cx="29" cy="36" r="3" fill="#1abc9c"/>
+        <circle cx="29" cy="42" r="3" fill="#1abc9c"/>
+        
+        <!-- Computer icons -->
+        <rect x="35" y="29" width="4" height="3" fill="#f39c12"/>
+        <rect x="35" y="35" width="4" height="3" fill="#f39c12"/>
+        <rect x="35" y="41" width="4" height="3" fill="#f39c12"/>
+        
+        <!-- Decorative connecting lines -->
+        <path d="M29 24 L22 30" stroke="#3498db" stroke-width="1"/>
+        <path d="M29 24 L29 30" stroke="#3498db" stroke-width="1"/>
+        <path d="M29 24 L25 36" stroke="#3498db" stroke-width="1"/>
+        <path d="M35 24 L37 30" stroke="#3498db" stroke-width="1"/>
+        <path d="M35 24 L37 36" stroke="#3498db" stroke-width="1"/>
+        <path d="M35 24 L37 42" stroke="#3498db" stroke-width="1"/>
+        
+        <!-- Arrows for data flow -->
+        <path d="M12 32 L16 32" stroke="white" stroke-width="1.5" marker-end="url(#arrow)"/>
+        <path d="M48 32 L52 32" stroke="white" stroke-width="1.5" marker-end="url(#arrow)"/>
+        
+        <!-- Arrow marker -->
+        <defs>
+          <marker id="arrow" markerWidth="8" markerHeight="6" 
+                  refX="8" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="white"/>
+          </marker>
+        </defs>
+      </svg>
+      <h2>Active Directory</h2>
+      <a href="quiz-active-directory.html">Accéder</a>
+    </div>
+    <div class="quiz" id="quiz-ad-gpo">
+      <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <!-- GPO icon -->
+        <rect x="12" y="8" width="40" height="48" rx="4" fill="#3498db"/>
+        
+        <!-- Policy settings bars -->
+        <rect x="16" y="15" width="32" height="4" fill="#e74c3c"/>
+        <rect x="16" y="22" width="28" height="4" fill="#f39c12"/>
+        <rect x="16" y="29" width="36" height="4" fill="#2ecc71"/>
+        <rect x="16" y="36" width="30" height="4" fill="#9b59b6"/>
+        <rect x="16" y="43" width="35" height="4" fill="#1abc9c"/>
+        
+        <!-- Settings icon -->
+        <circle cx="32" cy="25" r="8" fill="#ffffff" opacity="0.2"/>
+        <path d="M32 21 L32 29 M28 25 L36 25" stroke="white" stroke-width="2"/>
+        
+        <!-- Lock indicating security -->
+        <rect x="42" y="38" width="8" height="10" rx="1" fill="#e74c3c"/>
+        <path d="M45 37 Q46 35, 47 37" stroke="white" stroke-width="2" fill="none"/>
+      </svg>
+      <h2>Active Directory - GPO</h2>
+      <a href="quiz-ad-gpo.html">Accéder</a>
+    </div>
+    <div class="quiz" id="quiz-ad-security">
+      <svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+        <!-- Shield -->
+        <path d="M32 10 C20 10, 12 18, 12 32 C12 46, 20 54, 32 58 C44 54, 52 46, 52 32 C52 18, 44 10, 32 10" fill="#2ecc71"/>
+        
+        <!-- Lock -->
+        <rect x="27" y="24" width="10" height="12" rx="1" fill="#e74c3c"/>
+        <path d="M29 22 Q32 20, 35 22" stroke="white" stroke-width="2" fill="none"/>
+        
+        <!-- Check mark -->
+        <path d="M24 30 L30 36 L40 26" stroke="white" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        
+        <!-- Warning triangle -->
+        <path d="M32 40 L28 48 L36 48 Z" fill="#f39c12"/>
+        <text x="32" y="47" font-family="Arial" font-size="6" font-weight="bold" fill="black" text-anchor="middle">!</text>
+      </svg>
+      <h2>Active Directory - Sécurité</h2>
+      <a href="quiz-ad-security.html">Accéder</a>
+    </div>
+  </div>
+
+  <div class="back-container">
+    <a href="index.html" class="back">Retour à l'accueil</a>
+  </div>
+
+  <script>
+    const seuilReussite = 4;
+    const quizIds = ['osi', 'protocoles', 'commandes', 'active_directory', 'ad_gpo', 'ad_security'];
+
+    function updateGlobalStats() {
+      let totalScore = 0;
+      let totalPossible = 0;
+      let completedQuizzes = 0;
+
+      quizIds.forEach(id => {
+        const score = localStorage.getItem(`quiz_${id}_score`);
+        const total = localStorage.getItem(`quiz_${id}_total`);
+        
+        if (score && total) {
+          totalScore += parseInt(score, 10);
+          totalPossible += parseInt(total, 10);
+          completedQuizzes++;
+        }
+      });
+
+      if (completedQuizzes > 0) {
+        const percentage = Math.round((totalScore / totalPossible) * 100);
+        document.getElementById('totalScore').textContent = 
+          `Score total: ${totalScore}/${totalPossible}`;
+        document.getElementById('globalPercentage').textContent = 
+          `Pourcentage global: ${percentage}%`;
+        
+        // Ajouter une couleur en fonction du pourcentage
+        const percentageElement = document.getElementById('globalPercentage');
+        if (percentage >= 80) {
+          percentageElement.style.color = '#28a745';
+        } else if (percentage >= 60) {
+          percentageElement.style.color = '#ffc107';
+        } else {
+          percentageElement.style.color = '#dc3545';
+        }
+      } else {
+        document.getElementById('globalStats').style.display = 'none';
+      }
+    }
+
+    function updateQuizBadges() {
+      quizIds.forEach(id => {
+        const score = localStorage.getItem(`quiz_${id}_score`);
+        const total = localStorage.getItem(`quiz_${id}_total`);
+        const quizBox = document.getElementById(`quiz-${id}`);
+
+        // Supprimer les badges existants
+        const existingBadge = quizBox.querySelector('.badge');
+        if (existingBadge) {
+          existingBadge.remove();
+        }
+
+        if (score && total) {
+          const badge = document.createElement('div');
+          badge.className = 'badge';
+          const val = parseInt(score, 10);
+          badge.classList.add(val >= seuilReussite ? 'success' : 'fail');
+          badge.innerText = val >= seuilReussite ? '🟢 Réussi' : '🔴 À revoir';
+          quizBox.appendChild(badge);
+        }
+      });
+    }
+
+    // Mettre à jour au chargement de la page
+    window.addEventListener('load', () => {
+      updateGlobalStats();
+      updateQuizBadges();
+    });
+  </script>
+</body>
+</html>

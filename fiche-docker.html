@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐳 Docker - Guide pratique</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐳 Docker - Guide pratique</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🪟 Windows & Active Directory ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+            <li><a href="#">🪟 Windows</a></li>
+            <li><a href="#">🌐 Réseaux</a></li>
+            <li><hr></li>
+            <li><a href="#">📚 Présentation</a></li>
+            <li><a href="#">🔁 Réplication</a></li>
+            <li><a href="#">📌 Rôles FSMO</a></li>
+            <li><a href="#">🔐 GPO</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">💻 Virtualisation ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage-interactive.html">📦 VBoxManage</a></li>
+          </ul>
+        </li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li class="dropdown">
+          <a href="#">🎯 Quiz ▼</a>
+          <ul class="submenu">
+            <li><a href="quiz-sommaire.html">📋 Sommaire des Quiz</a></li>
+            <li><a href="quiz-OSI.html">🔀 Modèle OSI</a></li>
+            <li><a href="quiz-protocoles.html">📡 Protocoles Réseau</a></li>
+            <li><a href="quiz-commandes.html">⌨️ Commandes Réseau</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p><strong>Docker</strong> permet de créer, déployer et exécuter des applications dans des conteneurs. Les conteneurs sont des environnements légers, portables, isolés et reproductibles qui facilitent le déploiement d'applications sur différentes plateformes.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#presentation">Présentation</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#images">Gestion des images</a></li>
+        <li><a href="#conteneurs">Gestion des conteneurs</a></li>
+        <li><a href="#volumes">Volumes et persistance</a></li>
+        <li><a href="#reseaux">Réseaux personnalisés</a></li>
+        <li><a href="#dockerfile">Dockerfile de base</a></li>
+        <li><a href="#commandes-avancees">Commandes avancées</a></li>
+        <li><a href="#ressources">Ressources</a></li>
+      </ul>
+    </details>
+
+    <section id="presentation">
+      <h2>📌 Présentation</h2>
+      <p><strong>Docker</strong> permet de créer, déployer et exécuter des applications dans des conteneurs. Les conteneurs sont des environnements légers, portables, isolés et reproductibles.</p>
+      <p>Contrairement aux machines virtuelles, les conteneurs Docker :</p>
+      <ul>
+        <li>Partagent le noyau du système d'exploitation hôte</li>
+        <li>Démarrent en quelques secondes</li>
+        <li>Utilisent moins de ressources (mémoire, CPU)</li>
+        <li>Offrent une portabilité entre différents environnements</li>
+      </ul>
+    </section>
+
+    <section id="installation">
+      <h2>1. 🧰 Installation</h2>
+      <p>Docker est disponible sur les principales plateformes :</p>
+      <table>
+        <tr><th>Plateforme</th><th>Commande</th></tr>
+        <tr>
+          <td>Windows (Chocolatey)</td>
+          <td><pre><code>choco install docker-desktop -y</code></pre></td>
+        </tr>
+        <tr>
+          <td>Ubuntu</td>
+          <td><pre><code>sudo apt update && sudo apt install docker.io</code></pre></td>
+        </tr>
+        <tr>
+          <td>Mac (Homebrew)</td>
+          <td><pre><code>brew install --cask docker</code></pre></td>
+        </tr>
+      </table>
+      <p>Pour vérifier l'installation :</p>
+      <pre><code>docker --version
+docker info</code></pre>
+    </section>
+
+    <section id="images">
+      <h2>2. 📦 Gestion des images</h2>
+      <p>Les images Docker sont les modèles qui servent à créer des conteneurs :</p>
+      <pre><code>docker images                # Liste les images locales
+docker pull nginx           # Télécharge l'image nginx
+docker pull python:3.9      # Télécharge une version spécifique de Python
+docker rmi image_id         # Supprime une image locale
+docker image prune          # Supprime toutes les images inutilisées</code></pre>
+    </section>
+
+    <section id="conteneurs">
+      <h2>3. 🚀 Gestion des conteneurs</h2>
+      <p>Commandes essentielles pour gérer les conteneurs Docker :</p>
+      <pre><code>docker run -d --name web nginx     # Lance un conteneur en arrière-plan
+docker ps                         # Liste les conteneurs en cours d'exécution
+docker ps -a                      # Liste tous les conteneurs
+docker stop web                   # Stoppe le conteneur
+docker start web                  # Redémarre le conteneur
+docker rm web                     # Supprime le conteneur
+docker logs -f web                # Affiche les logs du conteneur en temps réel
+docker container prune            # Supprime tous les conteneurs arrêtés</code></pre>
+      
+      <p>Options courantes pour la commande <code>docker run</code> :</p>
+      <pre><code>docker run -d                    # Mode détaché (en arrière-plan)
+docker run -p 8080:80            # Mappage de port (hôte:conteneur)
+docker run -e VAR=valeur         # Variables d'environnement
+docker run --restart=always      # Redémarrage automatique</code></pre>
+    </section>
+
+    <section id="volumes">
+      <h2>4. 📁 Volumes et persistance</h2>
+      <p>Les volumes permettent de conserver les données même après suppression du conteneur :</p>
+      <pre><code>docker volume create monvolume
+
+docker run -d --name app \
+  -v monvolume:/app/data \
+  myapp</code></pre>
+      
+      <p>Types de montages :</p>
+      <ul>
+        <li><strong>Volumes nommés</strong> : gérés par Docker</li>
+        <li><strong>Volumes liés</strong> : montages de répertoires de l'hôte</li>
+      </ul>
+      
+      <pre><code># Montage d'un répertoire de l'hôte
+docker run -v /chemin/hote:/chemin/conteneur nginx</code></pre>
+    </section>
+
+    <section id="reseaux">
+      <h2>5. 🛠️ Réseaux personnalisés</h2>
+      <p>Docker permet de créer des réseaux isolés pour vos conteneurs :</p>
+      <pre><code>docker network create monreseau
+
+docker run -d --name web1 --network monreseau nginx
+docker run -d --name web2 --network monreseau nginx</code></pre>
+      
+      <p>Les conteneurs sur le même réseau peuvent communiquer par leur nom :</p>
+      <pre><code>docker exec web2 ping web1</code></pre>
+      
+      <p>Commandes pour la gestion des réseaux :</p>
+      <pre><code>docker network ls              # Liste les réseaux
+docker network inspect monreseau  # Détails sur un réseau
+docker network rm monreseau       # Supprime un réseau</code></pre>
+    </section>
+
+    <section id="dockerfile">
+      <h2>6. 📜 Dockerfile de base</h2>
+      <p>Un Dockerfile permet de créer vos propres images Docker :</p>
+      <pre><code># Exemple minimal de Dockerfile
+FROM python:3.10-slim
+WORKDIR /app
+COPY . .
+RUN pip install -r requirements.txt
+CMD ["python", "app.py"]</code></pre>
+      
+      <p>Instructions courantes dans un Dockerfile :</p>
+      <ul>
+        <li><code>FROM</code> : Image de base</li>
+        <li><code>WORKDIR</code> : Répertoire de travail</li>
+        <li><code>COPY/ADD</code> : Copie de fichiers</li>
+        <li><code>RUN</code> : Exécution de commandes</li>
+        <li><code>ENV</code> : Variables d'environnement</li>
+        <li><code>EXPOSE</code> : Ports à exposer</li>
+        <li><code>CMD/ENTRYPOINT</code> : Commande de démarrage</li>
+      </ul>
+      
+      <p>Construction de l'image :</p>
+      <pre><code>docker build -t monimage:1.0 .</code></pre>
+    </section>
+
+    <section id="commandes-avancees">
+      <h2>7. 🧪 Commandes avancées</h2>
+      <p>Commandes pour des utilisations plus avancées :</p>
+      <pre><code>docker exec -it web bash             # Accès shell dans un conteneur
+docker build -t monimage .          # Construire une image locale
+docker-compose up -d                # Lancer via fichier docker-compose.yml
+docker stats                        # Surveiller l'utilisation des ressources
+docker inspect conteneur_id         # Détails sur un conteneur
+docker cp fichier.txt web:/app/     # Copier des fichiers vers un conteneur</code></pre>
+    </section>
+
+    <section id="ressources">
+      <h2>🎓 Ressources</h2>
+      <p>Pour approfondir vos connaissances sur Docker :</p>
+      <ul>
+        <li><a href="https://docs.docker.com" target="_blank">Documentation officielle Docker</a></li>
+        <li><a href="https://hub.docker.com" target="_blank">Docker Hub - Dépôt d'images</a></li>
+        <li><a href="https://www.youtube.com/watch?v=3c-iBn73dDE" target="_blank">Tutoriel vidéo (Grafikart)</a></li>
+      </ul>
+    </section>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

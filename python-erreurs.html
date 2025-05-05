@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐍 Python - Gestion des erreurs</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style-python.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐍 Python : Gestion des erreurs</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li class="dropdown">
+          <a href="#">📚 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>La gestion des erreurs est essentielle en Python pour rendre vos programmes plus robustes et fiables.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#types-erreurs">Types d'erreurs</a></li>
+        <li><a href="#try-except">Utilisation de try/except</a></li>
+        <li><a href="#bonus">💡 Astuces & Bonus</a></li>
+      </ul>
+    </details>
+
+    <section id="introduction">
+      <h2>Introduction</h2>
+      <p>La gestion des erreurs est essentielle en Python pour rendre vos programmes plus robustes et fiables.</p>
+    </section>
+
+    <section id="types-erreurs">
+      <h2>Types d'erreurs</h2>
+      <ul>
+        <li><strong>SyntaxError</strong> : erreur de syntaxe dans le code.</li>
+        <li><strong>ValueError</strong> : erreur de type de valeur.</li>
+        <li><strong>TypeError</strong> : mauvaise utilisation des types.</li>
+        <li><strong>IndexError</strong> : accès à un index hors limites dans une liste.</li>
+      </ul>
+    </section>
+
+    <section id="try-except">
+      <h2>Utilisation de <code>try</code> / <code>except</code></h2>
+      <pre><code>try:
+    x = int(input("Entrez un nombre : "))
+except ValueError:
+    print("Ce n'est pas un nombre valide.")</code></pre>
+    </section>
+
+    <details id="bonus" class="bonus">
+      <summary>🎁 Bonus : Conseils avancés</summary>
+      <ul>
+        <li>Utiliser <code>finally</code> pour exécuter du code même après une erreur.</li>
+        <li>Créer ses propres exceptions avec <code>raise</code>.</li>
+      </ul>
+    </details>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

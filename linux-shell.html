@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐧 Linux - Shell et scripts</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐧 Linux : Shell et scripts</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">📦 VBoxManage ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage.html">📘 Commandes VBoxManage</a></li>
+            <li><a href="fiche-vboxmanage-interactive.html">🖱️ Interface interactive</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Le <strong>shell</strong> est l'interface en ligne de commande de Linux. Il permet d'exécuter des commandes et d'automatiser des tâches via des scripts. Cette fiche présente les bases du shell Bash, le plus couramment utilisé sur les systèmes Linux.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#base">Commandes de base</a></li>
+        <li><a href="#scripts">Création de scripts</a></li>
+        <li><a href="#variables">Variables et paramètres</a></li>
+        <li><a href="#structures">Structures de contrôle</a></li>
+        <li><a href="#fonctions">Fonctions</a></li>
+        <li><a href="#redirection">Redirection et pipes</a></li>
+        <li><a href="#bonus">Bonus</a></li>
+      </ul>
+    </details>
+
+    <section id="base">
+      <h2>🐚 Commandes de base</h2>
+      <p>Les commandes fondamentales pour interagir avec le shell :</p>
+      <pre><code>echo "Bonjour monde"    # Affiche du texte
+echo $HOME             # Affiche la valeur d'une variable
+read nom               # Lit une entrée utilisateur et la stocke dans la variable nom
+echo "Salut $nom"      # Affiche la valeur de la variable
+date                   # Affiche la date et l'heure
+pwd                    # Affiche le répertoire courant
+whoami                 # Affiche l'utilisateur actuel</code></pre>
+      
+      <p>Utilisation de l'historique des commandes :</p>
+      <pre><code>history                # Affiche l'historique des commandes
+!123                   # Exécute la commande numéro 123 de l'historique
+!!                     # Exécute la dernière commande</code></pre>
+    </section>
+
+    <section id="scripts">
+      <h2>📝 Création de scripts</h2>
+      <p>Un script shell est un fichier texte contenant une série de commandes :</p>
+      <pre><code>#!/bin/bash
+# Mon premier script shell
+# Le shebang #!/bin/bash indique quel interpréteur utiliser
+
+nom="Guillaume"
+echo "Bonjour $nom"
+
+echo "Aujourd'hui nous sommes le $(date +%d/%m/%Y)"
+echo "Le répertoire courant est : $(pwd)"</code></pre>
+      
+      <p>Pour rendre le script exécutable et l'exécuter :</p>
+      <pre><code>chmod +x monscript.sh    # Rend le script exécutable
+./monscript.sh          # Exécute le script</code></pre>
+      
+      <p>Vous pouvez aussi l'exécuter sans le rendre exécutable :</p>
+      <pre><code>bash monscript.sh        # Exécute le script avec bash</code></pre>
+    </section>
+
+    <section id="variables">
+      <h2>🔤 Variables et paramètres</h2>
+      <p>Déclaration et utilisation des variables :</p>
+      <pre><code># Définition de variables
+nom="Guillaume"
+age=30
+CONSTANTE="Valeur fixe"
+
+# Utilisation de variables
+echo "Je m'appelle $nom et j'ai $age ans"
+echo "Je m'appelle ${nom} et j'ai ${age} ans"  # Syntaxe avec accolades
+
+# Variables spéciales
+echo "Nom du script : $0"
+echo "Premier argument : $1"
+echo "Deuxième argument : $2"
+echo "Tous les arguments : $@"
+echo "Nombre d'arguments : $#"
+echo "PID du script : $$"
+echo "Code de retour de la dernière commande : $?"</code></pre>
+      
+      <p>Lire des entrées utilisateur :</p>
+      <pre><code># Lecture simple
+read -p "Entrez votre nom : " nom
+echo "Bonjour $nom"
+
+# Lecture avec timeout
+read -p "Entrez votre mot de passe : " -t 10 -s password
+echo -e "\nVotre mot de passe a été enregistré."</code></pre>
+    </section>
+
+    <section id="structures">
+      <h2>🔄 Structures de contrôle</h2>
+      <p>Les structures conditionnelles et les boucles :</p>
+      <pre><code># Structure if-elif-else
+if [ "$age" -lt 18 ]; then
+  echo "Mineur"
+elif [ "$age" -eq 18 ]; then
+  echo "Tout juste majeur"
+else
+  echo "Majeur"
+fi
+
+# Boucle for
+for i in 1 2 3 4 5; do
+  echo "Numéro $i"
+done
+
+# Boucle for avec range
+for i in {1..5}; do
+  echo "Numéro $i"
+done
+
+# Boucle for de style C
+for ((i=1; i<=5; i++)); do
+  echo "Numéro $i"
+done
+
+# Boucle while
+compteur=1
+while [ $compteur -le 5 ]; do
+  echo "Compteur : $compteur"
+  ((compteur++))
+done
+
+# Boucle until (jusqu'à ce que)
+compteur=5
+until [ $compteur -lt 1 ]; do
+  echo "Décompte : $compteur"
+  ((compteur--))
+done
+
+# Structure case (switch)
+read -p "Entrez un fruit : " fruit
+case $fruit in
+  "pomme")
+    echo "C'est une pomme"
+    ;;
+  "orange"|"citron")
+    echo "C'est un agrume"
+    ;;
+  *)
+    echo "Fruit non reconnu"
+    ;;
+esac</code></pre>
+      
+      <p>Opérateurs de comparaison pour les nombres :</p>
+      <ul>
+        <li><code>-eq</code> : égal à</li>
+        <li><code>-ne</code> : différent de</li>
+        <li><code>-gt</code> : supérieur à</li>
+        <li><code>-ge</code> : supérieur ou égal à</li>
+        <li><code>-lt</code> : inférieur à</li>
+        <li><code>-le</code> : inférieur ou égal à</li>
+      </ul>
+      
+      <p>Opérateurs pour les chaînes :</p>
+      <ul>
+        <li><code>=</code> ou <code>==</code> : égal à</li>
+        <li><code>!=</code> : différent de</li>
+        <li><code>-z</code> : chaîne vide</li>
+        <li><code>-n</code> : chaîne non vide</li>
+      </ul>
+    </section>
+
+    <section id="fonctions">
+      <h2>🧩 Fonctions</h2>
+      <p>Déclaration et utilisation des fonctions :</p>
+      <pre><code># Définition de fonction
+saluer() {
+  echo "Bonjour $1 !"
+  return 0
+}
+
+# Fonction avec variables locales
+calculer_somme() {
+  local a=$1
+  local b=$2
+  echo $((a + b))
+}
+
+# Appel de fonction
+saluer "Guillaume"
+somme=$(calculer_somme 5 3)
+echo "La somme est : $somme"</code></pre>
+    </section>
+
+    <section id="redirection">
+      <h2>📊 Redirection et pipes</h2>
+      <p>Rediriger les entrées et sorties :</p>
+      <pre><code># Redirection de sortie
+echo "Hello" > fichier.txt     # Écrit dans le fichier (écrase)
+echo "World" >> fichier.txt    # Ajoute au fichier
+
+# Redirection d'entrée
+sort < liste_noms.txt          # Trie le contenu du fichier
+
+# Redirection d'erreur
+command 2> erreurs.log         # Redirige les erreurs vers un fichier
+command > output.log 2>&1      # Redirige stdout et stderr vers un fichier
+
+# Pipes (tubes)
+cat fichier.txt | grep "mot"   # Filtre les lignes contenant "mot"
+ps aux | grep firefox | wc -l  # Compte les processus firefox</code></pre>
+    </section>
+
+    <details id="bonus" class="bonus">
+      <summary>🎁 Bonus : Techniques avancées</summary>
+      
+      <h3>Expressions régulières</h3>
+      <pre><code># Vérification avec regex
+if [[ $email =~ ^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$ ]]; then
+  echo "Email valide"
+else
+  echo "Email invalide"
+fi</code></pre>
+      
+      <h3>Tests sur les fichiers</h3>
+      <pre><code>if [ -f "$fichier" ]; then
+  echo "Le fichier existe"
+fi
+
+if [ -d "$dossier" ]; then
+  echo "Le dossier existe"
+fi
+
+if [ -x "$script" ]; then
+  echo "Le script est exécutable"
+fi</code></pre>
+      
+      <h3>Manipulation de chaînes</h3>
+      <pre><code># Longueur d'une chaîne
+texte="Bonjour"
+echo "Longueur : ${#texte}"
+
+# Sous-chaîne
+echo "Les 3 premiers caractères : ${texte:0:3}"
+
+# Substitution
+echo "${texte/jour/soir}"  # Remplace jour par soir</code></pre>
+      
+      <h3>Tableaux</h3>
+      <pre><code># Déclarer un tableau
+fruits=("pomme" "orange" "banane")
+
+# Accéder aux éléments
+echo "Premier fruit : ${fruits[0]}"
+
+# Parcourir un tableau
+for fruit in "${fruits[@]}"; do
+  echo "Fruit : $fruit"
+done
+
+# Longueur du tableau
+echo "Nombre de fruits : ${#fruits[@]}"</code></pre>
+    </details>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

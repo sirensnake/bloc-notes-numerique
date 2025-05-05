@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐧 Linux - Système et processus</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐧 Linux : Système et processus</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">📦 VBoxManage ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage.html">📘 Commandes VBoxManage</a></li>
+            <li><a href="fiche-vboxmanage-interactive.html">🖱️ Interface interactive</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Cette fiche présente les <strong>commandes essentielles</strong> pour gérer le système Linux et ses processus. Le monitoring et la gestion des ressources sont des aspects fondamentaux de l'administration système Linux.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#infosys">Informations système</a></li>
+        <li><a href="#processus">Gestion des processus</a></li>
+        <li><a href="#ressources">Surveillance des ressources</a></li>
+        <li><a href="#services">Gestion des services</a></li>
+        <li><a href="#logs">Journaux système</a></li>
+        <li><a href="#stockage">Stockage et disques</a></li>
+        <li><a href="#demarrage">Démarrage et arrêt</a></li>
+      </ul>
+    </details>
+
+    <section id="infosys">
+      <h2>💻 Informations système</h2>
+      <p>Commandes pour obtenir des informations sur votre système Linux :</p>
+      <pre><code>uname -a                  # Informations complètes sur le système
+hostnamectl              # Informations sur l'hôte, distribution, noyau
+lsb_release -a           # Informations sur la distribution (si installé)
+cat /etc/os-release      # Informations sur la distribution (méthode universelle)
+uptime                   # Durée depuis le démarrage et charge système
+timedatectl              # Affiche les informations de date et d'heure
+date                     # Affiche la date et l'heure actuelles</code></pre>
+    </section>
+
+    <section id="processus">
+      <h2>🔄 Gestion des processus</h2>
+      <p>Surveiller et gérer les processus en cours d'exécution :</p>
+      <pre><code>ps aux                    # Liste tous les processus avec détails
+ps -ef                   # Format standard Unix pour lister les processus
+ps -ef | grep firefox    # Filtrer les processus (ici firefox)
+pgrep firefox            # Trouver le PID d'un processus par nom
+top                      # Vue dynamique des processus en temps réel
+htop                     # Version améliorée de top (à installer)
+kill PID                 # Terminer un processus par son ID
+killall firefox          # Terminer tous les processus nommés firefox
+xkill                    # Cliquer pour tuer une fenêtre graphique
+nice -n 19 commande      # Exécuter avec une priorité basse
+renice -n 10 -p PID      # Changer la priorité d'un processus existant</code></pre>
+      
+      <p>Signaux courants utilisés avec <code>kill</code> :</p>
+      <ul>
+        <li><code>kill -15 PID</code> ou <code>kill -TERM PID</code> : Terminaison propre (signal par défaut)</li>
+        <li><code>kill -9 PID</code> ou <code>kill -KILL PID</code> : Force la terminaison (à utiliser en dernier recours)</li>
+        <li><code>kill -1 PID</code> ou <code>kill -HUP PID</code> : Demande le rechargement de la configuration</li>
+      </ul>
+    </section>
+
+    <section id="ressources">
+      <h2>📊 Surveillance des ressources</h2>
+      <p>Monitorer les ressources système :</p>
+      <pre><code>free -h                  # Affiche l'utilisation de la mémoire (format lisible)
+df -h                    # Affiche l'espace disque (format lisible)
+du -sh /dossier          # Taille d'un dossier (format lisible)
+vmstat                   # Statistiques mémoire/CPU/E/S
+iostat                   # Statistiques d'entrées/sorties disque
+iotop                    # Surveiller l'activité des E/S par processus
+watch -n 1 free -h       # Affiche la mémoire RAM toutes les secondes
+netstat -tuln            # Affiche les connexions réseau et ports ouverts
+lsof                     # Liste les fichiers ouverts</code></pre>
+    </section>
+
+    <section id="services">
+      <h2>🔧 Gestion des services (systemd)</h2>
+      <p>La plupart des distributions Linux modernes utilisent systemd pour gérer les services :</p>
+      <pre><code>systemctl status service   # État d'un service
+systemctl start service   # Démarrer un service
+systemctl stop service    # Arrêter un service
+systemctl restart service # Redémarrer un service
+systemctl enable service  # Activer au démarrage
+systemctl disable service # Désactiver au démarrage
+systemctl list-units --type=service --all  # Lister tous les services
+systemctl list-dependencies service  # Afficher les dépendances</code></pre>
+      
+      <p>Exemple avec un service courant :</p>
+      <pre><code>systemctl status ssh      # Vérifier l'état du service SSH
+systemctl restart nginx   # Redémarrer le serveur web nginx</code></pre>
+    </section>
+
+    <section id="logs">
+      <h2>📝 Journaux système</h2>
+      <p>Consulter et gérer les journaux système :</p>
+      <pre><code>journalctl               # Affiche tous les journaux (systemd)
+journalctl -u ssh       # Journaux pour un service spécifique
+journalctl -f           # Suit les nouveaux messages en temps réel
+journalctl --since=today # Journaux d'aujourd'hui
+journalctl -p err       # Seulement les erreurs
+
+cat /var/log/syslog     # Journal système (méthode traditionnelle)
+tail -f /var/log/auth.log # Suit les authentifications en temps réel
+dmesg                   # Messages du noyau</code></pre>
+    </section>
+
+    <section id="stockage">
+      <h2>💾 Stockage et disques</h2>
+      <p>Gestion des disques et partitions :</p>
+      <pre><code>lsblk                    # Liste tous les périphériques de stockage
+fdisk -l                 # Affiche les tables de partitions (root)
+df -h                    # Affiche l'espace disque utilisé
+du -sh /home             # Taille du répertoire /home
+mount                    # Affiche les systèmes de fichiers montés
+mount /dev/sdb1 /mnt     # Monte une partition
+umount /mnt              # Démonte un système de fichiers
+blkid                    # Affiche les UUID des partitions</code></pre>
+    </section>
+
+    <section id="demarrage">
+      <h2>⏻ Démarrage et arrêt</h2>
+      <p>Commandes pour redémarrer ou arrêter le système :</p>
+      <pre><code>shutdown -h now          # Arrêt immédiat
+shutdown -r now          # Redémarrage immédiat
+shutdown -h +10          # Arrêt dans 10 minutes
+reboot                   # Redémarrage
+poweroff                 # Arrêt
+systemctl suspend        # Mise en veille
+systemctl hibernate      # Mise en hibernation</code></pre>
+    </section>
+
+    <details id="bonus" class="bonus">
+      <summary>🎁 Bonus : Commandes avancées</summary>
+      
+      <h3>Référence rapide des signaux</h3>
+      <pre><code>kill -l                  # Liste tous les signaux disponibles</code></pre>
+      
+      <h3>Démarrage en mode maintenance</h3>
+      <pre><code>systemctl rescue         # Entre en mode maintenance</code></pre>
+      
+      <h3>Limiter les ressources (cgroups)</h3>
+      <pre><code>systemd-run --scope -p MemoryLimit=1G firefox  # Limite de mémoire pour une application</code></pre>
+      
+      <h3>Planification de tâches</h3>
+      <pre><code>crontab -l               # Affiche les tâches cron de l'utilisateur
+crontab -e               # Édite les tâches cron
+systemctl list-timers    # Affiche les timers systemd</code></pre>
+    </details>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

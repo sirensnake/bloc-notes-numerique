@@ -1,0 +1,3 @@
+- Ajouter la fiche python-erreurs
+- Ajouter la fiche python-fichiers
+- Ajouter la fiche python-fonctions

@@ -1,0 +1,80 @@
+/* style-python.css - Styles spécifiques aux pages Python */
+
+/* Couleurs spécifiques pour les sections Python */
+section#types {
+  border-left: 4px solid #4B8BBE;
+}
+
+section#variables {
+  border-left: 4px solid #FFD43B;
+}
+
+section#conditions {
+  border-left: 4px solid #306998;
+}
+
+section#boucles {
+  border-left: 4px solid #FFE873;
+}
+
+section#listes {
+  border-left: 4px solid #4B8BBE;
+}
+
+section#tuples {
+  border-left: 4px solid #FFD43B;
+}
+
+section#dictionnaires {
+  border-left: 4px solid #306998;
+}
+
+section#ensembles {
+  border-left: 4px solid #FFE873;
+}
+
+section#introduction {
+  border-left: 4px solid #4B8BBE;
+}
+
+section#types-erreurs {
+  border-left: 4px solid #FFD43B;
+}
+
+section#try-except {
+  border-left: 4px solid #306998;
+}
+
+/* Style pour les exemples de code Python */
+pre code {
+  display: block;
+  font-family: 'Consolas', 'Monaco', monospace;
+  line-height: 1.5;
+}
+
+/* Mise en évidence des mots-clés Python */
+code .keyword {
+  color: #007ACC;
+  font-weight: bold;
+}
+
+/* Styling pour les exemples de commandes */
+pre.command {
+  background-color: #f5f5f5;
+  border-left: 4px solid #4B8BBE;
+}
+
+/* Bouton spécifique pour exécuter du code Python */
+.button-run-python {
+  background-color: #4B8BBE;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.button-run-python:hover {
+  background-color: #306998;
+}

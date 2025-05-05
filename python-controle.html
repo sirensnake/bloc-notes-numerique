@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐍 Python - Structures de contrôle</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style-python.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐍 Python : Structures de contrôle</h1>
+    <nav>
+        <ul class="main-menu">
+          <li><a href="index.html">🏠 Accueil</a></li>
+          <li class="dropdown">
+            <a href="#">📚 Python ▼</a>
+            <ul class="submenu">
+              <li><a href="python-bases.html">📘 Bases</a></li>
+              <li><a href="python-collections.html">🗂️ Collections</a></li>
+              <li><a href="python-controle.html">🔁 Contrôle</a></li>
+              <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+              <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+              <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+              <li><a href="python-modules.html">🧩 Modules</a></li>
+              <li><a href="python-poo.html">🏛️ POO</a></li>
+              <li><a href="python-trucs.html">🧠 Trucs</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Les <strong>structures de contrôle</strong> permettent de diriger le flux d'exécution d'un programme Python. Elles vous permettent de créer des logiques conditionnelles et des boucles pour des programmes plus complexes et puissants.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#conditions">Conditions</a></li>
+        <li><a href="#boucles-for">Boucles for</a></li>
+        <li><a href="#boucles-while">Boucles while</a></li>
+        <li><a href="#comprehensions">Compréhensions</a></li>
+        <li><a href="#controle-boucles">Contrôle de boucles</a></li>
+      </ul>
+    </details>
+
+    <section id="conditions">
+      <h2>🔀 Conditions</h2>
+      <p>Les instructions conditionnelles permettent d'exécuter différentes portions de code selon qu'une condition est vraie ou fausse.</p>
+      <pre><code># Structure if-elif-else
+age = 18
+
+if age < 18:
+    print("Vous êtes mineur")
+elif age == 18:
+    print("Vous venez tout juste d'être majeur")
+else:
+    print("Vous êtes majeur")
+
+# Opérateurs de comparaison
+# == égal à
+# != différent de
+# < inférieur à
+# > supérieur à
+# <= inférieur ou égal à
+# >= supérieur ou égal à
+
+# Opérateurs logiques
+# and : les deux conditions doivent être vraies
+# or : au moins une condition doit être vraie
+# not : inverse la condition
+
+if age >= 18 and age <= 25:
+    print("Vous êtes un jeune adulte")</code></pre>
+    </section>
+
+    <section id="boucles-for">
+      <h2>🔄 Boucles for</h2>
+      <p>La boucle <code>for</code> permet d'itérer sur une séquence (liste, tuple, chaîne de caractères, etc.).</p>
+      <pre><code># Boucle sur une liste
+fruits = ["pomme", "banane", "orange"]
+for fruit in fruits:
+    print(f"J'aime manger des {fruit}s")
+
+# Boucle avec range pour générer une séquence
+for i in range(5):  # 0, 1, 2, 3, 4
+    print(i)
+
+# Boucle avec range et arguments personnalisés
+for i in range(2, 10, 2):  # 2, 4, 6, 8
+    print(i)
+
+# Énumération pour avoir l'index et la valeur
+for index, fruit in enumerate(fruits):
+    print(f"{index+1}. {fruit}")</code></pre>
+    </section>
+
+    <section id="boucles-while">
+      <h2>🔄 Boucles while</h2>
+      <p>La boucle <code>while</code> s'exécute tant qu'une condition est vraie.</p>
+      <pre><code># Boucle while simple
+compteur = 0
+while compteur < 5:
+    print(compteur)
+    compteur += 1
+
+# Boucle avec condition et modification
+mot_de_passe = ""
+while mot_de_passe != "secret":
+    mot_de_passe = input("Entrez le mot de passe : ")
+    
+# Boucle infinie avec break
+while True:
+    reponse = input("Voulez-vous continuer ? (o/n) : ")
+    if reponse.lower() == 'n':
+        break</code></pre>
+    </section>
+
+    <section id="comprehensions">
+      <h2>🧠 Compréhensions</h2>
+      <p>Les compréhensions permettent de créer des listes, des dictionnaires ou des ensembles de manière concise.</p>
+      <pre><code># Compréhension de liste
+nombres = [1, 2, 3, 4, 5]
+carres = [x**2 for x in nombres]  # [1, 4, 9, 16, 25]
+
+# Compréhension avec condition
+pairs = [x for x in nombres if x % 2 == 0]  # [2, 4]
+
+# Compréhension de dictionnaire
+carre_dict = {x: x**2 for x in nombres}  # {1:1, 2:4, 3:9, 4:16, 5:25}
+
+# Compréhension d'ensemble
+lettres = {c for c in "abracadabra"}  # {'a', 'b', 'c', 'd', 'r'}</code></pre>
+    </section>
+
+    <section id="controle-boucles">
+      <h2>🛑 Contrôle de boucles</h2>
+      <p>Python offre des instructions pour contrôler le flux d'exécution des boucles.</p>
+      <pre><code># Break - sort complètement de la boucle
+for i in range(10):
+    if i == 5:
+        break
+    print(i)  # Affiche 0, 1, 2, 3, 4
+
+# Continue - passe à l'itération suivante
+for i in range(10):
+    if i % 2 == 0:
+        continue
+    print(i)  # Affiche 1, 3, 5, 7, 9
+
+# Else avec for/while - s'exécute si la boucle se termine normalement
+for i in range(5):
+    print(i)
+else:
+    print("Boucle terminée normalement")
+
+# Else ne s'exécute pas si la boucle est interrompue par break
+for i in range(5):
+    if i == 3:
+        break
+    print(i)
+else:
+    print("Ce message ne s'affichera pas")</code></pre>
+    </section>
+
+    <details id="bonus" class="bonus">
+      <summary>🎁 Bonus : Contrôle avancé</summary>
+      <p>Utilisez le motif match/case (à partir de Python 3.10) pour des structures de contrôle plus élégantes :</p>
+      <pre><code># Pattern matching (Python 3.10+)
+def analyser_type(valeur):
+    match valeur:
+        case int():
+            return "C'est un entier"
+        case str():
+            return "C'est une chaîne"
+        case list():
+            return f"C'est une liste de {len(valeur)} éléments"
+        case _:
+            return "Type inconnu"
+
+# Utilisation
+print(analyser_type(42))
+print(analyser_type("hello"))
+print(analyser_type([1, 2, 3]))</code></pre>
+    </details>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐍 Python - Fichiers</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style-python.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐍 Python : Fichiers</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li class="dropdown">
+          <a href="#">📚 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>La <strong>manipulation de fichiers</strong> est essentielle en Python pour lire, écrire et traiter des données stockées sur le système de fichiers.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#lire">Lire un fichier</a></li>
+        <li><a href="#ecrire">Écrire dans un fichier</a></li>
+        <li><a href="#ajouter">Ajouter du contenu</a></li>
+        <li><a href="#ligne-par-ligne">Lire ligne par ligne</a></li>
+        <li><a href="#erreurs">Gérer les erreurs</a></li>
+        <li><a href="#bonus">Bonus</a></li>
+      </ul>
+    </details>
+
+    <section id="lire">
+      <h2>📄 Lire un fichier</h2>
+      <p>Utilisez l'instruction <code>with</code> et la fonction <code>open()</code> pour lire le contenu complet d'un fichier :</p>
+      <pre><code>with open("exemple.txt", "r") as fichier:
+    contenu = fichier.read()
+    print(contenu)</code></pre>
+      <p>L'utilisation de <code>with</code> garantit la fermeture du fichier à la fin du bloc, même en cas d'erreur.</p>
+    </section>
+
+    <section id="ecrire">
+      <h2>📝 Écrire dans un fichier</h2>
+      <p>Pour écrire dans un fichier (en écrasant son contenu s'il existe déjà) :</p>
+      <pre><code>with open("exemple.txt", "w") as fichier:
+    fichier.write("Bonjour monde")</code></pre>
+      <p>Le mode "w" crée le fichier s'il n'existe pas ou le vide s'il existe déjà.</p>
+    </section>
+
+    <section id="ajouter">
+      <h2>➕ Ajouter du contenu</h2>
+      <p>Pour ajouter du contenu à la fin d'un fichier existant sans l'écraser :</p>
+      <pre><code>with open("exemple.txt", "a") as fichier:
+    fichier.write("\nLigne ajoutée")</code></pre>
+      <p>Le mode "a" (append) place le curseur à la fin du fichier avant d'écrire.</p>
+    </section>
+
+    <section id="ligne-par-ligne">
+      <h2>🔁 Lire ligne par ligne</h2>
+      <p>Pour traiter un fichier ligne par ligne (optimal pour les grands fichiers) :</p>
+      <pre><code>with open("exemple.txt", "r") as fichier:
+    for ligne in fichier:
+        print(ligne.strip())</code></pre>
+      <p>La méthode <code>strip()</code> élimine les espaces et les retours à la ligne en début et fin de chaîne.</p>
+    </section>
+
+    <section id="erreurs">
+      <h2>❌ Gérer les erreurs de fichier</h2>
+      <p>Capturez les exceptions spécifiques lors de la manipulation de fichiers :</p>
+      <pre><code>try:
+    with open("inexistant.txt") as f:
+        print(f.read())
+except FileNotFoundError:
+    print("Fichier non trouvé")</code></pre>
+      <p>D'autres exceptions courantes : <code>PermissionError</code>, <code>IsADirectoryError</code>, etc.</p>
+    </section>
+
+    <details id="bonus" class="bonus">
+      <summary>🎁 Bonus : Autres opérations sur les fichiers</summary>
+      <h3>Modes d'ouverture combinés</h3>
+      <pre><code># Mode lecture et écriture binaire
+with open("image.png", "rb+") as fichier:
+    data = fichier.read()
+    # Manipuler data...
+    fichier.seek(0)  # Revenir au début du fichier
+    fichier.write(data_modifiée)</code></pre>
+      
+      <h3>Utilisation du module pathlib (Python 3.4+)</h3>
+      <pre><code>from pathlib import Path
+
+# Créer un objet Path
+chemin = Path("dossier/sous-dossier/fichier.txt")
+
+# Vérifier si un fichier existe
+if chemin.exists():
+    print("Le fichier existe !")
+
+# Créer des dossiers si nécessaire
+chemin.parent.mkdir(parents=True, exist_ok=True)
+
+# Lire/écrire avec pathlib
+chemin.write_text("Contenu du fichier")
+contenu = chemin.read_text()</code></pre>
+    </details>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

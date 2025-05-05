@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>📌 Active Directory - Rôles FSMO</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>📌 Active Directory - Rôles FSMO</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🪟 Windows & Active Directory ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+            <li><a href="windows.html">🪟 Windows</a></li>
+            <li><a href="reseaux-windows.html">🌐 Réseaux</a></li>
+            <li><hr></li>
+            <li><a href="active-directory-presentation.html">📚 Présentation</a></li>
+            <li><a href="active-directory-replication.html">🔁 Réplication</a></li>
+            <li><a href="active-directory-fsmo.html">📌 Rôles FSMO</a></li>
+            <li><a href="active-directory-gpo.html">🔐 GPO</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">💻 Virtualisation ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage-interactive.html">📦 VBoxManage</a></li>
+          </ul>
+        </li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li class="dropdown">
+          <a href="#">🎯 Quiz ▼</a>
+          <ul class="submenu">
+            <li><a href="quiz-sommaire.html">📋 Sommaire des Quiz</a></li>
+            <li><a href="quiz-OSI.html">🔀 Modèle OSI</a></li>
+            <li><a href="quiz-protocoles.html">📡 Protocoles Réseau</a></li>
+            <li><a href="quiz-commandes.html">⌨️ Commandes Réseau</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Les <strong>rôles FSMO</strong> (Flexible Single Master Operations) sont des rôles spécialisés dans Active Directory qui doivent être gérés par un seul contrôleur de domaine à la fois pour éviter les conflits.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#roles">Les 5 rôles FSMO</a></li>
+        <li><a href="#etendue">Étendue des rôles</a></li>
+        <li><a href="#consultation">Consulter les détenteurs</a></li>
+        <li><a href="#transfert">Transférer un rôle</a></li>
+        <li><a href="#saisie">Saisir un rôle</a></li>
+        <li><a href="#bonnes-pratiques">Bonnes pratiques</a></li>
+      </ul>
+    </details>
+
+    <section id="roles">
+      <h2>📋 Les 5 rôles FSMO</h2>
+      <h3>Rôles au niveau forêt (1 par forêt) :</h3>
+      <ol>
+        <li><strong>Schema Master</strong>
+           <ul>
+             <li>Contrôle les modifications du schéma AD</li>
+             <li>Peu critique - Panne acceptable pendant longtemps</li>
+             <li>Nécessaire uniquement pour modifier le schéma</li>
+           </ul>
+        </li>
+        <li><strong>Domain Naming Master</strong>
+           <ul>
+             <li>Gère l'ajout/suppression de domaines dans la forêt</li>
+             <li>Critique pendant l'ajout de domaines uniquement</li>
+             <li>Contrôle les noms de domaine uniques</li>
+           </ul>
+        </li>
+      </ol>
+
+      <h3>Rôles au niveau domaine (1 par domaine) :</h3>
+      <ol start="3">
+        <li><strong>PDC Emulator</strong>
+           <ul>
+             <li>Émulation pour clients NT4</li>
+             <li>Maître du temps du domaine</li>
+             <li>Gestion des verrouillages de compte</li>
+             <li>Point d'entrée principal pour les changements de mot de passe</li>
+           </ul>
+        </li>
+        <li><strong>RID Master</strong>
+           <ul>
+             <li>Distribue les blocs de RID (Relative ID)</li>
+             <li>Critique pour la création de nouveaux objets</li>
+             <li>Empêche les SID dupliqués</li>
+           </ul>
+        </li>
+        <li><strong>Infrastructure Master</strong>
+           <ul>
+             <li>Met à jour les références aux objets d'autres domaines</li>
+             <li>Ne doit pas être sur un catalogue global</li>
+             <li>Sauf si tous les DC sont des GC</li>
+           </ul>
+        </li>
+      </ol>
+    </section>
+
+    <section id="etendue">
+      <h2>🌐 Étendue des rôles</h2>
+      <table>
+        <tr><th>Rôle</th><th>Étendue</th><th>Criticité</th><th>Impact si indisponible</th></tr>
+        <tr><td>Schema Master</td><td>Forêt</td><td>Faible</td><td>Modification schéma impossible</td></tr>
+        <tr><td>Domain Naming Master</td><td>Forêt</td><td>Moyenne</td><td>Ajout/suppression domaine impossible</td></tr>
+        <tr><td>PDC Emulator</td><td>Domaine</td><td>Haute</td><td>Authentification dégradée, désynchronisation temps</td></tr>
+        <tr><td>RID Master</td><td>Domaine</td><td>Haute</td><td>Création d'objets limitée</td></tr>
+        <tr><td>Infrastructure Master</td><td>Domaine</td><td>Faible</td><td>Références inter-domaines obsolètes</td></tr>
+      </table>
+    </section>
+
+    <section id="consultation">
+      <h2>👁️ Consulter les détenteurs</h2>
+      <h3>Via commandes :</h3>
+      <pre><code># netdom - méthode rapide
+netdom query fsmo
+
+# PowerShell - détails complets
+Get-ADForest | select-object SchemaMaster,DomainNamingMaster
+Get-ADDomain | select-object PDCEmulator,RIDMaster,InfrastructureMaster
+
+# GUI - Outils graphiques
+# Schema Master : regedit → Schema Console
+# Domain Naming Master : Active Directory Domains and Trusts
+# PDC, RID, Infrastructure : Active Directory Users and Computers</code></pre>
+    </section>
+
+    <section id="transfert">
+      <h2>🔄 Transférer un rôle</h2>
+      <h3>Transfert planifié (normal) :</h3>
+      <pre><code># Via PowerShell
+Move-ADDirectoryServerOperationMasterRole -Identity "NewDC" -OperationMasterRole SchemaMaster
+Move-ADDirectoryServerOperationMasterRole -Identity "NewDC" -OperationMasterRole DomainNamingMaster
+Move-ADDirectoryServerOperationMasterRole -Identity "NewDC" -OperationMasterRole PDCEmulator
+Move-ADDirectoryServerOperationMasterRole -Identity "NewDC" -OperationMasterRole RIDMaster
+Move-ADDirectoryServerOperationMasterRole -Identity "NewDC" -OperationMasterRole InfrastructureMaster
+
+# Tous les rôles en une fois
+Move-ADDirectoryServerOperationMasterRole -Identity "NewDC" -OperationMasterRole SchemaMaster,DomainNamingMaster,PDCEmulator,RIDMaster,InfrastructureMaster</code></pre>
+
+      <h3>Via ntdsutil :</h3>
+      <pre><code>ntdsutil
+roles
+connections
+connect to server NewDC
+quit
+transfer schema master
+transfer naming master
+transfer PDC
+transfer RID master
+transfer infrastructure master
+quit
+quit</code></pre>
+    </section>
+
+    <section id="saisie">
+      <h2>⚠️ Saisir un rôle</h2>
+      <p>La saisie de rôle est une opération d'urgence qui force le transfert sans coordination avec l'ancien détenteur :</p>
+      <pre><code># Saisie via ntdsutil
+ntdsutil
+roles
+connections
+connect to server NewDC
+quit
+seize schema master
+seize naming master
+seize PDC
+seize RID master
+seize infrastructure master
+quit
+quit
+
+# Cleanup après saisie
+# Supprimer les métadonnées de l'ancien DC
+ntdsutil
+metadata cleanup
+remove selected server</code></pre>
+      
+      <p class="warning">⚠️ Ne saisir un rôle qu'en dernier recours. L'ancien détenteur ne doit jamais revenir en ligne après une saisie.</p>
+    </section>
+
+    <section id="bonnes-pratiques">
+      <h2>✅ Bonnes pratiques</h2>
+      <h3>Distribution des rôles :</h3>
+      <ul>
+        <li><strong>Petite forêt (1-2 domaines) :</strong> Tous les rôles sur un seul DC</li>
+        <li><strong>Forêt moyenne :</strong> Séparer Schema Master et Domain Naming Master du reste</li>
+        <li><strong>Grande forêt :</strong> Distribution selon les besoins et la charge</li>
+      </ul>
+
+      <h3>Recommandations de placement :</h3>
+      <table>
+        <tr><th>Rôle</th><th>Placement recommandé</th></tr>
+        <tr><td>Schema Master</td><td>DC dédié, peu utilisé</td></tr>
+        <tr><td>Domain Naming Master</td><td>Même DC que Schema Master</td></tr>
+        <tr><td>PDC Emulator</td><td>DC performant, central</td></tr>
+        <tr><td>RID Master</td><td>DC fiable, souvent avec PDC</td></tr>
+        <tr><td>Infrastructure Master</td><td>DC non-GC (sauf si tous sont GC)</td></tr>
+      </table>
+
+      <h3>Surveillance :</h3>
+      <pre><code># Vérification régulière
+dcdiag /test:knowsofroleholders
+repadmin /showrepl
+netdom query fsmo
+
+# Monitoring automatisé
+Get-ADForest | select SchemaMaster,DomainNamingMaster
+Get-ADDomain | select PDCEmulator,RIDMaster,InfrastructureMaster</code></pre>
+    </section>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

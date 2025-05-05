@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🐍 Python - Collections</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style-python.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🐍 Python Collections</h1>
+    <nav>
+        <ul class="main-menu">
+          <li><a href="index.html">🏠 Accueil</a></li>
+          <li class="dropdown">
+            <a href="#">📚 Python ▼</a>
+            <ul class="submenu">
+              <li><a href="python-bases.html">📘 Bases</a></li>
+              <li><a href="python-collections.html">🗂️ Collections</a></li>
+              <li><a href="python-controle.html">🔁 Contrôle</a></li>
+              <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+              <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+              <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+              <li><a href="python-modules.html">🧩 Modules</a></li>
+              <li><a href="python-poo.html">🏛️ POO</a></li>
+              <li><a href="python-trucs.html">🧠 Trucs</a></li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p><strong>Python</strong> offre plusieurs types de collections pour organiser et manipuler vos données efficacement.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#listes">Listes</a></li>
+        <li><a href="#tuples">Tuples</a></li>
+        <li><a href="#dictionnaires">Dictionnaires</a></li>
+        <li><a href="#ensembles">Ensembles</a></li>
+      </ul>
+    </details>
+
+    <section id="listes">
+      <h2>📝 Listes</h2>
+      <p>Collections ordonnées et modifiables, définies avec des crochets <code>[]</code>.</p>
+      <pre><code>fruits = ["pomme", "banane", "orange"]
+fruits.append("kiwi")  # Ajoute un élément
+fruits[0] = "fraise"   # Modifie un élément
+print(fruits[1])       # Accède au 2ème élément</code></pre>
+    </section>
+
+    <section id="tuples">
+      <h2>🔒 Tuples</h2>
+      <p>Collections ordonnées et non modifiables, définies avec des parenthèses <code>()</code>.</p>
+      <pre><code>coordonnees = (45.7, 4.8)
+x, y = coordonnees  # Déballage
+print(x)            # Affiche 45.7</code></pre>
+    </section>
+
+    <section id="dictionnaires">
+      <h2>🔍 Dictionnaires</h2>
+      <p>Collections de paires clé-valeur, définies avec des accolades <code>{}</code>.</p>
+      <pre><code>personne = {
+    "nom": "Dupont",
+    "age": 30,
+    "ville": "Lyon"
+}
+print(personne["nom"])  # Affiche "Dupont"
+personne["email"] = "dupont@example.com"  # Ajoute une entrée</code></pre>
+    </section>
+
+    <section id="ensembles">
+      <h2>🧩 Ensembles (Sets)</h2>
+      <p>Collections non ordonnées d'éléments uniques, définies avec des accolades <code>{}</code>.</p>
+      <pre><code>couleurs = {"rouge", "bleu", "vert"}
+couleurs.add("jaune")  # Ajoute un élément
+print("rouge" in couleurs)  # Vérifie si un élément existe</code></pre>
+    </section>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

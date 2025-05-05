@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🔁 Active Directory - Réplication</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🔁 Active Directory - Réplication</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🪟 Windows & Active Directory ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+            <li><a href="windows.html">🪟 Windows</a></li>
+            <li><a href="reseaux-windows.html">🌐 Réseaux</a></li>
+            <li><hr></li>
+            <li><a href="active-directory-presentation.html">📚 Présentation</a></li>
+            <li><a href="active-directory-replication.html">🔁 Réplication</a></li>
+            <li><a href="active-directory-fsmo.html">📌 Rôles FSMO</a></li>
+            <li><a href="active-directory-gpo.html">🔐 GPO</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">💻 Virtualisation ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage-interactive.html">📦 VBoxManage</a></li>
+          </ul>
+        </li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li class="dropdown">
+          <a href="#">🎯 Quiz ▼</a>
+          <ul class="submenu">
+            <li><a href="quiz-sommaire.html">📋 Sommaire des Quiz</a></li>
+            <li><a href="quiz-OSI.html">🔀 Modèle OSI</a></li>
+            <li><a href="quiz-protocoles.html">📡 Protocoles Réseau</a></li>
+            <li><a href="quiz-commandes.html">⌨️ Commandes Réseau</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>La <strong>réplication Active Directory</strong> assure la synchronisation des données entre les contrôleurs de domaine. Elle garantit la disponibilité des informations et la tolérance aux pannes dans l'infrastructure AD.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#concepts">Concepts de réplication</a></li>
+        <li><a href="#topologie">Topologie de réplication</a></li>
+        <li><a href="#monitoring">Surveillance de la réplication</a></li>
+        <li><a href="#troubleshooting">Dépannage</a></li>
+        <li><a href="#commandes">Commandes utiles</a></li>
+      </ul>
+    </details>
+
+    <section id="concepts">
+      <h2>📚 Concepts de réplication</h2>
+      <h3>Types de réplication :</h3>
+      <ul>
+        <li><strong>Réplication intra-site</strong> : Rapide (par défaut toutes les 15 sec)</li>
+        <li><strong>Réplication inter-site</strong> : Planifiée (par défaut toutes les 3 heures)</li>
+      </ul>
+      
+      <h3>Modèle multi-maître :</h3>
+      <p>Chaque contrôleur de domaine peut accepter des modifications, qui sont ensuite répliquées :</p>
+      <pre><code># USN (Update Sequence Number)
+- Numéro unique attribué à chaque modification
+- Permet de suivre et ordonner les changements
+- Incrémenté à chaque modification
+
+# Propagation Dampening
+- Évite la réplication en boucle
+- Up-to-dateness Vectors pour suivre les USN</code></pre>
+      
+      <h3>Conflits de réplication :</h3>
+      <ul>
+        <li><strong>Version number</strong> : La version la plus récente gagne</li>
+        <li><strong>Timestamp</strong> : En cas d'égalité, le timestamp le plus récent</li>
+        <li><strong>GUID</strong> : En dernier recours, le GUID le plus grand</li>
+      </ul>
+    </section>
+
+    <section id="topologie">
+      <h2>🔄 Topologie de réplication</h2>
+      <h3>Connection Objects :</h3>
+      <p>Définissent les chemins de réplication entre contrôleurs :</p>
+      <pre><code># Types de connections
+1. Connections automatiques (KCC - Knowledge Consistency Checker)
+2. Connections manuelles
+3. Connections de pont de site</code></pre>
+      
+      <h3>Sites et sous-réseaux :</h3>
+      <pre><code># Créer un site
+New-ADReplicationSite -Name "Lyon"
+
+# Associer un sous-réseau à un site
+New-ADReplicationSubnet -Name "10.0.1.0/24" -Site "Lyon"
+
+# Lier les sites
+New-ADReplicationSiteLink -Name "Paris-Lyon" -SitesIncluded "Paris","Lyon" -Cost 100 -ReplicationFrequencyInMinutes 180</code></pre>
+      
+      <h3>Bridge de site :</h3>
+      <p>Permet la réplication transitive entre sites :</p>
+      <pre><code># Créer un bridge
+New-ADReplicationSiteLinkBridge -Name "Europe" -SiteLinksIncluded "Paris-Lyon","Lyon-Marseille"</code></pre>
+    </section>
+
+    <section id="monitoring">
+      <h2>👀 Surveillance de la réplication</h2>
+      <h3>Outils de monitoring :</h3>
+      <pre><code># Repadmin - principal outil
+repadmin /showrepl                    # État général
+repadmin /showrepl * /csv > rep.csv  # Export CSV
+repadmin /replsummary                # Résumé global
+
+# DCDiag - diagnostic complet
+dcdiag /test:replications
+dcdiag /test:knowsofroleholders
+dcdiag /q                            # Quick test
+
+# PowerShell
+Get-ADReplicationFailure -Target "DC01"
+Get-ADReplicationPartnerMetadata -Target "DC01"</code></pre>
+      
+      <h3>Métriques importantes :</h3>
+      <table>
+        <tr><th>Métrique</th><th>Signification</th><th>Action</th></tr>
+        <tr><td>Latence réplication</td><td>Temps de propagation</td><td>Optimiser topologie si >1h</td></tr>
+        <tr><td>Erreurs 8606</td><td>Attributs insuffisants</td><td>Vérifier schéma</td></tr>
+        <tr><td>Erreurs 8614</td><td>Timeout réplication</td><td>Vérifier réseau</td></tr>
+      </table>
+    </section>
+
+    <section id="troubleshooting">
+      <h2>🔧 Dépannage</h2>
+      <h3>Problèmes courants :</h3>
+      <pre><code># 1. Erreurs de réplication
+repadmin /showrepl /errorsonly
+
+# 2. Forcer la réplication
+repadmin /syncall DC01 /AdeP
+
+# 3. Résoudre les conflits
+repadmin /removelingeringobjects DC01 "DC=company,DC=com" DC02 /advisory_mode
+
+# 4. Vérifier la connectivité
+repadmin /bind DC01
+netdom query fsmo</code></pre>
+      
+      <h3>Réinitialisation de la réplication :</h3>
+      <pre><code># Suppression complète des métadonnées
+ntdsutil
+metadata cleanup
+select operation target
+list sites
+select site 0
+list servers in site
+select server 0
+quit
+remove selected server
+
+# Reconstruire les connections
+repadmin /kcc
+</code></pre>
+    </section>
+
+    <section id="commandes">
+      <h2>⌨️ Commandes utiles</h2>
+      <h3>Repadmin - Commandes principales :</h3>
+      <pre><code>repadmin /replsingle targetDC sourceDC "DN"    # Forcer réplication unique
+repadmin /queue DC01                            # Voir la file d'attente
+repadmin /showutdvec DC01 "DN"                 # Vector de mise à jour
+repadmin /viewlist *                           # Liste des connexions
+
+# Options avancées
+repadmin /syncall /A /e /q                     # Sync complète, quiet mode
+repadmin /showobjmeta DC01 "DN"                # Métadonnées objet
+repadmin /bridgeheads                          # Afficher les bridge heads</code></pre>
+      
+      <h3>Diagnostics avancés :</h3>
+      <pre><code># Vérification complète
+dcdiag /c /e /v                               # Comprehensive test
+dcdiag /test:advertising                      # Test publication
+dcdiag /test:connectivity                     # Test connectivité
+
+# Analyse des sites
+dsquery site                                   # Liste des sites
+dcdiag /test:intersite                        # Test réplication inter-site</code></pre>
+    </section>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

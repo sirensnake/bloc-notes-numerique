@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🍫 Chocolatey - Gestionnaire de paquets Windows</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🍫 Chocolatey - Gestionnaire de paquets Windows</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🪟 Windows & Active Directory ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+            <li><a href="#">🪟 Windows</a></li>
+            <li><a href="#">🌐 Réseaux</a></li>
+            <li><hr></li>
+            <li><a href="#">📚 Présentation</a></li>
+            <li><a href="#">🔁 Réplication</a></li>
+            <li><a href="#">📌 Rôles FSMO</a></li>
+            <li><a href="#">🔐 GPO</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">💻 Virtualisation ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage-interactive.html">📦 VBoxManage</a></li>
+          </ul>
+        </li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li class="dropdown">
+          <a href="#">🎯 Quiz ▼</a>
+          <ul class="submenu">
+            <li><a href="quiz-sommaire.html">📋 Sommaire des Quiz</a></li>
+            <li><a href="quiz-OSI.html">🔀 Modèle OSI</a></li>
+            <li><a href="quiz-protocoles.html">📡 Protocoles Réseau</a></li>
+            <li><a href="quiz-commandes.html">⌨️ Commandes Réseau</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p><strong>Chocolatey</strong> est un gestionnaire de paquets pour Windows qui facilite l'installation, la mise à jour et la désinstallation de logiciels depuis la ligne de commande.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#commandes-base">Commandes de base</a></li>
+        <li><a href="#rechercher-paquet">Rechercher un paquet</a></li>
+        <li><a href="#configuration">Configuration avancée</a></li>
+        <li><a href="#ressources">Ressources utiles</a></li>
+      </ul>
+    </details>
+
+    <section id="installation">
+      <h2>📥 Installation</h2>
+      <p>Pour installer Chocolatey, exécutez cette commande dans PowerShell avec des droits administrateur :</p>
+      <pre><code>Set-ExecutionPolicy Bypass -Scope Process -Force; `
+[System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; `
+iwr https://chocolatey.org/install.ps1 -UseBasicParsing | iex</code></pre>
+      <p>Cette commande permet d'installer Chocolatey depuis PowerShell en contournant les restrictions d'exécution.</p>
+    </section>
+
+    <section id="commandes-base">
+      <h2>📦 Commandes de base</h2>
+      <p>Voici les commandes essentielles pour utiliser Chocolatey :</p>
+      <ul>
+        <li><strong>Installer un paquet :</strong>
+          <pre><code>choco install nom_du_paquet</code></pre>
+          <p>Vous pouvez ajouter <code>-y</code> à la fin pour approuver automatiquement l'installation.</p>
+        </li>
+        <li><strong>Désinstaller un paquet :</strong>
+          <pre><code>choco uninstall nom_du_paquet</code></pre>
+        </li>
+        <li><strong>Mettre à jour un paquet :</strong>
+          <pre><code>choco upgrade nom_du_paquet</code></pre>
+        </li>
+        <li><strong>Mettre à jour tous les paquets :</strong>
+          <pre><code>choco upgrade all</code></pre>
+          <p>Ajoutez <code>--noop</code> pour voir ce qui serait mis à jour sans effectuer les mises à jour.</p>
+        </li>
+        <li><strong>Lister les paquets installés :</strong>
+          <pre><code>choco list -lo</code></pre>
+          <p>L'option <code>-lo</code> signifie "locally only" (uniquement les paquets locaux).</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="rechercher-paquet">
+      <h2>🔍 Rechercher un paquet</h2>
+      <p>Pour trouver un paquet dans le dépôt Chocolatey :</p>
+      <pre><code>choco search nom_du_paquet</code></pre>
+      <p>Pour obtenir des informations détaillées sur un paquet :</p>
+      <pre><code>choco info nom_du_paquet</code></pre>
+    </section>
+
+    <section id="configuration">
+      <h2>⚙️ Configuration avancée</h2>
+      <p>Personnalisez le comportement de Chocolatey avec ces commandes :</p>
+      <ul>
+        <li><strong>Modifier le cache de téléchargement :</strong>
+          <pre><code>choco config set cacheLocation D:\choco-cache</code></pre>
+        </li>
+        <li><strong>Ajouter une nouvelle source :</strong>
+          <pre><code>choco source add -n=nom -s="https://source-url/"</code></pre>
+          <p>Utile pour les dépôts privés ou les miroirs.</p>
+        </li>
+        <li><strong>Voir les configurations :</strong>
+          <pre><code>choco config list</code></pre>
+        </li>
+        <li><strong>Installer une version spécifique :</strong>
+          <pre><code>choco install nom_du_paquet --version=X.Y.Z</code></pre>
+        </li>
+      </ul>
+    </section>
+
+    <section id="ressources">
+      <h2>📚 Ressources utiles</h2>
+      <ul>
+        <li><a href="https://chocolatey.org/packages" target="_blank">🔗 Liste des paquets</a></li>
+        <li><a href="https://docs.chocolatey.org" target="_blank">📘 Documentation officielle</a></li>
+        <li><a href="https://github.com/chocolatey/choco" target="_blank">🔧 Code source sur GitHub</a></li>
+      </ul>
+    </section>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

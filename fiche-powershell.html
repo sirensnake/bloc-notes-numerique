@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>⚡ PowerShell - Guide pratique</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>⚡ PowerShell - Guide pratique</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🪟 Windows & Active Directory ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+            <li><a href="windows.html">🪟 Windows</a></li>
+            <li><a href="reseaux-windows.html">🌐 Réseaux</a></li>
+            <li><hr></li>
+            <li><a href="active-directory-presentation.html">📚 Présentation</a></li>
+            <li><a href="active-directory-replication.html">🔁 Réplication</a></li>
+            <li><a href="active-directory-fsmo.html">📌 Rôles FSMO</a></li>
+            <li><a href="active-directory-gpo.html">🔐 GPO</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">💻 Virtualisation ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage-interactive.html">📦 VBoxManage</a></li>
+          </ul>
+        </li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li class="dropdown">
+          <a href="#">🎯 Quiz ▼</a>
+          <ul class="submenu">
+            <li><a href="quiz-sommaire.html">📋 Sommaire des Quiz</a></li>
+            <li><a href="quiz-OSI.html">🔀 Modèle OSI</a></li>
+            <li><a href="quiz-protocoles.html">📡 Protocoles Réseau</a></li>
+            <li><a href="quiz-commandes.html">⌨️ Commandes Réseau</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p><strong>PowerShell</strong> est un langage de script et shell de ligne de commande développé par Microsoft. Il permet d'automatiser des tâches administratives et de gérer les configurations sur les systèmes Windows. Cet outil puissant combine les fonctionnalités d'un shell traditionnel avec un langage de scripting orienté objet.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#syntaxe">Syntaxe de base</a></li>
+        <li><a href="#fichiers">Gestion des fichiers</a></li>
+        <li><a href="#modules">Modules et Snap-ins</a></li>
+        <li><a href="#remoting">Exécution à distance (remoting)</a></li>
+        <li><a href="#scripts">Écriture de scripts</a></li>
+        <li><a href="#alias">Alias utiles</a></li>
+        <li><a href="#services">Gestion des services</a></li>
+        <li><a href="#conditions">Structures conditionnelles</a></li>
+        <li><a href="#bonus">Bonus</a></li>
+      </ul>
+    </details>
+
+    <section id="syntaxe">
+      <h2>1. Syntaxe de base</h2>
+      <p>PowerShell utilise une syntaxe du type <code>Verbe-Nom</code> pour ses commandes (appelées cmdlets) :</p>
+      <pre><code>Get-Process</code></pre>
+      <p>Récupère la liste des processus en cours d'exécution.</p>
+      
+      <p>Vous pouvez utiliser le pipe (|) pour chaîner des commandes :</p>
+      <pre><code>Get-Service | Where-Object {$_.Status -eq "Running"}</code></pre>
+      <p>Affiche uniquement les services dont le statut est "Running" (en cours d'exécution).</p>
+      
+      <p>Définition de variables (commencent par $) :</p>
+      <pre><code>$maVariable = "Bonjour"
+$nombre = 42
+$liste = @(1, 2, 3, 4)
+$hashtable = @{Cle1 = "Valeur1"; Cle2 = "Valeur2"}</code></pre>
+      
+      <p>Commentaires :</p>
+      <pre><code># Ceci est un commentaire sur une ligne
+
+<# 
+   Ceci est un commentaire 
+   sur plusieurs lignes 
+#></code></pre>
+    </section>
+
+    <section id="fichiers">
+      <h2>2. Gestion des fichiers</h2>
+      <p>Explorer et manipuler les fichiers et dossiers :</p>
+      <pre><code>Get-ChildItem -Path C:\MonDossier</code></pre>
+      <p>Liste le contenu du dossier "MonDossier" (équivalent à <code>ls</code> ou <code>dir</code>).</p>
+      
+      <pre><code>Copy-Item -Path source.txt -Destination destination.txt</code></pre>
+      <p>Copie un fichier d'un emplacement à un autre.</p>
+      
+      <pre><code>Remove-Item -Path fichier.txt</code></pre>
+      <p>Supprime le fichier spécifié.</p>
+      
+      <p>Autres commandes utiles :</p>
+      <pre><code>New-Item -Path nouveauFichier.txt -ItemType File
+Move-Item -Path src.txt -Destination dest.txt
+Rename-Item -Path ancien.txt -NewName nouveau.txt
+Test-Path -Path C:\chemin\vers\fichier.txt</code></pre>
+    </section>
+
+    <section id="modules">
+      <h2>3. Modules et Snap-ins</h2>
+      <p>Les modules étendent les fonctionnalités de PowerShell :</p>
+      <pre><code>Get-Module -ListAvailable</code></pre>
+      <p>Liste tous les modules disponibles sur le système.</p>
+      
+      <pre><code>Import-Module ActiveDirectory</code></pre>
+      <p>Importe le module Active Directory pour pouvoir utiliser ses cmdlets.</p>
+      
+      <pre><code>Get-Command -Module ActiveDirectory</code></pre>
+      <p>Liste toutes les commandes disponibles dans le module Active Directory.</p>
+      
+      <pre><code>Find-Module -Name "*Azure*"</code></pre>
+      <p>Recherche des modules liés à Azure dans le dépôt en ligne PowerShell Gallery.</p>
+    </section>
+
+    <section id="remoting">
+      <h2>4. Exécution à distance (remoting)</h2>
+      <p>PowerShell permet d'exécuter des commandes sur des machines distantes :</p>
+      <pre><code>Enable-PSRemoting -Force</code></pre>
+      <p>Active la fonctionnalité de remoting sur la machine locale (à exécuter en administrateur).</p>
+      
+      <pre><code>Enter-PSSession -ComputerName serveur</code></pre>
+      <p>Établit une session interactive avec un ordinateur distant.</p>
+      
+      <pre><code>Invoke-Command -ComputerName serveur1, serveur2 -ScriptBlock { Get-Service }</code></pre>
+      <p>Exécute une commande ou un bloc de script sur plusieurs ordinateurs distants.</p>
+      
+      <pre><code>$session = New-PSSession -ComputerName serveur
+Invoke-Command -Session $session -ScriptBlock { ... }
+Remove-PSSession -Session $session</code></pre>
+      <p>Crée, utilise et ferme une session persistante avec un ordinateur distant.</p>
+    </section>
+
+    <section id="scripts">
+      <h2>5. Écriture de scripts</h2>
+      <p>Les scripts PowerShell ont l'extension <code>.ps1</code> et permettent d'automatiser des tâches complexes :</p>
+      <pre><code>.\monScript.ps1</code></pre>
+      <p>Exécute un script PowerShell situé dans le répertoire courant.</p>
+      
+      <pre><code>Set-ExecutionPolicy RemoteSigned</code></pre>
+      <p>Modifie la politique d'exécution pour autoriser l'exécution de scripts locaux (à exécuter en administrateur).</p>
+      
+      <p>Exemple de script simple :</p>
+      <pre><code># monScript.ps1
+param(
+    [string]$Nom = "Monde"
+)
+
+Write-Host "Bonjour, $Nom !"
+
+function Get-Carre {
+    param([int]$Nombre)
+    return $Nombre * $Nombre
+}
+
+$resultat = Get-Carre -Nombre 4
+Write-Host "Le carré de 4 est $resultat"</code></pre>
+      
+      <p>Exécution avec paramètres :</p>
+      <pre><code>.\monScript.ps1 -Nom "Guillaume"</code></pre>
+    </section>
+
+    <section id="alias">
+      <h2>6. Alias utiles</h2>
+      <p>PowerShell fournit des alias pour faciliter la transition depuis d'autres shells :</p>
+      <pre><code>ls        # alias pour Get-ChildItem
+cat       # alias pour Get-Content
+man       # alias pour Get-Help
+cd        # alias pour Set-Location
+pwd       # alias pour Get-Location
+rm        # alias pour Remove-Item
+cp        # alias pour Copy-Item
+mv        # alias pour Move-Item
+echo      # alias pour Write-Output</code></pre>
+      
+      <p>Manipuler les alias :</p>
+      <pre><code>Get-Alias           # Liste tous les alias
+Get-Alias -Name ls  # Trouve la commande derrière un alias
+New-Alias -Name gh -Value Get-Help  # Crée un nouvel alias</code></pre>
+    </section>
+
+    <section id="services">
+      <h2>7. Gestion des services</h2>
+      <p>Commandes pour gérer les services Windows :</p>
+      <pre><code>Get-Service</code></pre>
+      <p>Liste tous les services disponibles sur le système.</p>
+      
+      <pre><code>Get-Service -Name "wuauserv"</code></pre>
+      <p>Affiche les informations sur le service Windows Update.</p>
+      
+      <pre><code>Start-Service -Name "nom_service"</code></pre>
+      <p>Démarre un service spécifique.</p>
+      
+      <pre><code>Stop-Service -Name "nom_service"</code></pre>
+      <p>Arrête un service spécifique.</p>
+      
+      <pre><code>Restart-Service -Name "nom_service"</code></pre>
+      <p>Redémarre un service spécifique.</p>
+      
+      <pre><code>Set-Service -Name "nom_service" -StartupType Automatic</code></pre>
+      <p>Configure un service pour qu'il démarre automatiquement au démarrage du système.</p>
+    </section>
+
+    <section id="conditions">
+      <h2>8. Structures conditionnelles</h2>
+      <p>PowerShell propose diverses structures de contrôle :</p>
+      <pre><code># Structure if-else
+if ($x -eq 42) { 
+    "La réponse" 
+} else { 
+    "Pas encore" 
+}</code></pre>
+      
+      <pre><code># Structure switch
+switch ($jour) {
+    "Lundi"    { "Début de semaine" }
+    "Vendredi" { "Fin de semaine" }
+    default    { "Milieu de semaine" }
+}</code></pre>
+      
+      <pre><code># Boucle foreach
+foreach ($item in $collection) {
+    # Traitement de $item
+}</code></pre>
+      
+      <pre><code># Boucle for
+for ($i = 0; $i -lt 10; $i++) {
+    # Traitement
+}</code></pre>
+      
+      <pre><code># Boucle while
+while ($condition) {
+    # Traitement
+}</code></pre>
+      
+      <p>Opérateurs de comparaison courants :</p>
+      <ul>
+        <li><code>-eq</code> : égal à</li>
+        <li><code>-ne</code> : différent de</li>
+        <li><code>-gt</code> : supérieur à</li>
+        <li><code>-lt</code> : inférieur à</li>
+        <li><code>-ge</code> : supérieur ou égal à</li>
+        <li><code>-le</code> : inférieur ou égal à</li>
+        <li><code>-like</code> : comparaison avec jokers (*, ?)</li>
+        <li><code>-match</code> : correspondance via expression régulière</li>
+      </ul>
+    </section>
+
+    <details id="bonus" class="bonus">
+      <summary>🎁 Bonus : Techniques avancées</summary>
+      
+      <h3>Traitement en pipeline</h3>
+      <pre><code># Enchaînement de commandes
+Get-Process | Where-Object { $_.CPU -gt 10 } | Sort-Object -Property CPU -Descending | Select-Object -First 5</code></pre>
+      
+      <h3>Création d'objets personnalisés</h3>
+      <pre><code># Créer un objet personnalisé
+$personne = [PSCustomObject]@{
+    Nom = "Dupont"
+    Prenom = "Jean"
+    Age = 35
+}
+
+# Utilisation
+$personne.Nom
+$personne | Format-Table -AutoSize</code></pre>
+      
+      <h3>Gestion des erreurs</h3>
+      <pre><code>try {
+    # Code qui peut générer une erreur
+    $resultat = 10 / 0
+} catch {
+    Write-Error "Une erreur s'est produite : $_"
+} finally {
+    # Code exécuté dans tous les cas
+    "Opération terminée"
+}</code></pre>
+      
+      <h3>Commandes d'administration système</h3>
+      <pre><code># Obtenir des informations système
+Get-ComputerInfo
+
+# Gérer les utilisateurs et groupes locaux
+Get-LocalUser
+New-LocalUser -Name "Utilisateur" -Password (ConvertTo-SecureString "MotDePasse" -AsPlainText -Force)
+
+# Interroger le registre
+Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion"</code></pre>
+    </details>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

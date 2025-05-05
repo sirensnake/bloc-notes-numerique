@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🪟 Windows - Guide pratique</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🪟 Windows - Guide pratique</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🪟 Windows & Active Directory ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+            <li><a href="windows.html">🪟 Windows</a></li>
+            <li><a href="reseaux-windows.html">🌐 Réseaux</a></li>
+            <li><hr></li>
+            <li><a href="active-directory-presentation.html">📚 Présentation</a></li>
+            <li><a href="active-directory-replication.html">🔁 Réplication</a></li>
+            <li><a href="active-directory-fsmo.html">📌 Rôles FSMO</a></li>
+            <li><a href="active-directory-gpo.html">🔐 GPO</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">💻 Virtualisation ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage-interactive.html">📦 VBoxManage</a></li>
+          </ul>
+        </li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li class="dropdown">
+          <a href="#">🎯 Quiz ▼</a>
+          <ul class="submenu">
+            <li><a href="quiz-sommaire.html">📋 Sommaire des Quiz</a></li>
+            <li><a href="quiz-OSI.html">🔀 Modèle OSI</a></li>
+            <li><a href="quiz-protocoles.html">📡 Protocoles Réseau</a></li>
+            <li><a href="quiz-commandes.html">⌨️ Commandes Réseau</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p><strong>Windows</strong> est le système d'exploitation de Microsoft qui domine le marché des PC. Cette fiche couvre les commandes essentielles, les outils d'administration et les bonnes pratiques pour gérer efficacement un système Windows.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#cmd">Invite de commandes (CMD)</a></li>
+        <li><a href="#services">Gestion des services</a></li>
+        <li><a href="#registre">Registre Windows</a></li>
+        <li><a href="#securite">Sécurité et pare-feu</a></li>
+        <li><a href="#dossiers">Emplacements importants</a></li>
+        <li><a href="#outils">Outils d'administration</a></li>
+        <li><a href="#raccourcis">Raccourcis clavier</a></li>
+      </ul>
+    </details>
+
+    <section id="cmd">
+      <h2>⌨️ Invite de commandes (CMD)</h2>
+      <p>Commandes essentielles en ligne de commande Windows :</p>
+      <pre><code>ipconfig               # Affiche la configuration IP
+ipconfig /all          # Affiche la config complète
+ping google.com        # Teste la connectivité
+tracert google.com     # Trace la route vers une destination
+netstat -ano           # Affiche les connexions réseau
+tasklist               # Liste les processus en cours
+taskkill /IM process   # Termine un processus
+dir                    # Liste les fichiers et dossiers
+cd /d D:\              # Change de lecteur et répertoire
+attrib +h +s fichier   # Cache un fichier ou dossier
+shutdown /s /t 0       # Arrêt immédiat du système
+</code></pre>
+    </section>
+
+    <section id="services">
+      <h2>⚙️ Gestion des services</h2>
+      <p>Gestion des services Windows depuis la ligne de commande :</p>
+      <pre><code>sc query              # Liste tous les services
+sc query state= all   # Liste tous les services (actifs et inactifs)
+sc start nom_service  # Démarre un service
+sc stop nom_service   # Arrête un service
+sc config nom_service start= auto    # Configure le démarrage automatique
+sc config nom_service start= demand  # Configure le démarrage manuel
+sc config nom_service start= disabled # Désactive le service
+sc delete nom_service # Supprime un service (prudence !)</code></pre>
+      <p>Via PowerShell (plus moderne) :</p>
+      <pre><code>Get-Service            # Liste tous les services
+Start-Service nom_service
+Stop-Service nom_service
+Set-Service nom_service -StartupType Automatic</code></pre>
+    </section>
+
+    <section id="registre">
+      <h2>🔑 Registre Windows</h2>
+      <p>Le registre est une base de données centralisée stockant les configurations du système et des applications :</p>
+      <p><strong>Ruches principales :</strong></p>
+      <ul>
+        <li><code>HKEY_LOCAL_MACHINE (HKLM)</code> : Configuration système</li>
+        <li><code>HKEY_CURRENT_USER (HKCU)</code> : Configuration utilisateur actuel</li>
+        <li><code>HKEY_USERS (HKU)</code> : Configuration de tous les utilisateurs</li>
+        <li><code>HKEY_CLASSES_ROOT</code> : Associations de fichiers</li>
+        <li><code>HKEY_CURRENT_CONFIG</code> : Configuration matérielle actuelle</li>
+      </ul>
+      <p><strong>Commandes cmd pour le registre :</strong></p>
+      <pre><code>reg query HKLM\Software    # Interroge une clé
+reg add HKLM\Software\MonApp /v Version /t REG_SZ /d "1.0" # Ajoute une valeur
+reg delete HKLM\Software\MonApp /v Version # Supprime une valeur
+regedit                    # Lance l'éditeur graphique</code></pre>
+      <p class="warning">⚠️ La modification du registre peut rendre le système instable. Toujours sauvegarder avant modification.</p>
+    </section>
+
+    <section id="securite">
+      <h2>🛡️ Sécurité et pare-feu</h2>
+      <p>Configuration du pare-feu Windows :</p>
+      <pre><code>netsh advfirewall set allprofiles state on   # Active le pare-feu
+netsh advfirewall set allprofiles state off  # Désactive le pare-feu
+netsh advfirewall show allprofiles           # Affiche l'état du pare-feu
+netsh advfirewall firewall add rule name="SSH" dir=in action=allow protocol=TCP localport=22
+netsh advfirewall firewall delete rule name="SSH"</code></pre>
+      <p>Permissions des fichiers et dossiers :</p>
+      <pre><code>icacls fichier /grant User:F    # Donne contrôle total à un utilisateur
+icacls dossier /deny User:F     # Refuse l'accès
+icacls fichier /remove User     # Supprime les permissions
+icacls fichier /setowner Admin  # Change le propriétaire</code></pre>
+    </section>
+
+    <section id="dossiers">
+      <h2>📂 Emplacements importants</h2>
+      <p>Dossiers système essentiels :</p>
+      <ul>
+        <li><code>C:\Windows</code> : Dossier système principal</li>
+        <li><code>C:\Program Files</code> : Applications 64 bits</li>
+        <li><code>C:\Program Files (x86)</code> : Applications 32 bits</li>
+        <li><code>C:\Users\%USERNAME%</code> : Profil utilisateur</li>
+        <li><code>C:\Windows\System32</code> : Fichiers système et outils</li>
+        <li><code>C:\Windows\Temp</code> : Fichiers temporaires système</li>
+        <li><code>%APPDATA%</code> : Données d'application (roaming)</li>
+        <li><code>%LOCALAPPDATA%</code> : Données d'application locale</li>
+        <li><code>%TEMP%</code> : Fichiers temporaires utilisateur</li>
+      </ul>
+    </section>
+
+    <section id="outils">
+      <h2>🛠️ Outils d'administration</h2>
+      <p>Outils système utiles (accessible via Win+R) :</p>
+      <pre><code>msconfig        # Configuration du système
+msinfo32        # Informations système
+mmc             # Console de gestion Microsoft
+compmgmt.msc    # Gestion de l'ordinateur
+devmgmt.msc     # Gestionnaire de périphériques
+services.msc    # Services Windows
+lusrmgr.msc     # Utilisateurs et groupes locaux
+gpedit.msc      # Éditeur de stratégie de groupe locale
+regedit         # Éditeur du registre
+perfmon         # Moniteur de performances
+eventvwr        # Observateur d'événements</code></pre>
+    </section>
+
+    <section id="raccourcis">
+      <h2>⌨️ Raccourcis clavier</h2>
+      <p>Raccourcis Windows essentiels :</p>
+      <ul>
+        <li><code>Win + R</code> : Ouvre Exécuter</li>
+        <li><code>Win + E</code> : Ouvre l'Explorateur de fichiers</li>
+        <li><code>Win + X</code> : Menu administrateur rapide</li>
+        <li><code>Win + L</code> : Verrouille la session</li>
+        <li><code>Alt + Tab</code> : Basculer entre les applications</li>
+        <li><code>Alt + F4</code> : Ferme la fenêtre active</li>
+        <li><code>Ctrl + Shift + Esc</code> : Gestionnaire des tâches</li>
+        <li><code>Win + I</code> : Paramètres système</li>
+        <li><code>Win + D</code> : Affiche le bureau</li>
+        <li><code>Win + Pause</code> : Propriétés système</li>
+      </ul>
+    </section>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>

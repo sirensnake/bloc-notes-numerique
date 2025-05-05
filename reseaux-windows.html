@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>🌐 Réseaux Windows - Guide pratique</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+  <header>
+    <div class="banner-container">
+      <img src="img/banner.png" alt="Bannière du site" class="banner-img">
+    </div>
+    <h1>🌐 Réseaux Windows - Guide pratique</h1>
+    <nav>
+      <ul class="main-menu">
+        <li><a href="index.html">🏠 Accueil</a></li>
+        <li class="dropdown">
+          <a href="#">🐧 Linux ▼</a>
+          <ul class="submenu">
+            <li><a href="linux-utilisateurs.html">👤 Utilisateurs</a></li>
+            <li><a href="linux-fichiers.html">📁 Fichiers</a></li>
+            <li><a href="linux-reseau.html">🌐 Réseau</a></li>
+            <li><a href="linux-paquets.html">📦 Paquets</a></li>
+            <li><a href="linux-securite.html">🔐 Sécurité</a></li>
+            <li><a href="linux-shell.html">🐚 Shell</a></li>
+            <li><a href="linux-systeme.html">⚙️ Système</a></li>
+            <li><a href="linux-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🐍 Python ▼</a>
+          <ul class="submenu">
+            <li><a href="python-bases.html">📘 Bases</a></li>
+            <li><a href="python-collections.html">🗂️ Collections</a></li>
+            <li><a href="python-controle.html">🔁 Contrôle</a></li>
+            <li><a href="python-erreurs.html">❌ Erreurs</a></li>
+            <li><a href="python-fonctions.html">🛠️ Fonctions</a></li>
+            <li><a href="python-fichiers.html">📂 Fichiers</a></li>
+            <li><a href="python-modules.html">🧩 Modules</a></li>
+            <li><a href="python-poo.html">🏛️ POO</a></li>
+            <li><a href="python-trucs.html">🧠 Trucs</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">🪟 Windows & Active Directory ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-powershell.html">⚡ PowerShell</a></li>
+            <li><a href="windows.html">🪟 Windows</a></li>
+            <li><a href="reseaux-windows.html">🌐 Réseaux</a></li>
+            <li><hr></li>
+            <li><a href="active-directory-presentation.html">📚 Présentation</a></li>
+            <li><a href="active-directory-replication.html">🔁 Réplication</a></li>
+            <li><a href="active-directory-fsmo.html">📌 Rôles FSMO</a></li>
+            <li><a href="active-directory-gpo.html">🔐 GPO</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#">💻 Virtualisation ▼</a>
+          <ul class="submenu">
+            <li><a href="fiche-vboxmanage-interactive.html">📦 VBoxManage</a></li>
+          </ul>
+        </li>
+        <li><a href="fiche-docker.html">🐳 Docker</a></li>
+        <li><a href="fiche-git.html">🔧 Git</a></li>
+        <li><a href="fiche-chocolatey.html">🍫 Chocolatey</a></li>
+        <li class="dropdown">
+          <a href="#">🎯 Quiz ▼</a>
+          <ul class="submenu">
+            <li><a href="quiz-sommaire.html">📋 Sommaire des Quiz</a></li>
+            <li><a href="quiz-OSI.html">🔀 Modèle OSI</a></li>
+            <li><a href="quiz-protocoles.html">📡 Protocoles Réseau</a></li>
+            <li><a href="quiz-commandes.html">⌨️ Commandes Réseau</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p>Gestion et configuration des réseaux sous Windows, incluant les commandes réseau, la configuration IP, le partage de ressources et le dépannage.</p>
+    </section>
+
+    <details class="sommaire">
+      <summary>📑 Sommaire</summary>
+      <ul>
+        <li><a href="#ipconfig">Configuration IP</a></li>
+        <li><a href="#netsh">Netsh - Configuration avancée</a></li>
+        <li><a href="#partage">Partage de ressources</a></li>
+        <li><a href="#depannage">Dépannage réseau</a></li>
+        <li><a href="#wlan">Réseaux sans fil</a></li>
+        <li><a href="#vpn">VPN et connexions distantes</a></li>
+      </ul>
+    </details>
+
+    <section id="ipconfig">
+      <h2>🔧 Configuration IP</h2>
+      <p>Gestion basique de la configuration réseau :</p>
+      <pre><code>ipconfig                    # Affiche config IP basique
+ipconfig /all               # Affiche config IP détaillée
+ipconfig /release           # Libère l'adresse IP DHCP
+ipconfig /renew             # Renouvelle l'adresse IP DHCP
+ipconfig /flushdns          # Vide le cache DNS
+ipconfig /displaydns        # Affiche le cache DNS
+ipconfig /registerdns       # Renouvelle l'enregistrement DHCP et re-enregistre DNS</code></pre>
+      
+      <p>Configuration IP statique via netsh :</p>
+      <pre><code>netsh interface ipv4 set address "Ethernet" static 192.168.1.100 255.255.255.0 192.168.1.1
+netsh interface ipv4 set dns "Ethernet" static 8.8.8.8
+netsh interface ipv4 add dns "Ethernet" 8.8.4.4 index=2</code></pre>
+    </section>
+
+    <section id="netsh">
+      <h2>⚙️ Netsh - Configuration avancée</h2>
+      <p>Outil de configuration réseau puissant :</p>
+      <pre><code># Interface
+netsh interface show interface          # Liste toutes les interfaces
+netsh interface ip show config         # Config IP de toutes les interfaces
+netsh interface ip show addresses      # Affiche toutes les adresses IP
+
+# DHCP
+netsh interface ip set address "Ethernet" dhcp
+netsh interface ip set dns "Ethernet" dhcp
+
+# Pare-feu
+netsh advfirewall show allprofiles
+netsh advfirewall firewall show rule name=all
+netsh advfirewall firewall add rule name="HTTP" dir=in action=allow protocol=TCP localport=80
+
+# WLAN
+netsh wlan show profiles
+netsh wlan export profile name="WiFi_Name" folder=C:\Profiles
+
+# Diagnostics
+netsh netio show stats
+netsh netio reset all                  # Réinitialise les paramètres réseau</code></pre>
+    </section>
+
+    <section id="partage">
+      <h2>📁 Partage de ressources</h2>
+      <p>Partage de fichiers et imprimantes :</p>
+      <pre><code># Partage de dossier via cmd
+net share MyShare=C:\SharedFolder /grant:everyone,read
+net share MyShare /delete
+
+# Liste des partages
+net share
+
+# Connexion à un partage distant
+net use Z: \\ServerName\ShareName password /user:domain\username
+net use Z: /delete
+
+# Permissions de partage
+icacls C:\SharedFolder /grant "Everyone:(OI)(CI)R"    # Lecture
+icacls C:\SharedFolder /grant "Users:(OI)(CI)RW"      # Lecture/Écriture</code></pre>
+      
+      <p>Partage d'imprimante :</p>
+      <pre><code># Liste des imprimantes
+wmic printer get name,local,network
+
+# Partager une imprimante
+net share PrinterName="HP LaserJet" /REMARK:"Imprimante bureau"</code></pre>
+    </section>
+
+    <section id="depannage">
+      <h2>🔍 Dépannage réseau</h2>
+      <p>Outils de diagnostic et dépannage :</p>
+      <pre><code># Tests de connectivité
+ping -t 8.8.8.8               # Ping continu
+ping -n 10 google.com         # 10 requêtes ping
+ping -l 65500 192.168.1.1     # Test avec gros paquet
+
+# Trace route
+tracert -h 30 google.com      # 30 sauts maximum
+tracert -w 5000 google.com    # 5 secondes de timeout
+
+# Statistiques
+netstat -ano                  # Connexions et ports
+netstat -abno                 # Avec nom des exécutables
+netstat -s                    # Statistiques par protocole
+netstat -r                    # Table de routage
+
+# Tests DNS
+nslookup google.com
+nslookup -type=mx gmail.com   # Enregistrements mail
+
+# Tests de port
+telnet serveur 80
+powershell Test-NetConnection -ComputerName google.com -Port 443</code></pre>
+    </section>
+
+    <section id="wlan">
+      <h2>📡 Réseaux sans fil</h2>
+      <p>Gestion des connexions Wi-Fi :</p>
+      <pre><code># Gestion Wi-Fi basique
+netsh wlan show networks
+netsh wlan show profiles
+netsh wlan connect name="WiFi_Name"
+netsh wlan disconnect
+
+# Afficher détails d'un profil
+netsh wlan show profile name="WiFi_Name" key=clear
+
+# Créer un profil Wi-Fi
+netsh wlan add profile filename="C:\wifi-profile.xml"
+
+# Exporter/Importer profils
+netsh wlan export profile
+netsh wlan import profile filename="C:\wifi-profile.xml"
+
+# Priorité des réseaux
+netsh wlan set profileorder name="WiFi_Name" interface="Wi-Fi" priority=1</code></pre>
+    </section>
+
+    <section id="vpn">
+      <h2>🔒 VPN et connexions distantes</h2>
+      <p>Configuration des connexions VPN :</p>
+      <pre><code># Créer une connexion VPN
+netsh ras add authtype=PAP
+netsh ras add link type=phone device="VPN Connection"
+
+# Via PowerShell (plus recommandé)
+Add-VpnConnection -Name "Mon VPN" -ServerAddress vpn.example.com -TunnelType Pptp
+
+# Bureau à distance
+mstsc                         # Lance Connexion Bureau à distance
+mstsc /v:server:3389          # Connexion directe
+mstsc /console                # Session console
+mstsc /admin                  # Session administrative
+
+# Activation du bureau à distance
+reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server" /v fDenyTSConnections /t REG_DWORD /d 0 /f
+netsh advfirewall firewall add rule name="Remote Desktop" protocol=TCP dir=in localport=3389 action=allow</code></pre>
+    </section>
+
+    <div class="bottom-buttons">
+      <a class="button-return" href="index.html">🏠 Retour au sommaire général</a>
+      <button class="button" onclick="window.print()">🖨️ Exporter en PDF</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2025 Guillaume | Bloc-Note Technique 📚</p>
+  </footer>
+
+</body>
+</html>
